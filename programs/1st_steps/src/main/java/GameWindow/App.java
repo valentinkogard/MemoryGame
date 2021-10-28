@@ -35,5 +35,6 @@ public class App {
         System.out.print("Number of Cards: ");
         int numberOfCards = scanner.nextInt();
         a.boardSetup(numberOfCards);
+        //test
     }
 }
