@@ -22,12 +22,14 @@ public class Card {
     }
 
     //set-Methods
-    public void setPictureShown(boolean pictureShown) {
-        isPictureShown = pictureShown;
+    public void setPictureShown(boolean ispictureShown) {
+        this.isPictureShown = ispictureShown;
     }
 
-    public void setCardShown(boolean cardShown) {
-        isCardShown = cardShown;
+    public void setCardShown(boolean isCardShown) {
+        if(isCardShown == false) {
+            this.isCardShown = false;
+        }
     }
 
     //check if two cards have the same picture on it (pictureId)

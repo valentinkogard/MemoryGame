@@ -1,8 +1,29 @@
 package GameWindow;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class App {
+    List<Integer> list = new ArrayList<>();
+    public static Card [] cardReference;
+
+    public void fillList(int numberOfCards){
+        for(int i = 0; i < numberOfCards/2; i++){
+            for(int j = 0; j < 2; j++) {
+                list.add(i);
+            }
+        }
+    }
+
+    public int chooseRandCardId(){
+        Random rand = new Random();
+        int randomIndex = rand.nextInt(list.size());
+        int randId = list.get(randomIndex);
+        list.remove(randomIndex);
+        return randId;
+    }
 
     public void boardSetup(int numberOfCards){
         if(numberOfCards % 2 == 0){
@@ -17,10 +38,11 @@ public class App {
             int counter = 0;
             for(int i = 0; i < y; i++){
                 for(int j = 0; j < x; j++){
-                    cardArray[counter] = new Card(j,i,0);
+                    cardArray[counter] = new Card(j,i,chooseRandCardId());
                     counter++;
                 }
             }
+            cardReference = cardArray;
         }
         else {
             System.out.println("Card number is an odd number");
@@ -34,7 +56,10 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Number of Cards: ");
         int numberOfCards = scanner.nextInt();
+
+        a.fillList(numberOfCards);
         a.boardSetup(numberOfCards);
+        System.out.println("Done");
         //test
     }
 }
