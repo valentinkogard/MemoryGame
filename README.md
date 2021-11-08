@@ -6,6 +6,7 @@ https://launchdarkly.com/blog/git-branching-strategies-vs-trunk-based-developmen
 
 ## How to Use IntelliJ 2021.2.2 for JavaFX 17, JDK 17 and Scene Builder 16 on Windows 10 x64
 https://www.youtube.com/watch?v=x65Bn_QuMVY (this video is not perfect...)
+
 https://openjfx.io/
 
 ## Kanban-Board
