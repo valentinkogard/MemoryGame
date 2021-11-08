@@ -46,5 +46,11 @@ Absent: Max and Sahmed
 ![image](https://user-images.githubusercontent.com/92077153/140292130-28e03f86-e575-4ab0-b6a3-235f6d60a2d3.png)
 
 
+## 08.11.2021 - 08:45
+
+Magdalena present the group a logo for this project
+
+Absent: Max and Sahmed
+
 
 
