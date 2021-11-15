@@ -53,4 +53,8 @@ Magdalena present the group a logo for this project
 Absent: Max and Sahmed
 
 
+## 15.11.2021 -08:45
 
+General coffee round
+
+Absent: Sahmed
