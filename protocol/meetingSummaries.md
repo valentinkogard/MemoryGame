@@ -53,8 +53,16 @@ Magdalena present the group a logo for this project
 Absent: Max and Sahmed
 
 
-## 15.11.2021 -08:45
+## 15.11.2021 - 08:45
 
 General coffee round
 
 Absent: Sahmed
+
+## 16.11.2021 - 11:30
+
+Excercise 1: (positive und negative Teamarbeitserfahrungen -> Regeln)
+![image](https://user-images.githubusercontent.com/92077153/141975741-9f76c391-7d77-426f-a710-06a078f58281.png)
+
+Excercise 2: richtig kommunizieren (= aktives Zuhören: wertschätzdendes Interesse, inhaltliches & emotionales Verständinis)
+
