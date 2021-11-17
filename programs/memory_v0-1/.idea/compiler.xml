@@ -9,8 +9,5 @@
         <module name="memorygame" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="memorygame" target="16" />
-    </bytecodeTargetLevel>
   </component>
 </project>

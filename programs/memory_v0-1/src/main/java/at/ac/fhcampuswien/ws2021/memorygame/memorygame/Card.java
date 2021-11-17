@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
 
+import java.lang.reflect.Array;
 import java.util.Objects;
 
 public class Card {
@@ -10,6 +11,8 @@ public class Card {
     private boolean isCardShown;
 
     private static int cardscounter = 0;
+
+    private static int numberOfCardsX = 0;
 
     public Card(int x_position, int y_position, int pictureId) {
         this.id = cardscounter;
@@ -30,6 +33,10 @@ public class Card {
         if(isCardShown == false) {
             this.isCardShown = false;
         }
+    }
+
+    public int[] getPosition(){
+        return new int[]{this.x_position, this.y_position};
     }
 
     //check if two cards have the same picture on it (pictureId)

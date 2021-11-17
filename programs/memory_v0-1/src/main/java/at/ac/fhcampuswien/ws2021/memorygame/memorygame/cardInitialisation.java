@@ -46,6 +46,7 @@ public class cardInitialisation {
         }
         else {
             System.out.println("Card number is an odd number");
+            System.exit(1);
             //use a Logger in further versions
         }
     }

@@ -20,6 +20,7 @@ import java.awt.event.AWTEventListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Array;
 
 public class gameview extends Application{ // implements EventHandler<MouseEvent>{
 
@@ -43,24 +44,38 @@ public class gameview extends Application{ // implements EventHandler<MouseEvent
                 eventController.controller(mouseEvent.getSceneX(), mouseEvent.getSceneY());
             }
         };
+        //!!! change methode that is can also handle e.g 80 cards
+        //current problem: algorithm cases empty objects which leads in gameview to an error(1)
 
         Card[] cards = cardInitialisation.cardGeneration(50);
-
         StackPane root = new StackPane();
-        AnchorPane holder = new AnchorPane(); //each "holder" should contain one playing card
-        holder.resize(20,20);
-        String path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/image1.png";
-        File directory = new File(path);
-        System.out.print(directory.getAbsoluteFile());
-        Image image = new Image(new FileInputStream(directory.getAbsoluteFile()));
-        ImageView imageView = new ImageView(image);
-        imageView.setX(10);
-        imageView.setY(10);
-        imageView.setFitWidth(50);
-        imageView.setPreserveRatio(true);
-        holder.getChildren().add(imageView);
 
-        root.getChildren().add(holder);
+        AnchorPane arr[] = new AnchorPane[cards.length];
+
+
+        int x_location = 10;
+        int y_location = 10;
+        int increment = 50;
+        int space = 10;
+
+        for(int i = 0; i < cards.length; i++){
+            AnchorPane holder = new AnchorPane(); //each "holder" should contain one playing card
+            arr[i] = holder;
+
+            holder.resize(20,20);
+            String path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/image1.png";
+            File directory = new File(path);
+            Image image = new Image(new FileInputStream(directory.getAbsoluteFile()));
+            ImageView imageView = new ImageView(image);
+            imageView.setX(x_location + cards[i].getPosition()[0] * increment);
+            imageView.setY(y_location + cards[i].getPosition()[1] * increment);
+            imageView.setFitWidth(increment-space);
+            imageView.setPreserveRatio(true);
+            holder.getChildren().add(imageView);
+
+            root.getChildren().add(holder);
+        }
+
         root.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
         stage.setScene(new Scene(root, window_length, window_height));
         stage.show();
