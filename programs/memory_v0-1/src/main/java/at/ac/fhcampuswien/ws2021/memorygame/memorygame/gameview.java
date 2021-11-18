@@ -19,68 +19,111 @@ import java.awt.event.AWTEventListener;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Array;
 
 public class gameview extends Application{ // implements EventHandler<MouseEvent>{
 
     EventHandler handler;
-    Button btn = new Button();
+    private Card[] cards;
+    private AnchorPane arr[];
 
-    public static void main(String[] args) {
-        launch(args);
+    private int size, spaceX, spaceY;
+
+    public void findImageToChange(double mouseX, double mouseY) throws FileNotFoundException {
+        for(int i = 0; i < cards.length; i++){
+            int[] pixel = cards[i].getPixel();
+            //0 -> x1; 1 -> y1; 2 -> x2; 3 -> y2
+            if(pixel[0] < mouseX && mouseX < pixel[2] && pixel[1] < mouseY && mouseY < pixel[3] && !cards[i].isPictureShown()){
+                cards[i].setPictureShown(true);
+                arr[i].getChildren().remove(0);
+                arr[i].getChildren().add(setImage(i));
+                break;
+            }
+            else if(pixel[0] < mouseX && mouseX < pixel[2] && pixel[1] < mouseY && mouseY < pixel[3] && cards[i].isPictureShown()){
+                cards[i].setPictureShown(false);
+                arr[i].getChildren().remove(0);
+                arr[i].getChildren().add(setImage(i));
+                break;
+            }
+        }
+        System.out.println("0");
     }
 
+    private ImageView setImage(int i) throws FileNotFoundException {
+        String path;
+        if(cards[i].isPictureShown()){
+            path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/image1.png";
+        }
+        else {
+            path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/cover.jpg";
+        }
+        File directory = new File(path);
+        Image image = new Image(new FileInputStream(directory.getAbsoluteFile()));
+        ImageView imageView = new ImageView(image);
+        int x = spaceX + cards[i].getPosition()[0] * (size + spaceX);
+        int y = spaceY + cards[i].getPosition()[1] * (size + spaceY);
+        imageView.setX(x);
+        imageView.setY(y);
+        cards[i].setPixel(x, y, x+size, y+size);
+        imageView.setFitWidth(size);
+        imageView.setPreserveRatio(true);
+        return imageView;
+    }
 
     @Override
     public void start(Stage stage) throws IOException{
         stage.setTitle("Mem(ory) game :<)");
         int window_height = 500;
-        int window_length = 700;
+        int window_length = 800;
 
         EventHandler<MouseEvent> eventHandler = new EventHandler<>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                eventController.controller(mouseEvent.getSceneX(), mouseEvent.getSceneY());
+                eventController evC = new eventController();
+                double[] feedback = evC.controller(mouseEvent.getSceneX(), mouseEvent.getSceneY());
+                try {
+                    findImageToChange(feedback[0], feedback[1]);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
         };
         //!!! change methode that is can also handle e.g 80 cards
         //current problem: algorithm cases empty objects which leads in gameview to an error(1)
 
-        Card[] cards = cardInitialisation.cardGeneration(50);
+        cards = cardInitialisation.cardGeneration(50);
         StackPane root = new StackPane();
 
-        AnchorPane arr[] = new AnchorPane[cards.length];
+        arr = new AnchorPane[cards.length];
 
-
-        int x_location = 10;
-        int y_location = 10;
-        int increment = 50;
-        int space = 10;
+        size = 40;
+        spaceX = (window_length - (size * cards[0].getNumberOfCardsXY()[0]))/(cards[0].getNumberOfCardsXY()[0] + 1);
+        spaceY = (window_height - (size * cards[0].getNumberOfCardsXY()[1]))/(cards[0].getNumberOfCardsXY()[1] + 3);
 
         for(int i = 0; i < cards.length; i++){
             AnchorPane holder = new AnchorPane(); //each "holder" should contain one playing card
             arr[i] = holder;
 
-            holder.resize(20,20);
-            String path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/image1.png";
-            File directory = new File(path);
-            Image image = new Image(new FileInputStream(directory.getAbsoluteFile()));
-            ImageView imageView = new ImageView(image);
-            imageView.setX(x_location + cards[i].getPosition()[0] * increment);
-            imageView.setY(y_location + cards[i].getPosition()[1] * increment);
-            imageView.setFitWidth(increment-space);
-            imageView.setPreserveRatio(true);
-            holder.getChildren().add(imageView);
-
+            holder.resize(size,size);
+            if(cards[i].getPictureId() != -1) {
+                holder.getChildren().add(setImage(i));
+            }
             root.getChildren().add(holder);
         }
 
         root.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
         stage.setScene(new Scene(root, window_length, window_height));
-        stage.show();
         //stage.setResizable(false);
+        //window_length = (int) stage.getX();
+        //window_height = (int) stage.getY();
+        stage.show();
+        stage.setResizable(false);
 
     }
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 }

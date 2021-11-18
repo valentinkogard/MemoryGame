@@ -19,26 +19,39 @@ public class cardInitialisation {
 
     private int chooseRandCardId(){
         Random rand = new Random();
-        int randomIndex = rand.nextInt(list.size());
-        int randId = list.get(randomIndex);
-        list.remove(randomIndex);
+        int randId;
+        if(!list.isEmpty()) {
+            int randomIndex = rand.nextInt(list.size());
+            randId = list.get(randomIndex);
+            list.remove(randomIndex);
+        }
+        else{
+            randId = -1;
+        }
         return randId;
     }
 
     private void boardSetup(int numberOfCards){
         if(numberOfCards % 2 == 0){
             //i'ld suggest to show the cards in a 16:9 format (the standard format of a screen)
-            //e.g 50 cards -> 50/(16+9) * 16 = 32 ... width
-            //             -> 50/(16+9) * 09 = 18 ... hight
+
             float[] proportion = {16, 9};
-            int y = (int) Math.floor(Math.sqrt((proportion[1] / proportion[0]) * numberOfCards));
+            int y = (int) Math.ceil(Math.sqrt((proportion[1] / proportion[0]) * numberOfCards));
             int x = (int) Math.ceil(numberOfCards / y);
+            int cardsToCreate = x * y;
+            if(cardsToCreate < numberOfCards){
+                y += 1;
+                cardsToCreate = cardsToCreate + x;
+            }
             //80 -> x: 52   y: 28
-            Card [] cardArray = new Card[numberOfCards];
+            Card [] cardArray = new Card[cardsToCreate];
             int counter = 0;
             for(int i = 0; i < y; i++){
                 for(int j = 0; j < x; j++){
                     cardArray[counter] = new Card(j,i,chooseRandCardId());
+                    if(cardArray[counter].getPictureId() == -1){
+                        cardArray[counter].setCardShown(false);
+                    }
                     counter++;
                 }
             }

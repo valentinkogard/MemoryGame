@@ -14,7 +14,8 @@ public class eventController {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
     */
-    public static void controller(double mouseX, double mouseY){
+    public double[] controller(double mouseX, double mouseY){
         System.out.println(mouseX + " | " + mouseY);
+        return new double[]{mouseX,mouseY};
     }
 }
