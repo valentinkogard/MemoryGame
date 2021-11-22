@@ -1,79 +1,56 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.awt.*;
-import java.awt.event.AWTEventListener;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
-public class gameview extends Application{ // implements EventHandler<MouseEvent>{
+public class Gameview extends Application{ // implements EventHandler<MouseEvent>{
 
-    EventHandler handler;
-    private Card[] cards;
-    private AnchorPane arr[];
+    //EventHandler handler;
+    public static Card[] cards;
+    public static AnchorPane[] arr;
+    public static List<Player> gamePlayer = new ArrayList<Player>();;
 
-    private int size, spaceX, spaceY;
+    public static int size, spaceX, spaceY;
 
     public void findImageToChange(double mouseX, double mouseY) throws FileNotFoundException {
         for(int i = 0; i < cards.length; i++){
             int[] pixel = cards[i].getPixel();
             //0 -> x1; 1 -> y1; 2 -> x2; 3 -> y2
-            if(pixel[0] < mouseX && mouseX < pixel[2] && pixel[1] < mouseY && mouseY < pixel[3] && !cards[i].isPictureShown()){
+            if(pixel[0] < mouseX && mouseX < pixel[2] && pixel[1] < mouseY && mouseY < pixel[3]){
+                //cards[i].setPictureShown(!cards[i].isPictureShown());
                 cards[i].setPictureShown(true);
-                arr[i].getChildren().remove(0);
-                arr[i].getChildren().add(setImage(i));
-                break;
-            }
-            else if(pixel[0] < mouseX && mouseX < pixel[2] && pixel[1] < mouseY && mouseY < pixel[3] && cards[i].isPictureShown()){
-                cards[i].setPictureShown(false);
-                arr[i].getChildren().remove(0);
-                arr[i].getChildren().add(setImage(i));
+                ImageController.removeChildren(i, arr);
+                arr[i] = ImageController.setImage(i, arr[i]);
+                System.out.println("Children of " + i + ": "+ arr[i].getChildren().size());
                 break;
             }
         }
         System.out.println("0");
     }
 
-    private ImageView setImage(int i) throws FileNotFoundException {
-        String path;
-        if(cards[i].isPictureShown()){
-            path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/image1.png";
-        }
-        else {
-            path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/cover.jpg";
-        }
-        File directory = new File(path);
-        Image image = new Image(new FileInputStream(directory.getAbsoluteFile()));
-        ImageView imageView = new ImageView(image);
-        int x = spaceX + cards[i].getPosition()[0] * (size + spaceX);
-        int y = spaceY + cards[i].getPosition()[1] * (size + spaceY);
-        imageView.setX(x);
-        imageView.setY(y);
-        cards[i].setPixel(x, y, x+size, y+size);
-        imageView.setFitWidth(size);
-        imageView.setPreserveRatio(true);
-        return imageView;
-    }
-
     @Override
     public void start(Stage stage) throws IOException{
+        int numberOfPlayer = 2;
+        for(int i = 0; i < numberOfPlayer; i++){
+            gamePlayer.add(new Player("Player" + i));
+        }
+        Player p1 = new Player("Hello");
+
+
         stage.setTitle("Mem(ory) game :<)");
         int window_height = 500;
         int window_length = 800;
@@ -81,10 +58,20 @@ public class gameview extends Application{ // implements EventHandler<MouseEvent
         EventHandler<MouseEvent> eventHandler = new EventHandler<>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                eventController evC = new eventController();
+                EventController evC = new EventController();
                 double[] feedback = evC.controller(mouseEvent.getSceneX(), mouseEvent.getSceneY());
                 try {
-                    findImageToChange(feedback[0], feedback[1]);
+                    Rules r = new Rules();
+                    if(r.isMoveAllowed(cards)){
+                        findImageToChange(feedback[0], feedback[1]);
+                    }
+                    else {
+                        if(r.twoCardsUncovered(cards, arr)){
+                            //p1.incPlayerPoints();
+                            gamePlayer.get(0).incPlayerPoints();
+                            System.out.println("Bravo...");
+                        }
+                    }
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -93,7 +80,7 @@ public class gameview extends Application{ // implements EventHandler<MouseEvent
         //!!! change methode that is can also handle e.g 80 cards
         //current problem: algorithm cases empty objects which leads in gameview to an error(1)
 
-        cards = cardInitialisation.cardGeneration(50);
+        cards = CardInitialisation.cardGeneration(50);
         StackPane root = new StackPane();
 
         arr = new AnchorPane[cards.length];
@@ -108,9 +95,9 @@ public class gameview extends Application{ // implements EventHandler<MouseEvent
 
             holder.resize(size,size);
             if(cards[i].getPictureId() != -1) {
-                holder.getChildren().add(setImage(i));
+                arr[i] = ImageController.setImage(i, arr[i]);
             }
-            root.getChildren().add(holder);
+            root.getChildren().add(arr[i]);
         }
 
         root.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
@@ -124,6 +111,7 @@ public class gameview extends Application{ // implements EventHandler<MouseEvent
     }
 
     public static void main(String[] args) {
+
         launch(args);
     }
 }

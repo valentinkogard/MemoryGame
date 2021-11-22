@@ -3,9 +3,8 @@ package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
-public class cardInitialisation {
+public class CardInitialisation {
     List<Integer> list = new ArrayList<>();
     private static Card [] cardReference;
 
@@ -23,6 +22,7 @@ public class cardInitialisation {
         if(!list.isEmpty()) {
             int randomIndex = rand.nextInt(list.size());
             randId = list.get(randomIndex);
+            System.out.print(randId + ", ");
             list.remove(randomIndex);
         }
         else{
@@ -65,7 +65,7 @@ public class cardInitialisation {
     }
 
     public static Card[] cardGeneration(int numberOfCards){
-        cardInitialisation a = new cardInitialisation();
+        CardInitialisation a = new CardInitialisation();
 
         //Scanner scanner = new Scanner(System.in);
         //System.out.print("Number of Cards: ");
@@ -75,7 +75,6 @@ public class cardInitialisation {
         a.fillList(numberOfCards);
         a.boardSetup(numberOfCards);
         System.out.println("Done");
-
         return cardReference;
     }
 }
