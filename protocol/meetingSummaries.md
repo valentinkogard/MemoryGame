@@ -62,7 +62,19 @@ Absent: Sahmed
 ## 16.11.2021 - 11:30
 
 Excercise 1: (positive und negative Teamarbeitserfahrungen -> Regeln)
+
 ![image](https://user-images.githubusercontent.com/92077153/141975741-9f76c391-7d77-426f-a710-06a078f58281.png)
 
 Excercise 2: richtig kommunizieren (= aktives Zuhören: wertschätzdendes Interesse, inhaltliches & emotionales Verständinis)
 
+## 22.11.2021 - 08:45
+
+Max showed us his layout idears
+
+- Niko: design welcome page
+- Valentin: design game page
+- Max: design single player page
+- Christina: background & card design
+- Magdalena: background & card design
+
+Absent: Magdalena, Sahmed
