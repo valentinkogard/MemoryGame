@@ -30,7 +30,7 @@ public class Gameview extends Application{ // implements EventHandler<MouseEvent
         for(int i = 0; i < cards.length; i++){
             int[] pixel = cards[i].getPixel();
             //0 -> x1; 1 -> y1; 2 -> x2; 3 -> y2
-            if(pixel[0] < mouseX && mouseX < pixel[2] && pixel[1] < mouseY && mouseY < pixel[3]){
+            if(pixel[0] < mouseX && mouseX < pixel[2] && pixel[1] < mouseY && mouseY < pixel[3] && cards[i].isCardShown()){
                 //cards[i].setPictureShown(!cards[i].isPictureShown());
                 cards[i].setPictureShown(true);
                 ImageController.removeChildren(i, arr);

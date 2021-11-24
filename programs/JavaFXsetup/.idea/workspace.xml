@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6834937e-9ed1-4dcb-8716-f449e34e4135" name="Changes" comment="finally JavaFX dependencies are correctly set up :) &#10;uesed a Maven instead of a Gravel project">
-      <change afterPath="$PROJECT_DIR$/../memory_v0-1/src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/ImageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../memory_v0-1/src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/Rules.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../memory_v0-1/src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/Values.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/Rules.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/Gameview$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/Gameview.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/ImageController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/Values.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../memory_v0-1/src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../memory_v0-1/src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../memory_v0-1/src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/../memory_v0-1/src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../memory_v0-1/src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/cardInitialisation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../memory_v0-1/src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/CardInitialisation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../memory_v0-1/src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/eventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../memory_v0-1/src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../memory_v0-1/src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/gameview.java" beforeDir="false" afterPath="$PROJECT_DIR$/../memory_v0-1/src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/Gameview.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../memory_v0-1/src/main/resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/game-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../memory_v0-1/src/main/resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/game-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/cardInitialisation.class" beforeDir="false" afterPath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/cardInitialisation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/eventController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/eventController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/game-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/game-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/gameview$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/gameview.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
