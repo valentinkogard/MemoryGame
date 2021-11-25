@@ -5,11 +5,13 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,6 +27,8 @@ public class Gameview extends Application{ // implements EventHandler<MouseEvent
     public static List<Player> gamePlayer = new ArrayList<Player>();;
 
     public static int size, spaceX, spaceY;
+
+    public static int gameheaderSize = 50;
 
     public void findImageToChange(double mouseX, double mouseY) throws FileNotFoundException {
         for(int i = 0; i < cards.length; i++){
@@ -80,14 +84,24 @@ public class Gameview extends Application{ // implements EventHandler<MouseEvent
         //!!! change methode that is can also handle e.g 80 cards
         //current problem: algorithm cases empty objects which leads in gameview to an error(1)
 
-        cards = CardInitialisation.cardGeneration(50);
+        cards = CardInitialisation.cardGeneration(30);
         StackPane root = new StackPane();
 
         arr = new AnchorPane[cards.length];
 
+
         size = 40;
         spaceX = (window_length - (size * cards[0].getNumberOfCardsXY()[0]))/(cards[0].getNumberOfCardsXY()[0] + 1);
-        spaceY = (window_height - (size * cards[0].getNumberOfCardsXY()[1]))/(cards[0].getNumberOfCardsXY()[1] + 3);
+        spaceY = (window_height - gameheaderSize - (size * cards[0].getNumberOfCardsXY()[1]))/(cards[0].getNumberOfCardsXY()[1] + 3);
+        //spaceY = (window_height - (size * cards[0].getNumberOfCardsXY()[1]))/(cards[0].getNumberOfCardsXY()[1] + 3);
+
+        //create gameheader
+        HBox header = new HBox();
+        Label label = new Label("Hello World");
+        header.setVisible(true);
+        //header.getChildren().add(label);
+        root.getChildren().add(header);
+
 
         for(int i = 0; i < cards.length; i++){
             AnchorPane holder = new AnchorPane(); //each "holder" should contain one playing card

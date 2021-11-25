@@ -5,10 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6834937e-9ed1-4dcb-8716-f449e34e4135" name="Changes" comment="finally JavaFX dependencies are correctly set up :) &#10;uesed a Maven instead of a Gravel project">
-      <change afterPath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/Gameview$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/Gameview.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/ImageController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../memory_v0-1/target/classes/at/ac/fhcampuswien/ws2021/memorygame/memorygame/Values.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class CardInitialisation {
     List<Integer> list = new ArrayList<>();
-    private static Card [] cardReference;
+    private static Card[] cardReference;
 
     private void fillList(int numberOfCards){
         for(int i = 0; i < numberOfCards/2; i++){
