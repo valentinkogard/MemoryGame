@@ -79,7 +79,7 @@ Max showed us his layout idears
 
 Absent: Magdalena, Sahmed
 
-## 29.11.2021 - 17:30
+## 29.11.2021 - 17:30 to 20:00
 
 - setup JavaFX environment / JavaFX trubleshouting
 - finalization of graphic design
