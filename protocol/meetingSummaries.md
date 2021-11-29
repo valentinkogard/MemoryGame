@@ -78,3 +78,14 @@ Max showed us his layout idears
 - Magdalena: background & card design
 
 Absent: Magdalena, Sahmed
+
+## 29.11.2021 - 17:30
+
+- setup JavaFX environment / JavaFX trubleshouting
+- finalization of graphic design
+- found some layout themes (e.g. cats, trees, brands)
+- introduction to: what are branches
+- plans for selling the application :)
+
+Absent: Sahmed
+
