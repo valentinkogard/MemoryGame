@@ -14,6 +14,10 @@ General Kanban - Invitation Link: https://trello.com/invite/b/36lle7fJ/d8e67e025
 
 General Kanban: https://trello.com/b/36lle7fJ/team-wasserball
 
+Feedback Board - Invitation Link: https://trello.com/invite/b/5Be7ulj3/1b84e18ef2c0a17830ef7525b3e329b1/feedback
+
+Feedback Board: https://trello.com/b/5Be7ulj3/feedback
+
 Software - ToDo's - Invitation Link: https://trello.com/invite/b/YlHL4jcq/6c25c7e9c2e93725c22a97153e74cd3e/sw-todos
 
 Software - ToDo's: https://trello.com/b/YlHL4jcq/sw-todos
