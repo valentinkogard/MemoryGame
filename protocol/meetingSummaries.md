@@ -89,3 +89,7 @@ Absent: Magdalena, Sahmed
 
 Absent: Sahmed
 
+## 01.12.2021 - 09:45
+
+- did a feedback round - was really a fun thing to do 
+
