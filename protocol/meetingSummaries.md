@@ -93,3 +93,10 @@ Absent: Sahmed
 
 - did a feedback round - was really a fun thing to do 
 
+Absent: -
+
+## 06.12.2021 - 08:45
+
+- Magdalena and Christina found some images for your card themes (Cats, Sights)
+- uploaded these images to git (dev_valentin)
+
