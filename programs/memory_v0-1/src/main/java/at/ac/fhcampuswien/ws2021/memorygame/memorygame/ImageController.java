@@ -15,10 +15,10 @@ public class ImageController extends Gameview{
 
         String path;
         if(cards[i].isPictureShown()){
-            path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/theme0/image" + cards[i].getPictureId() + ".png";
+            path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/theme2/image" + cards[i].getPictureId() + ".png";
         }
         else {
-            path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/cover/cover0.jpg";
+            path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/cover/cover1.png";
         }
         File directory = new File(path);
         Image image = new Image(new FileInputStream(directory.getAbsoluteFile()));
