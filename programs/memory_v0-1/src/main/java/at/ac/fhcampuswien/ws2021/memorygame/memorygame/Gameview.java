@@ -90,7 +90,7 @@ public class Gameview extends Application{ // implements EventHandler<MouseEvent
         arr = new AnchorPane[cards.length];
 
 
-        size = 40;
+        size = 50;
         spaceX = (window_length - (size * cards[0].getNumberOfCardsXY()[0]))/(cards[0].getNumberOfCardsXY()[0] + 1);
         spaceY = (window_height - gameheaderSize - (size * cards[0].getNumberOfCardsXY()[1]))/(cards[0].getNumberOfCardsXY()[1] + 3);
         //spaceY = (window_height - (size * cards[0].getNumberOfCardsXY()[1]))/(cards[0].getNumberOfCardsXY()[1] + 3);
