@@ -100,3 +100,15 @@ Absent: -
 - Magdalena and Christina found some images for your card themes (Cats, Sights)
 - uploaded these images to git (dev_valentin)
 
+## 13.12.2021 - 08:45
+
+- Niko presented his first mainmenue with buttons and scene change +baguette image :) now our logo!!!
+- Magdalena will make the counter over the playing field
+- Christina will make the credit page
+
+we decided to make the window NOT resizeable - maybe in a futher step
+-> size: **1000x600px**
+
+some commit issues... solved
+
+Absent: Max
