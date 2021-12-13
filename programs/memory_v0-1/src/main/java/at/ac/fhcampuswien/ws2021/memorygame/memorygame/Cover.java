@@ -38,7 +38,7 @@ public class Cover extends Application {
         primaryStage.setTitle("Mainpage");
 
         VBox vbox = new VBox ();
-        Scene mainpageScene = new Scene(vbox, 1200, 800);
+        Scene mainpageScene = new Scene(vbox, 1000, 600);
 
 
 
@@ -59,7 +59,7 @@ public class Cover extends Application {
         singlePlayer.setText("Einzelspieler");
 
         VBox snglPlyVbox = new VBox();
-        Scene snglPlyScene = new Scene(snglPlyVbox, 1200, 800);
+        Scene snglPlyScene = new Scene(snglPlyVbox, 1000, 600);
         snglPlyVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
 
@@ -85,7 +85,7 @@ public class Cover extends Application {
         multiPlayer.setText("Mehrspieler");
 
         VBox multiPlyVbox = new VBox();
-        Scene multiPlyScene = new Scene(multiPlyVbox, 1200, 800);
+        Scene multiPlyScene = new Scene(multiPlyVbox, 1000, 600);
         multiPlyVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
 
@@ -115,19 +115,18 @@ public class Cover extends Application {
 
 
 
-        Image image = new Image(new FileInputStream("C:\\Users\\nikol\\Desktop\\pic\\pic1.jpg"));
+        Image image = new Image(new FileInputStream("C:\\Users\\nikol\\Desktop\\pic\\Logo_Wasserball.png"));
         ImageView imageView = new ImageView(image);
 
-        imageView.setFitHeight(600);
-        imageView.setFitWidth(800);
+        imageView.setFitHeight(400);
+        imageView.setFitWidth(400);
 
-        Scene optnScene = new Scene(optnVbox, 1200, 800);
+        Scene optnScene = new Scene(optnVbox, 1000, 600);
 
         Button back1 = new Button("Back");
         back1.setFont(new Font(20));
         back1.setMinWidth(200);
         back1.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-
 
 
         options.setOnAction(e -> primaryStage.setScene(optnScene));
@@ -142,7 +141,7 @@ public class Cover extends Application {
         credits.setFont(new Font(20));
 
         VBox credVbox = new VBox ();
-        Scene credScene = new Scene(credVbox, 1200, 800);
+        Scene credScene = new Scene(credVbox, 1000, 600);
         credVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
 
@@ -179,6 +178,10 @@ public class Cover extends Application {
             }
         });
 
+
+
+
+
         //-------------------------width Setting-------------------------
         singlePlayer.setMinWidth(200);
         multiPlayer.setMinWidth(200);
@@ -206,6 +209,7 @@ public class Cover extends Application {
         credVbox.setAlignment(Pos.CENTER);
 
         vbox.getChildren().addAll(title, singlePlayer, multiPlayer, options, credits, exit);
+        //vbox.getChildren().add
 
         back.setAlignment(Pos.BOTTOM_CENTER);
 
