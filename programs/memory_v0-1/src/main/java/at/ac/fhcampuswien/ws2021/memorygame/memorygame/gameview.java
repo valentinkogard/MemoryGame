@@ -26,7 +26,7 @@ import java.lang.reflect.Array;
 public class gameview extends Application{ // implements EventHandler<MouseEvent>{
 
     EventHandler handler;
-    private Card[] cards;
+    private Card [] cards;
     private AnchorPane arr[];
 
     private int size, spaceX, spaceY;

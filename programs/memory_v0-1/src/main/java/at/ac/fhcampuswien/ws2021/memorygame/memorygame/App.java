@@ -25,6 +25,8 @@ public class App  {
         System.out.println("Starting memory");
         //new gameview();
         gameview.launch();
+
+
     }
 
 
