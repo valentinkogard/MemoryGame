@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
@@ -114,8 +116,9 @@ public class Cover extends Application {
         optnVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
 
-
-        Image image = new Image(new FileInputStream("C:\\Users\\nikol\\Desktop\\pic\\Logo_Wasserball.png"));
+        String path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/Logo_Wasserball.png";
+        File directory = new File(path);
+        Image image = new Image(new FileInputStream(directory.getAbsoluteFile()));
         ImageView imageView = new ImageView(image);
 
         imageView.setFitHeight(400);
@@ -183,6 +186,7 @@ public class Cover extends Application {
 
 
         //-------------------------width Setting-------------------------
+
         singlePlayer.setMinWidth(200);
         multiPlayer.setMinWidth(200);
         options.setMinWidth(200);
@@ -195,7 +199,7 @@ public class Cover extends Application {
         vbox.setSpacing(50);
 
         credVbox.setPrefWidth(200);
-        credVbox.setSpacing(50);
+        credVbox.setSpacing(20);
 
         snglPlyVbox.setPrefWidth(200);
         snglPlyVbox.setSpacing(400);
@@ -207,6 +211,7 @@ public class Cover extends Application {
 
         vbox.setAlignment(Pos.CENTER);
         credVbox.setAlignment(Pos.CENTER);
+
 
         vbox.getChildren().addAll(title, singlePlayer, multiPlayer, options, credits, exit);
         //vbox.getChildren().add
