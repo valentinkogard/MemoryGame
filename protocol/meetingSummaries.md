@@ -112,3 +112,14 @@ we decided to make the window NOT resizeable - maybe in a futher step
 some commit issues... solved
 
 Absent: Max
+
+## 15.12.2021 - 09:45
+
+counter over the playing field:
+![image](https://user-images.githubusercontent.com/92077153/146168082-0b8756b1-6e11-4759-84ce-9a51b52b807f.png)
+
+credit page (example):
+![image](https://user-images.githubusercontent.com/92077153/146174226-41c34852-5f0b-4a50-b38f-7221a9ba74b5.png)
+
+
+Absent: Niko
