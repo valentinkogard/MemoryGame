@@ -123,3 +123,11 @@ credit page (example):
 
 
 Absent: Niko
+
+## 15.12.2021 - 14:00
+
+![image](https://user-images.githubusercontent.com/92077153/146208599-ea2464a8-b6b1-4217-b387-fe99b67d17bf.png)
+
+![image](https://user-images.githubusercontent.com/92077153/146208640-1052bbe7-eb16-43d9-a714-44f8fa18e810.png)
+
+Absent: -
