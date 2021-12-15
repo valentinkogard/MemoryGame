@@ -56,8 +56,8 @@ public class Gameview extends Application{ // implements EventHandler<MouseEvent
 
 
         stage.setTitle("Mem(ory) game :<)");
-        int window_height = 500;
-        int window_length = 800;
+        int window_height = 600;
+        int window_length = 1000;
 
         EventHandler<MouseEvent> eventHandler = new EventHandler<>() {
             @Override
@@ -84,15 +84,15 @@ public class Gameview extends Application{ // implements EventHandler<MouseEvent
         //!!! change methode that is can also handle e.g 80 cards
         //current problem: algorithm cases empty objects which leads in gameview to an error(1)
 
-        cards = CardInitialisation.cardGeneration(30);
+        cards = CardInitialisation.cardGeneration(40);
         StackPane root = new StackPane();
 
         arr = new AnchorPane[cards.length];
 
 
-        size = 50;
+        size = 85;
         spaceX = (window_length - (size * cards[0].getNumberOfCardsXY()[0]))/(cards[0].getNumberOfCardsXY()[0] + 1);
-        spaceY = (window_height - gameheaderSize - (size * cards[0].getNumberOfCardsXY()[1]))/(cards[0].getNumberOfCardsXY()[1] + 3);
+        spaceY = (window_height - gameheaderSize - (size * cards[0].getNumberOfCardsXY()[1]))/(cards[0].getNumberOfCardsXY()[1] + 7);
         //spaceY = (window_height - (size * cards[0].getNumberOfCardsXY()[1]))/(cards[0].getNumberOfCardsXY()[1] + 3);
 
         //create gameheader
