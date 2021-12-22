@@ -10,7 +10,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class ImageController extends Gameview {
-
+    /**
+     * Method is used to flip the card when the mouse is clicked -
+     * image is deleted and then a new one is inserted.
+     * @param i which card should be turned over
+     * @param holder
+     * @return AnchorPane Object with updated image
+     * @throws FileNotFoundException
+     */
     public static AnchorPane setImage(int i, AnchorPane holder) throws FileNotFoundException {
 
         String path;
@@ -34,12 +41,23 @@ public class ImageController extends Gameview {
         return holder;
     }
 
+    /**
+     * Due to the layout, more card objects are generated than are actually displayed.
+     * To delete these we use this method
+     * @param i
+     * @param arr
+     */
     public static void removeChildren(int i, AnchorPane[] arr) {
         for (int j = 0; j < arr[i].getChildren().size(); j++) {
             arr[i].getChildren().remove(j);
         }
     }
 
+    /**
+     * is called once and sets the background of the board
+     * @param stackPane
+     * @throws FileNotFoundException
+     */
     public static void setBackground(StackPane stackPane) throws FileNotFoundException {
         String path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/3.gif";
         File directory = new File(path);

@@ -30,6 +30,10 @@ public class Player {
         return playerId;
     }
 
+    public int getNumOfPlayers(){
+        return playerCounter;
+    }
+
     public int getPlayerPoints(){
         return playerPoints;
     }
