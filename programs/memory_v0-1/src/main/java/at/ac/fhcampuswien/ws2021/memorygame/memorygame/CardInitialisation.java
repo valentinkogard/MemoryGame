@@ -64,7 +64,7 @@ public class CardInitialisation {
         }
     }
 
-    public static Card[] cardGeneration(int numberOfCards){
+    public static Card [] cardGeneration(int numberOfCards){
         CardInitialisation a = new CardInitialisation();
 
         //Scanner scanner = new Scanner(System.in);

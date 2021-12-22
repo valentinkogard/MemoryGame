@@ -34,9 +34,31 @@ public class Rules {
         return false;
     }
 
-    public boolean playerWon(){
-
+    public boolean playerWon(Player p){
+        if(p.getPlayerPoints() > Gameview.cards.length/2){
+            return true;
+        }
         return false;
+    }
+
+    public int getPlayerInTurn(List<Player> players){
+        for (int i = 0; i < players.size(); i++) {
+            if(players.get(i).getInTurn()) return i;
+        }
+        return -1;
+    }
+
+    public void setPlayerInTurn(List<Player> players){
+        players.get(0).incTriesOfPlayer();       //not pretty well coded...
+        if(players.get(0).getTriesOfPlayer() >= 2){
+            players.get(0).resetTriesOfPlayer();
+            int currentlyInTurn = getPlayerInTurn(players);
+
+            if(currentlyInTurn + 1 >= players.size()) players.get(0).setInTurn(true);
+            else players.get(currentlyInTurn + 1).setInTurn(true);
+
+            players.get(currentlyInTurn).setInTurn(false);
+        }
     }
 
     public boolean twoCardsUncovered(Card[] cards, AnchorPane[] arr) throws FileNotFoundException {
