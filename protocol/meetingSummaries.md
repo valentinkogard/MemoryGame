@@ -131,3 +131,10 @@ Absent: Niko
 ![image](https://user-images.githubusercontent.com/92077153/146208640-1052bbe7-eb16-43d9-a714-44f8fa18e810.png)
 
 Absent: -
+
+## 23.12.2021 - 14:00
+
+- We talked about when we want to finish the project: 30.12.
+- We switched from Maven to Gradle. 
+
+Absent: Max
