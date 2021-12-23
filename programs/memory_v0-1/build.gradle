@@ -4,7 +4,6 @@
 
 plugins {
     id 'java'
-    id 'maven-publish'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.10'
 }
@@ -17,8 +16,6 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.openjfx:javafx-controls:16'
-    implementation 'org.openjfx:javafx-fxml:16'
     implementation 'org.webjars.npm:eventlistener:0.0.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
@@ -34,14 +31,6 @@ mainClassName = 'at.ac.fhcampuswien.ws2021.memorygame.memorygame.Gameview'
 javafx {
     version = "17.0.1"
     modules = ['javafx.controls', 'javafx.fxml', 'javafx.graphics']
-}
-
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from(components.java)
-        }
-    }
 }
 
 tasks.withType(JavaCompile) {
