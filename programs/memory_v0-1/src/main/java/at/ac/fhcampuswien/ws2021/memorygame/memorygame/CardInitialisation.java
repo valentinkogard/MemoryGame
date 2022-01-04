@@ -8,6 +8,10 @@ public class CardInitialisation {
     List<Integer> list = new ArrayList<>();
     private static Card[] cardReference;
 
+    /**
+     * since each card occurs twice, a list with n, n, n+1, n+1, n+2, n+2, ...
+     * @param numberOfCards
+     */
     private void fillList(int numberOfCards){
         for(int i = 0; i < numberOfCards/2; i++){
             for(int j = 0; j < 2; j++) {
@@ -16,6 +20,11 @@ public class CardInitialisation {
         }
     }
 
+    /**
+     * randomly selects a number from the list (from the method fillList),
+     * adds it to the respective object and eliminates it from the list
+     * @return
+     */
     private int chooseRandCardId(){
         Random rand = new Random();
         int randId;
@@ -31,6 +40,13 @@ public class CardInitialisation {
         return randId;
     }
 
+    /**
+     * takes an int parameter and checks if it is an even number (otherwise error(1))
+     *
+     * Calculates how many cards should be placed in the x- or y- direction
+     * based on the aspect ratio and returns the finished object array.
+     * @param numberOfCards
+     */
     private void boardSetup(int numberOfCards){
         if(numberOfCards % 2 == 0){
             //i'ld suggest to show the cards in a 16:9 format (the standard format of a screen)
@@ -64,7 +80,12 @@ public class CardInitialisation {
         }
     }
 
-    public static Card[] cardGeneration(int numberOfCards){
+    /**
+     * is responsible for the creation of the Card objects
+     * @param numberOfCards
+     * @return
+     */
+    public static Card [] cardGeneration(int numberOfCards){
         CardInitialisation a = new CardInitialisation();
 
         //Scanner scanner = new Scanner(System.in);
