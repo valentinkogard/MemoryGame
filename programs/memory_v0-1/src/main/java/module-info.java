@@ -1,5 +1,5 @@
 module at.ac.fhcampuswien.ws2021.memorygame.memorygame {
-    requires  javafx.controls;
+    requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
     requires java.desktop;

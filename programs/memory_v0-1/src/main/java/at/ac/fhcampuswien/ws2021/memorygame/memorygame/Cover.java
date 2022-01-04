@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
@@ -26,6 +28,8 @@ import static javafx.scene.paint.Color.color;
 
 
 public class Cover extends Application {
+
+    public static final int[] windowSize = {1000, 600};
 
     public static void main(String[] args) {
 
@@ -38,7 +42,7 @@ public class Cover extends Application {
         primaryStage.setTitle("Mainpage");
 
         VBox vbox = new VBox ();
-        Scene mainpageScene = new Scene(vbox, 1200, 800);
+        Scene mainpageScene = new Scene(vbox, windowSize[0], windowSize[1]);
 
 
 
@@ -59,7 +63,7 @@ public class Cover extends Application {
         singlePlayer.setText("Einzelspieler");
 
         VBox snglPlyVbox = new VBox();
-        Scene snglPlyScene = new Scene(snglPlyVbox, 1200, 800);
+        Scene snglPlyScene = new Scene(snglPlyVbox, windowSize[0], windowSize[1]);
         snglPlyVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
 
@@ -85,7 +89,7 @@ public class Cover extends Application {
         multiPlayer.setText("Mehrspieler");
 
         VBox multiPlyVbox = new VBox();
-        Scene multiPlyScene = new Scene(multiPlyVbox, 1200, 800);
+        Scene multiPlyScene = new Scene(multiPlyVbox, windowSize[0], windowSize[1]);
         multiPlyVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
 
@@ -114,14 +118,15 @@ public class Cover extends Application {
         optnVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
 
-
-        Image image = new Image(new FileInputStream("C:\\Users\\nikol\\Desktop\\pic\\pic1.jpg"));
+        String path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/questionmark.png";
+        File directory = new File(path);
+        Image image = new Image(new FileInputStream(directory.getAbsoluteFile()));
         ImageView imageView = new ImageView(image);
 
         imageView.setFitHeight(600);
         imageView.setFitWidth(800);
 
-        Scene optnScene = new Scene(optnVbox, 1200, 800);
+        Scene optnScene = new Scene(optnVbox, windowSize[0], windowSize[1]);
 
         Button back1 = new Button("Back");
         back1.setFont(new Font(20));
@@ -142,7 +147,7 @@ public class Cover extends Application {
         credits.setFont(new Font(20));
 
         VBox credVbox = new VBox ();
-        Scene credScene = new Scene(credVbox, 1200, 800);
+        Scene credScene = new Scene(credVbox, windowSize[0], windowSize[1]);
         credVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
 
