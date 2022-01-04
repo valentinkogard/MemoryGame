@@ -24,6 +24,7 @@ import java.io.FileInputStream;
 
 public class Cover extends Application {
 
+    public static final int[] windowSize = {1000, 600};
 
     public static void main(String[] args) {
 
@@ -44,7 +45,7 @@ public class Cover extends Application {
         border.setCenter(vbox);
 
 
-        Scene mainpageScene = new Scene(border, 1000, 600);
+        Scene mainpageScene = new Scene(border, windowSize[0], windowSize[1]);
 
 
 
@@ -61,9 +62,10 @@ public class Cover extends Application {
 
         //vbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
-
-        FileInputStream inp = new FileInputStream("c:\\Users\\nikol\\Desktop\\pic\\background5.png");
-        Image bgImage = new Image(inp);
+        String path0 = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/questionmark.png";
+        File directory0 = new File(path0);
+        //FileInputStream inp = new FileInputStream("c:\\Users\\nikol\\Desktop\\pic\\background5.png");
+        Image bgImage = new Image(new FileInputStream(directory0.getAbsoluteFile()));
 
         BackgroundImage bi = new BackgroundImage(bgImage, BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
@@ -75,9 +77,10 @@ public class Cover extends Application {
 
         border.setBackground(bg);
 
-
-        FileInputStream inp1 = new FileInputStream("c:\\Users\\nikol\\Desktop\\pic\\background6.png");
-        Image bgImage1 = new Image(inp1);
+        String path1 = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/questionmark.png";
+        File directory1 = new File(path1);
+        //FileInputStream inp1 = new FileInputStream("c:\\Users\\nikol\\Desktop\\pic\\background6.png");
+        Image bgImage1 = new Image(new FileInputStream(directory1.getAbsoluteFile()));
 
         BackgroundImage bi1 = new BackgroundImage(bgImage1, BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
@@ -118,7 +121,7 @@ public class Cover extends Application {
 
 
         VBox snglPlyVbox = new VBox();
-        Scene snglPlyScene = new Scene(snglPlyVbox, 1000, 600);
+        Scene snglPlyScene = new Scene(snglPlyVbox, windowSize[0], windowSize[1]);
         snglPlyVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
 
@@ -163,7 +166,7 @@ public class Cover extends Application {
         });
 
         VBox multiPlyVbox = new VBox();
-        Scene multiPlyScene = new Scene(multiPlyVbox, 1000, 600);
+        Scene multiPlyScene = new Scene(multiPlyVbox, windowSize[0], windowSize[1]);
         multiPlyVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
 
@@ -210,15 +213,15 @@ public class Cover extends Application {
         optnVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
 
-        String path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/Logo_Wasserball.png";
-        File directory = new File(path);
-        Image image = new Image(new FileInputStream(directory.getAbsoluteFile()));
+        String path2 = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/Logo_Wasserball.png";
+        File directory2 = new File(path2);
+        Image image = new Image(new FileInputStream(directory2.getAbsoluteFile()));
         ImageView imageView = new ImageView(image);
 
         imageView.setFitHeight(400);
         imageView.setFitWidth(400);
 
-        Scene optnScene = new Scene(optnVbox, 1000, 600);
+        Scene optnScene = new Scene(optnVbox, windowSize[0], windowSize[1]);
 
         Button back1 = new Button("Back");
         back1.setFont(new Font(20));
@@ -256,7 +259,7 @@ public class Cover extends Application {
         });
 
         VBox credVbox = new VBox ();
-        Scene credScene = new Scene(credVbox, 1000, 600);
+        Scene credScene = new Scene(credVbox, windowSize[0], windowSize[1]);
         credVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
 
