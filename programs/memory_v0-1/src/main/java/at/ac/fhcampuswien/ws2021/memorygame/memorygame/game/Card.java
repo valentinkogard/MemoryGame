@@ -1,4 +1,4 @@
-package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
+package at.ac.fhcampuswien.ws2021.memorygame.memorygame.game;
 
 public class Card {
     private int id;

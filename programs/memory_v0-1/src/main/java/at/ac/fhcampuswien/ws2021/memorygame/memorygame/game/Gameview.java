@@ -1,4 +1,4 @@
-package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
+package at.ac.fhcampuswien.ws2021.memorygame.memorygame.game;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -7,11 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;

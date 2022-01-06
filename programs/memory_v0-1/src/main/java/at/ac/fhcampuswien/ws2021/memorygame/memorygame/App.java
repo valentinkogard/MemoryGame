@@ -8,6 +8,8 @@ scene: what happens
 
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
 
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.game.Gameview;
+
 public class App  {
 
     public static void main(String[] args) {
