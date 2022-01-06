@@ -1,4 +1,4 @@
-package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
+package at.ac.fhcampuswien.ws2021.memorygame.memorygame.game;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -7,17 +7,13 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Gameview extends Application{ // implements EventHandler<MouseEvent>{
+public class Gameview { // implements EventHandler<MouseEvent>{
 
     private AnchorPane[] arr;
     private List<Player> gamePlayer = new ArrayList<Player>();
@@ -46,8 +42,7 @@ public class Gameview extends Application{ // implements EventHandler<MouseEvent
         //System.out.println("0");
     }
 
-    @Override
-    public void start(Stage stage) throws IOException{
+    public Scene mainGame(Stage stage) throws IOException{
         int numberOfPlayer = 2;
         for(int i = 0; i < numberOfPlayer; i++){
             gamePlayer.add(new Player("Player" + i));
@@ -117,13 +112,13 @@ public class Gameview extends Application{ // implements EventHandler<MouseEvent
 
         //add all nodes to the main stage
         root.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandler);
-        stage.setScene(new Scene(root, windowSize[0], windowSize[1]));
-        stage.show();
-        stage.setResizable(false);
+        //stage.setScene(new Scene(root, windowSize[0], windowSize[1]));
+        Scene gamescene = new Scene(root, windowSize[0], windowSize[1]);
+        //stage.show();
+        //stage.setResizable(false);
+
+        return gamescene;
 
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 }
