@@ -1,6 +1,7 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
 
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.game.Gameview;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.CreditsPage;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.SequentialTransition;
@@ -26,6 +27,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -452,26 +454,12 @@ public class Cover extends Application {
         });
 
 
+        CreditsPage cp = new CreditsPage();
+        Object o1[] = cp.CreditsPageInit();
+        Scene credScene = (Scene) o1[0];
+        Button button = (Button) o1[1];
 
-        VBox credVbox = new VBox ();
-        Scene credScene = new Scene(credVbox, windowSize[0], windowSize[1]);
-        credVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
-
-
-        Text title1 = new Text("CREDITS");
-        title1.setFont(Font.font("Calibri", FontWeight.BOLD,  80));
-
-        Text names = new Text("Magdalena\n\nMax\n\nValentin\n\nChristina\n\nNiko");
-        names.setFont(Font.font("Calibri",  40));
-
-
-        Button back = new Button("Back");
-        back.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-        back.setFont(new Font(20));
-
-        back.setMinWidth(200);
-
-        back.setOnAction(e -> primaryStage.setScene(mainpageScene));
+        button.setOnAction(e -> primaryStage.setScene(mainpageScene));
         credits.setOnAction(e -> primaryStage.setScene(credScene));
 
 
@@ -557,8 +545,7 @@ public class Cover extends Application {
 
         optnVbox.setSpacing(20);
 
-        credVbox.setPrefWidth(200);
-        credVbox.setSpacing(20);
+
 
         multiPlyVbox.setPrefWidth(200);
         multiPlyVbox.setSpacing(400);
@@ -566,16 +553,14 @@ public class Cover extends Application {
         //-------------------------vBox Alignment-------------------------
 
         vbox.setAlignment(Pos.CENTER);
-        credVbox.setAlignment(Pos.CENTER);
+
 
         vbox.getChildren().addAll(singlePlayer, multiPlayer, options, credits, exit);
 
         vbox1.getChildren().add(exit1);
 
 
-        back.setAlignment(Pos.BOTTOM_CENTER);
 
-        credVbox.getChildren().addAll(title1, names, back);
 
         optnVbox.setAlignment(Pos.CENTER);
         optnVbox.getChildren().addAll(back1);
