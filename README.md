@@ -1,5 +1,5 @@
 ## MemoryGame
-Development of a memory puzzle with up to two players and additionally on two different PCs
+Development of a memory puzzle with up to two players and with a nice GUI (Graphical User Interface)
 
 ## How to use Git branches
 https://launchdarkly.com/blog/git-branching-strategies-vs-trunk-based-development/
