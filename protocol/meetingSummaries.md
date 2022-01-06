@@ -138,3 +138,14 @@ Absent: -
 - We switched from Maven to Gradle. 
 
 Absent: Max
+
+## 06.01.2022 - 21:30 - 00:00
+
+Spontaneous coding session:
+
+- Talked about Code Layout -> simplyfied code by creating different classes
+- Connected the Mainmenu to the actual game
+
+Present: Valentin, Niko
+
+
