@@ -15,7 +15,7 @@ public class App  {
     public static void main(String[] args) {
         System.out.println("Starting memory");
         //new gameview();
-        Gameview.launch();
+        //Gameview.launch();
     }
 
 

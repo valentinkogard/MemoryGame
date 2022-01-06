@@ -1,6 +1,7 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
 
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.game.Gameview;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.ButtonStyle;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.CreditsPage;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
@@ -14,6 +15,7 @@ import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.skin.ButtonSkin;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -31,6 +33,7 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 
 
 public class Cover extends Application {
@@ -51,6 +54,7 @@ public class Cover extends Application {
         primaryStage.setTitle("MEMORY");
         BorderPane border = new BorderPane();
 
+        ButtonStyle bs = new ButtonStyle();
 
         VBox vbox = new VBox ();
         VBox vbox1 = new VBox();
@@ -309,16 +313,13 @@ public class Cover extends Application {
             @Override
             public void handle(ActionEvent event) {
 
-                Stage stage = (Stage) singlePlayer.getScene().getWindow();
-                stage.close();
-                Stage gameStage;
-
-                Scene mainpageScene = new Scene(border, windowSize[0], windowSize[1]);
-
-                //gameStage.setScene(mainpageScene);
-
-                primaryStage.setResizable(false);
-
+                Gameview gv = new Gameview();
+                try {
+                    Scene newSt = gv.mainGame(primaryStage);
+                    primaryStage.setScene(newSt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
 
                 //Application.launch(Gameview.class);
@@ -386,23 +387,7 @@ public class Cover extends Application {
         options.setFont(Font.font("Calibri", 25));
         options.setText("Optionen");
 
-        options.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-
-                options.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
-                border.setBackground(bg4);
-            }
-        });
-
-        options.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-
-                options.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-                border.setBackground(bg);
-            }
-        });
+        options = bs.ButtonStyleInit(options, border, bg4, bg);
 
         VBox optnVbox = new VBox();
         optnVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
@@ -435,23 +420,7 @@ public class Cover extends Application {
         credits.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         credits.setFont(Font.font("Calibri", 25));
 
-        credits.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-
-                credits.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
-
-            }
-        });
-
-        credits.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-
-                credits.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-
-            }
-        });
+        credits = bs.ButtonStyleInit(credits, border, bg, bg);
 
 
         CreditsPage cp = new CreditsPage();
