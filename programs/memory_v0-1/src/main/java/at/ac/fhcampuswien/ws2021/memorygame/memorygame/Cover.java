@@ -29,7 +29,7 @@ import javafx.util.Duration;
 import javafx.scene.media.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-
+import javafx.scene.media.MediaView;
 
 
 import java.io.File;
@@ -235,14 +235,24 @@ public class Cover extends Application {
         Background bg4 = new Background(bi4);
 
         //-------------------------Music-------------------------
-/*
-        String path = "at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/music/gameMusic.mp3";
-        Media media = new Media(new File(path).toURI().toString());
+
+        String musicPath = "resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/music/gameMusic.mp3";
+        Media media = new Media(new File(musicPath).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
-        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setOnEndOfMedia(new Runnable() {
+            public void run() {
+                mediaPlayer.seek(Duration.ZERO);
+            }
+        });
 
- */
+        mediaPlayer.setStartTime(Duration.seconds(0));
+        mediaPlayer.setStopTime(Duration.seconds(41));
+        mediaPlayer.play();
+
+        //mediaPlayer.setAutoPlay(true);
+
+
 
 
 
