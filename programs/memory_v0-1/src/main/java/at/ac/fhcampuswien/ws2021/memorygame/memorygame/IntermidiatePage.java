@@ -15,7 +15,7 @@ import javafx.scene.control.Button;
 
 import java.awt.*;
 
-public class intermidiatePage extends Application {
+public class IntermidiatePage extends Application {
     Button button;
     public static void main(String[] args) {
             launch(args);
