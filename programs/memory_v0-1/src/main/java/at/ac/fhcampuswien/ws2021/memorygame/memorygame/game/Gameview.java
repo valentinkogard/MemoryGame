@@ -42,13 +42,13 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         //System.out.println("0");
     }
 
-    public Scene mainGame(Stage stage) throws IOException{
+    public Scene mainGame() throws IOException{
         int numberOfPlayer = 2;
         for(int i = 0; i < numberOfPlayer; i++){
             gamePlayer.add(new Player("Player" + i));
         }
 
-        stage.setTitle("Mem(ory) game :<)");
+        //stage.setTitle("Mem(ory) game :<)");
 
         EventHandler<MouseEvent> eventHandler = new EventHandler<>() {
             @Override
