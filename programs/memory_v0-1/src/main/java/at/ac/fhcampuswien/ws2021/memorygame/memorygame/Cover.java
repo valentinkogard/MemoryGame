@@ -236,7 +236,7 @@ public class Cover extends Application {
 
         //-------------------------Music-------------------------
 
-        String musicPath = "resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/music/gameMusic.mp3";
+        String musicPath = "src\\main\\resources\\at\\ac\\fhcampuswien\\ws2021\\memorygame\\memorygame\\data\\data\\music\\gameMusic.mp3";
         Media media = new Media(new File(musicPath).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
