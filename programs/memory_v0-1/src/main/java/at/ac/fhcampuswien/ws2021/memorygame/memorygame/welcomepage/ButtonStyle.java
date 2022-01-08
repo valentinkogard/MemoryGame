@@ -9,7 +9,8 @@ import javafx.scene.layout.BorderPane;
 
 public class ButtonStyle {
 
-    public Button ButtonStyleInit(Button button, BorderPane border, Background bgOn, Background bgOff) {
+    public Button ButtonStyleInit(Button button, BorderPane border, Background bgOn
+            , Background bgOff) {
 
         button.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
