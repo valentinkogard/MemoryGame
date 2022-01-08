@@ -27,6 +27,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -40,8 +41,7 @@ import javafx.scene.media.MediaView;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-
-
+import java.util.Timer;
 
 
 public class Cover extends Application {
@@ -270,7 +270,7 @@ public class Cover extends Application {
         Button singlePlayer = new Button();
         singlePlayer.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         singlePlayer.setFont(Font.font("Calibri", 25));
-        singlePlayer.setText("Einzelspieler");
+        singlePlayer.setText("Singleplayer");
 
         singlePlayer = bs.ButtonStyleInit(singlePlayer, border, bg, bg);
 
@@ -293,7 +293,7 @@ public class Cover extends Application {
         Button multiPlayer = new Button();
         multiPlayer.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         multiPlayer.setFont(Font.font("Calibri", 25));
-        multiPlayer.setText("Mehrspieler");
+        multiPlayer.setText("Multiplayer");
 
         multiPlayer = bs.ButtonStyleInit(multiPlayer, border, bg3, bg);
 
@@ -327,12 +327,17 @@ public class Cover extends Application {
         options = bs.ButtonStyleInit(options, border, bg4, bg);
 
 
-        //-------------------------Option Placeholder-------------------------
+        //-------------------------Options-------------------------
         VBox optnVbox = new VBox();
 
         optnVbox.setBackground(bg4);
 
         Scene optnScene = new Scene(optnVbox, windowSize[0], windowSize[1]);
+
+
+
+
+
 
         Text volSliderText = new Text(10,50, "Volume");
         volSliderText.setFont(Font.font("Calibri", 50));
@@ -393,17 +398,10 @@ public class Cover extends Application {
             }
         });
 
-
-
-
-
-
-
         Button back1 = new Button("Back");
         back1.setFont(new Font(20));
         back1.setMinWidth(200);
         back1.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-
 
 
 
@@ -497,6 +495,12 @@ public class Cover extends Application {
         exit.setMinHeight(40);
         exit.setCursor(Cursor.HAND);
 
+        back1.setCursor(Cursor.HAND);
+        back3.setCursor(Cursor.HAND);
+        toggleButton.setCursor(Cursor.HAND);
+        volSlider.setCursor(Cursor.HAND);
+
+
         //-------------------------VBox Button Width & Spacing  Setting-------------------------
 
         hbox.setPrefWidth(50);
@@ -529,6 +533,7 @@ public class Cover extends Application {
 
         primaryStage.show();
 
+
         /*
         border.setOnMouseMoved(new EventHandler<MouseEvent>() {
             @Override
@@ -551,19 +556,13 @@ public class Cover extends Application {
                 rBtn.getTransforms().addAll(rotate);
                 yBtn.getTransforms().addAll(rotate);
 
-
-
-
-
-
-
-
-
             }
 
         });
 
          */
+
+
 
 
     }
