@@ -1,8 +1,7 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
 
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.game.Gameview;
-import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.ButtonStyle;
-import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.CreditsPage;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.*;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.SequentialTransition;
@@ -24,6 +23,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -241,30 +241,8 @@ public class Cover extends Application {
 
         //-------------------------Music-------------------------
 
-        String musicPath = "src\\main\\resources\\at\\ac\\fhcampuswien\\ws2021\\memorygame\\memorygame\\data\\data\\music\\gameMusic.mp3";
-        Media media = new Media(new File(musicPath).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-
-        mediaPlayer.setOnEndOfMedia(new Runnable() {
-            public void run() {
-                mediaPlayer.seek(Duration.ZERO);
-            }
-        });
-
-        mediaPlayer.setVolume(0.5);
-
-        mediaPlayer.setStartTime(Duration.seconds(0));
-        mediaPlayer.setStopTime(Duration.seconds(41));
-        mediaPlayer.play();
-
-        //mediaPlayer.setAutoPlay(true);
-
-
-
-
-
-
-
+        Music media = new Music();
+        MediaPlayer mediaPlayer = media.MusicPlayer();
 
         //-------------------------Singleplayer Button-------------------------
         Button singlePlayer = new Button();
@@ -328,11 +306,20 @@ public class Cover extends Application {
 
 
         //-------------------------Options-------------------------
+
+
+
+
+
         VBox optnVbox = new VBox();
+
+
+
 
         optnVbox.setBackground(bg4);
 
         Scene optnScene = new Scene(optnVbox, windowSize[0], windowSize[1]);
+
 
 
 
@@ -384,13 +371,12 @@ public class Cover extends Application {
                     toggleButton.setMinSize(150, 100);
                     toggleButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
                     mediaPlayer.play();
-                    mediaPlayer.setVolume(volSlider.getValue() / 100);
+
                 }
                 else {
                     toggleButton.setText("OFF");
                     toggleButton.setMinSize(150, 100);
                     toggleButton.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
-
                     mediaPlayer.pause();
 
                 }
@@ -405,8 +391,13 @@ public class Cover extends Application {
 
 
 
+
+
+
         options.setOnAction(e -> primaryStage.setScene(optnScene));
         back1.setOnAction(e -> primaryStage.setScene(mainpageScene));
+
+
 
 
         //-------------------------Credit Button-------------------------
