@@ -36,6 +36,28 @@ public class Music {
 
     }
 
+    public MediaPlayer Soundeffect() {
+
+        String musicPath = "src\\main\\resources\\at\\ac\\fhcampuswien\\ws2021\\memorygame\\memorygame\\data\\data\\music\\buttonHoverSound.mp3";
+        Media media = new Media(new File(musicPath).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setVolume(1);
+
+
+            mediaPlayer.play();
+
+
+
+
+
+
+
+        return mediaPlayer;
+
+    }
+
+
+
 
 
 }

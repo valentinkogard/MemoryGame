@@ -78,6 +78,8 @@ public class Cover extends Application {
 
         primaryStage.setResizable(false);
 
+        ToggleButton toggleButton2 = new ToggleButton();
+
 
         //-------------------------Title & Background-------------------------
 
@@ -185,8 +187,7 @@ public class Cover extends Application {
         yBtn.setText("");
         yBtn.setPrefSize(10, 10);
 
-        hbox.setAlignment(Pos.CENTER);
-        hbox.getChildren().addAll(mBtn, eBtn, mBtn1, oBtn, rBtn, yBtn);
+
 
 
         String path1 = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/background5.png";
@@ -250,7 +251,7 @@ public class Cover extends Application {
         singlePlayer.setFont(Font.font("Calibri", 25));
         singlePlayer.setText("Singleplayer");
 
-        singlePlayer = bs.ButtonStyleInit(singlePlayer, border, bg, bg);
+        singlePlayer = bs.ButtonStyleInit(singlePlayer, border, bg, bg, toggleButton2);
 
         singlePlayer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -273,7 +274,7 @@ public class Cover extends Application {
         multiPlayer.setFont(Font.font("Calibri", 25));
         multiPlayer.setText("Multiplayer");
 
-        multiPlayer = bs.ButtonStyleInit(multiPlayer, border, bg3, bg);
+        multiPlayer = bs.ButtonStyleInit(multiPlayer, border, bg3, bg, toggleButton2);
 
 
         //-------------------------Multiplayer Placeholder-------------------------
@@ -302,19 +303,11 @@ public class Cover extends Application {
         options.setFont(Font.font("Calibri", 25));
         options.setText("Optionen");
 
-        options = bs.ButtonStyleInit(options, border, bg4, bg);
+        options = bs.ButtonStyleInit(options, border, bg4, bg,toggleButton2);
 
 
         //-------------------------Options-------------------------
-
-
-
-
-
         VBox optnVbox = new VBox();
-
-
-
 
         optnVbox.setBackground(bg4);
 
@@ -383,11 +376,49 @@ public class Cover extends Application {
             }
         });
 
+        Text musicBtnText2 = new Text(10,50, "Soundeffect");
+        musicBtnText2.setFont(Font.font("Calibri", 50));
+        musicBtnText2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+
+
+
+        toggleButton2.setMinSize(150,100);
+        toggleButton2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        toggleButton2.setSelected(true);
+        toggleButton2.setText("ON");
+        toggleButton2.setFont(Font.font("Calibri", 50));
+
+
+
+        toggleButton2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                if (toggleButton2.isSelected()) {
+
+                    toggleButton2.setText("ON");
+                    toggleButton2.setMinSize(150, 100);
+                    toggleButton2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+
+
+
+
+                }
+                else {
+                    toggleButton2.setText("OFF");
+                    toggleButton2.setMinSize(150, 100);
+                    toggleButton2.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+
+
+                }
+            }
+        });
+
         Button back1 = new Button("Back");
         back1.setFont(new Font(25));
         back1.setMinWidth(200);
         back1.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-        back1 = bs.ButtonStyleInit(back1, border, bg, bg);
+        back1 = bs.ButtonStyleInit(back1, border, bg, bg, toggleButton2);
 
 
 
@@ -406,7 +437,7 @@ public class Cover extends Application {
         credits.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         credits.setFont(Font.font("Calibri", 25));
 
-        credits = bs.ButtonStyleInit(credits, border, bg, bg);
+        credits = bs.ButtonStyleInit(credits, border, bg, bg,toggleButton2);
 
 
         CreditsPage cp = new CreditsPage();
@@ -437,6 +468,12 @@ public class Cover extends Application {
 
                 border.setBackground(bg2);
                 exit.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+                Music media = new Music();
+                if (toggleButton2.isSelected()) {
+                    MediaPlayer mediaPlayer = media.Soundeffect();
+                    mediaPlayer.play();
+                }
+
 
             }
         });
@@ -507,6 +544,9 @@ public class Cover extends Application {
 
         //-------------------------vBox Alignment-------------------------
 
+        hbox.setAlignment(Pos.CENTER);
+        hbox.getChildren().addAll(mBtn, eBtn, mBtn1, oBtn, rBtn, yBtn);
+
         vbox.setAlignment(Pos.CENTER);
 
         vbox.getChildren().addAll(singlePlayer, multiPlayer, options, credits, exit);
@@ -515,7 +555,7 @@ public class Cover extends Application {
 
 
         optnVbox.setAlignment(Pos.CENTER);
-        optnVbox.getChildren().addAll(musicBtnText, toggleButton ,volSliderText, volSlider, back1);
+        optnVbox.getChildren().addAll(musicBtnText, toggleButton ,musicBtnText2,toggleButton2,volSliderText, volSlider, back1);
 
         multiPlyVbox.setAlignment(Pos.CENTER);
         multiPlyVbox.getChildren().addAll(title3, back3);
