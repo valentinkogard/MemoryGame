@@ -2,9 +2,6 @@ package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
 
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.game.Gameview;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.*;
-import javafx.animation.FadeTransition;
-import javafx.animation.KeyFrame;
-import javafx.animation.SequentialTransition;
 import javafx.application.Application;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -15,10 +12,8 @@ import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.control.skin.ButtonSkin;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -27,21 +22,14 @@ import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.util.Duration;
-import javafx.scene.media.*;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Timer;
 
 
 public class Cover extends Application {
@@ -65,7 +53,6 @@ public class Cover extends Application {
 
         VBox vbox = new VBox();
         VBox vbox1 = new VBox();
-        VBox vbox2 = new VBox();
         HBox hbox = new HBox();
 
         border.setCenter(vbox);
@@ -83,162 +70,55 @@ public class Cover extends Application {
 
         //-------------------------Title & Background-------------------------
 
-        String pathCoverM = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/titleCards/coverM.png";
-        File directoryCoverM = new File(pathCoverM);
-        Image imageCoverM = new Image(new FileInputStream(directoryCoverM.getAbsoluteFile()));
-        ImageView CoverM = new ImageView(imageCoverM);
-        ImageView CoverM1 = new ImageView(imageCoverM);
-        CoverM.setFitHeight(100);
-        CoverM.setPreserveRatio(true);
-        CoverM1.setFitHeight(100);
-        CoverM1.setPreserveRatio(true);
-
-        String pathCoverE = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/titleCards/coverE.png";
-        File directoryCoverE = new File(pathCoverE);
-        Image imageCoverE = new Image(new FileInputStream(directoryCoverE.getAbsoluteFile()));
-        ImageView CoverE = new ImageView(imageCoverE);
-        CoverE.setFitHeight(100);
-        CoverE.setPreserveRatio(true);
-
-        String pathCoverO = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/titleCards/coverO.png";
-        File directoryCoverO = new File(pathCoverO);
-        Image imageCoverO = new Image(new FileInputStream(directoryCoverO.getAbsoluteFile()));
-        ImageView CoverO = new ImageView(imageCoverO);
-        CoverO.setFitHeight(100);
-        CoverO.setPreserveRatio(true);
-
-        String pathCoverR = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/titleCards/coverR.png";
-        File directoryCoverR = new File(pathCoverR);
-        Image imageCoverR = new Image(new FileInputStream(directoryCoverR.getAbsoluteFile()));
-        ImageView CoverR = new ImageView(imageCoverR);
-        CoverR.setFitHeight(100);
-        CoverR.setPreserveRatio(true);
-
-        String pathCoverY = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/titleCards/coverY.png";
-        File directoryCoverY = new File(pathCoverY);
-        Image imageCoverY = new Image(new FileInputStream(directoryCoverY.getAbsoluteFile()));
-        ImageView CoverY = new ImageView(imageCoverY);
-        CoverY.setFitHeight(100);
-        CoverY.setPreserveRatio(true);
-
-
-        String path0 = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/cover/cover1.png";
-        File directory0 = new File(path0);
-        Image image0 = new Image(new FileInputStream(directory0.getAbsoluteFile()));
-        ImageView card1 = new ImageView(image0);
-        ImageView card2 = new ImageView(image0);
-        ImageView card3 = new ImageView(image0);
-        ImageView card4 = new ImageView(image0);
-        ImageView card5 = new ImageView(image0);
-        ImageView card6 = new ImageView(image0);
-        card1.setFitHeight(100);
-        card1.setPreserveRatio(true);
-        card2.setFitHeight(100);
-        card2.setPreserveRatio(true);
-        card3.setFitHeight(100);
-        card3.setPreserveRatio(true);
-        card4.setFitHeight(100);
-        card4.setPreserveRatio(true);
-        card5.setFitHeight(100);
-        card5.setPreserveRatio(true);
-        card6.setFitHeight(100);
-        card6.setPreserveRatio(true);
-
+        at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background buttonback = new at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background();
 
         Button mBtn = new Button();
+        Button mBtn1 = new Button();
+        ImageView CoverM = new ImageView();
+        ImageView CoverM1 = new ImageView();
+        CoverM = buttonback.ButtonBack("CoverM");
+        CoverM1 = buttonback.ButtonBack("CoverM");
         mBtn.setGraphic(CoverM);
+        mBtn1.setGraphic(CoverM1);
         mBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
-        mBtn.setFont(Font.font("Calibri", 25));
-        mBtn.setText("");
-        mBtn.setPrefSize(10, 10);
+        mBtn1.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
 
         Button eBtn = new Button();
+        ImageView CoverE = new ImageView();
+        CoverE = buttonback.ButtonBack("CoverE");
         eBtn.setGraphic(CoverE);
         eBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
-        eBtn.setFont(Font.font("Calibri", 25));
-        eBtn.setText("");
-        eBtn.setPrefSize(10, 10);
-
-        Button mBtn1 = new Button();
-        mBtn1.setGraphic(CoverM1);
-        mBtn1.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
-        mBtn1.setFont(Font.font("Calibri", 25));
-        mBtn1.setText("");
-        mBtn1.setPrefSize(10, 10);
 
         Button oBtn = new Button();
+        ImageView CoverO = new ImageView();
+        CoverO = buttonback.ButtonBack("CoverO");
         oBtn.setGraphic(CoverO);
         oBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
-        oBtn.setFont(Font.font("Calibri", 25));
-        oBtn.setText("");
-        oBtn.setPrefSize(10, 10);
 
         Button rBtn = new Button();
+        ImageView CoverR = new ImageView();
+        CoverR = buttonback.ButtonBack("CoverR");
         rBtn.setGraphic(CoverR);
         rBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
-        rBtn.setFont(Font.font("Calibri", 25));
-        rBtn.setText("");
-        rBtn.setPrefSize(10, 10);
+
 
         Button yBtn = new Button();
+        ImageView CoverY = new ImageView();
+        CoverY = buttonback.ButtonBack("CoverY");
         yBtn.setGraphic(CoverY);
         yBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
-        yBtn.setFont(Font.font("Calibri", 25));
-        yBtn.setText("");
-        yBtn.setPrefSize(10, 10);
 
 
+        at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background pageBack = new at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background();
 
-
-        String path1 = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/background5.png";
-        File directory1 = new File(path1);
-        Image bgImage1 = new Image(new FileInputStream(directory1.getAbsoluteFile()));
-
-        BackgroundImage bi = new BackgroundImage(bgImage1, BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT);
-
-
-        Background bg = new Background(bi);
-
+        Background bg = pageBack.PageBack("background5");
+        Background bg2 = pageBack.PageBack("background6");
+        Background bg3 = pageBack.PageBack("catLove2");
+        Background bg4 = pageBack.PageBack("background4");
         border.setBackground(bg);
 
-        String path2 = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/background6.png";
-        File directory2 = new File(path2);
-        Image bgImage2 = new Image(new FileInputStream(directory2.getAbsoluteFile()));
-
-        BackgroundImage bi2 = new BackgroundImage(bgImage2, BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT);
 
 
-        Background bg2 = new Background(bi2);
-
-
-        String path3 = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/catLove2.gif";
-        File directory3 = new File(path3);
-        Image bgImage3 = new Image(new FileInputStream(directory3.getAbsoluteFile()));
-
-        BackgroundImage bi3 = new BackgroundImage(bgImage3, BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT);
-
-        Background bg3 = new Background(bi3);
-
-
-        String path4 = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/background4.png";
-        File directory4 = new File(path4);
-        Image bgImage4 = new Image(new FileInputStream(directory4.getAbsoluteFile()));
-
-        BackgroundImage bi4 = new BackgroundImage(bgImage4, BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT);
-
-        Background bg4 = new Background(bi4);
 
         //-------------------------Music-------------------------
 
