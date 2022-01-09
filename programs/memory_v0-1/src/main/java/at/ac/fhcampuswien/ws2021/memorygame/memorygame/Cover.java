@@ -336,9 +336,6 @@ public class Cover extends Application {
 
 
 
-
-
-
         Text volSliderText = new Text(10,50, "Volume");
         volSliderText.setFont(Font.font("Calibri", 50));
         volSliderText.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
@@ -364,14 +361,14 @@ public class Cover extends Application {
         });
 
 
-        Text musicBtnText = new Text(10,50, "Sound");
+        Text musicBtnText = new Text(10,50, "Music");
         musicBtnText.setFont(Font.font("Calibri", 50));
         musicBtnText.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
 
 
         ToggleButton toggleButton = new ToggleButton();
         toggleButton.setMinSize(150,100);
-        //toggleButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        toggleButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         toggleButton.setSelected(true);
         toggleButton.setText("ON");
         toggleButton.setFont(Font.font("Calibri", 50));
@@ -385,23 +382,26 @@ public class Cover extends Application {
 
                     toggleButton.setText("ON");
                     toggleButton.setMinSize(150, 100);
-
+                    toggleButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+                    mediaPlayer.play();
                     mediaPlayer.setVolume(volSlider.getValue() / 100);
                 }
                 else {
                     toggleButton.setText("OFF");
                     toggleButton.setMinSize(150, 100);
+                    toggleButton.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
 
-                    mediaPlayer.setVolume(0);
+                    mediaPlayer.pause();
 
                 }
             }
         });
 
         Button back1 = new Button("Back");
-        back1.setFont(new Font(20));
+        back1.setFont(new Font(25));
         back1.setMinWidth(200);
         back1.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        back1 = bs.ButtonStyleInit(back1, border, bg, bg);
 
 
 
@@ -510,7 +510,6 @@ public class Cover extends Application {
         vbox.setSpacing(50);
 
         optnVbox.setSpacing(20);
-
 
         multiPlyVbox.setPrefWidth(200);
         multiPlyVbox.setSpacing(400);
