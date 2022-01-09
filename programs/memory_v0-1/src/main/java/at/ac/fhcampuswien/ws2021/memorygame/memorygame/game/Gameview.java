@@ -35,7 +35,7 @@ public class Gameview { // implements EventHandler<MouseEvent>{
                 ImageController.removeChildren(i, arr);
                 arr[i] = ImageController.setImage(i, arr[i]);
                 //System.out.println("Children of " + i + ": "+ arr[i].getChildren().size());
-                r.setPlayerInTurn(gamePlayer);
+                //r.setPlayerInTurn(gamePlayer);
                 break;
             }
         }
@@ -67,6 +67,9 @@ public class Gameview { // implements EventHandler<MouseEvent>{
                             //p1.incPlayerPoints();
                             gamePlayer.get(r.getPlayerInTurn(gamePlayer)).incPlayerPoints();
                             System.out.println("Bravo...");
+                        }
+                        else {
+                            r.setPlayerInTurn(gamePlayer);
                         }
                     }
 

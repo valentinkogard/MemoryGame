@@ -31,7 +31,7 @@ public class LoadingPage {
         BackgroundImage myBI = new BackgroundImage(new Image(new FileInputStream(directoryToBg.getAbsoluteFile()), windowSize[0], windowSize[1], false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
-        stackPane.setBackground(new Background(myBI));
+        //stackPane.setBackground(new Background(myBI));
 
         Scene loadScene = new Scene(stackPane, windowSize[0], windowSize[1]);
 
