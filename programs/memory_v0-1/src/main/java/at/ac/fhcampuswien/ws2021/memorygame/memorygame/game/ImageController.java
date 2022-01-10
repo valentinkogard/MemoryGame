@@ -59,7 +59,7 @@ public class ImageController extends Gameview {
      * @throws FileNotFoundException
      */
     public static void setBackground(StackPane stackPane) throws FileNotFoundException {
-        String path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/3.gif";
+        String path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/background2.jpg"; //3.gif
         File directory = new File(path);
         BackgroundImage myBI = new BackgroundImage(new Image(new FileInputStream(directory.getAbsoluteFile()), windowSize[0], windowSize[1], false, true),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT,
