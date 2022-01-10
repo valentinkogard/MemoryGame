@@ -2,6 +2,7 @@ package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
 
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.game.Gameview;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.*;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.BackgroundPage;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.ButtonStyle;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.Music;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.WindowSize;
@@ -11,19 +12,16 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.layout.Background;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -74,7 +72,7 @@ public class App extends Application {
 
         //-------------------------Title & Background-------------------------
 
-        at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background buttonback = new at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background();
+        BackgroundPage buttonback = new BackgroundPage();
 
         Button mBtn = new Button();
         Button mBtn1 = new Button();
