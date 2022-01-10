@@ -6,12 +6,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+//import java.awt.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.awt.SystemColor.text;
+import static javafx.scene.text.Font.*;
 
 public class Gameview { // implements EventHandler<MouseEvent>{
 
@@ -93,9 +100,12 @@ public class Gameview { // implements EventHandler<MouseEvent>{
 
         //create gameheader
         HBox header = new HBox();
-        Label label = new Label("Hello World");
-        header.setVisible(true);
-        //header.getChildren().add(label);
+        Label player1 = new Label(gamePlayer.get(0).getPlayerName() + "\t" + gamePlayer.get(0).getPlayerPoints());
+        player1.setFont(font("Calibri", 20));
+        player1.setVisible(true);
+
+        //header.setVisible(true);
+        header.getChildren().add(player1);
         root.getChildren().add(header);
 
         //create cards and there corresponding nodes
