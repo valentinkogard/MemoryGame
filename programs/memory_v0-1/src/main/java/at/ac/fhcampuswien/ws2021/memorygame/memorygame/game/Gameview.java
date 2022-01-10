@@ -1,8 +1,10 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame.game;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -100,12 +102,26 @@ public class Gameview { // implements EventHandler<MouseEvent>{
 
         //create gameheader
         HBox header = new HBox();
-        Label player1 = new Label(gamePlayer.get(0).getPlayerName() + "\t" + gamePlayer.get(0).getPlayerPoints());
-        player1.setFont(font("Calibri", 20));
+        Label player1 = new Label("Player 1 " + gamePlayer.get(0).getPlayerName() + "\tPoints: " + gamePlayer.get(0).getPlayerPoints() + "\t\t\t");
+        player1.setFont(font("Calibri", 25));
         player1.setVisible(true);
 
+        Label player2 = new Label("Player 2 " +gamePlayer.get(1).getPlayerName() + "\tPoints: " + gamePlayer.get(1).getPlayerPoints() + "\t\t\t");
+        player2.setFont(font("Calibri", 25));
+        player2.setVisible(true);
+
+
+
+        Button back = new Button("Back");
+        back.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        back.setFont(new Font(20));
+        back.setMinWidth(100);
+
+
         //header.setVisible(true);
-        header.getChildren().add(player1);
+        header.getChildren().addAll(player1, player2, back);
+        //header.getChildren().add(player2);
+        //header.getChildren().add(back);
         root.getChildren().add(header);
 
         //create cards and there corresponding nodes
