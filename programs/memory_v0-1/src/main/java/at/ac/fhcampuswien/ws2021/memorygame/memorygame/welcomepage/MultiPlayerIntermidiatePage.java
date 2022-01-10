@@ -1,4 +1,4 @@
-package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
+package at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -15,18 +15,11 @@ import javafx.scene.control.Button;
 
 import java.awt.*;
 
-public class IntermidiatePage extends Application {
+public class MultiPlayerIntermidiatePage {
     Button button;
-    public static void main(String[] args) {
-            launch(args);
 
-
-    }
-
-    @Override
-    public void start(Stage stage) throws Exception {
-        stage.setTitle("Intermediate Page");
-
+    public Scene multiPlayerIntInit() throws Exception {
+        //stage.setTitle("Intermediate Page");
 
         button=new Button();
         button.setText("Start Memory");
@@ -90,8 +83,10 @@ public class IntermidiatePage extends Application {
 
         vbox.getChildren().addAll(hboxPlayerNameLabels,hboxPlayerNames, hboxnumOfCardsLabel, hboxnumOfCards, hboxThemeOfCardsLabel, hboxThemeOfCards,hboxButton);
         Scene scene = new Scene(vbox, 1000, 600);
-        stage.setScene(scene);
-        stage.show();
+        //stage.setScene(scene);
+        //stage.show();
+
+        return scene;
 
 
     }

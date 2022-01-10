@@ -1,4 +1,4 @@
-package at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage;
+package at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -7,7 +7,6 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

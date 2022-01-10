@@ -2,6 +2,8 @@ package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
 
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.game.Gameview;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.*;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.ButtonStyle;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.Music;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.beans.InvalidationListener;
@@ -15,7 +17,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -29,8 +30,6 @@ import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 
@@ -72,7 +71,7 @@ public class App extends Application {
 
         //-------------------------Title & Background-------------------------
 
-        at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background buttonback = new at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background();
+        at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.Background buttonback = new at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.Background();
 
         Button mBtn = new Button();
         Button mBtn1 = new Button();
@@ -111,7 +110,7 @@ public class App extends Application {
         yBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
 
 
-        at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background pageBack = new at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background();
+        at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.Background pageBack = new at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.Background();
 
         Background bg = pageBack.PageBack("background5");
         Background bg2 = pageBack.PageBack("background6");
@@ -138,6 +137,8 @@ public class App extends Application {
         singlePlayer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                //MultiPlayerInitPage
+
                 //Loading Page
                 LoadingPage lp = new LoadingPage();
                 try {
@@ -159,20 +160,38 @@ public class App extends Application {
                 });
                 pause.play();
                 //Application.launch(Gameview.class);
+
             }
         });
 
 
         //-------------------------Multiplayer Button-------------------------
+
         Button multiPlayer = new Button();
         multiPlayer.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         multiPlayer.setFont(Font.font("Calibri", 25));
         multiPlayer.setText("Multiplayer");
 
-        multiPlayer = bs.ButtonStyleInit(multiPlayer, border, bg3, bg, toggleButton2);
+        //multiPlayer = bs.ButtonStyleInit(multiPlayer, border, bg3, bg, toggleButton2);
 
+        /*
+        multiPlayer.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                MultiPlayerIntermidiatePage mp = new MultiPlayerIntermidiatePage();
+                try {
+                    Scene mpSc = mp.multiPlayerIntInit();
+                    primaryStage.setScene(mpSc);
+                } catch (
+                        Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+         */
 
         //-------------------------Multiplayer Placeholder-------------------------
+        /*
         VBox multiPlyVbox = new VBox();
         Scene multiPlyScene = new Scene(multiPlyVbox, windowSize[0], windowSize[1]);
         multiPlyVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
@@ -187,9 +206,17 @@ public class App extends Application {
 
         back3.setMinWidth(200);
 
+         */
 
-        back3.setOnAction(e -> primaryStage.setScene(mainpageScene));
-        multiPlayer.setOnAction(e -> primaryStage.setScene(multiPlyScene));
+        //back3.setOnAction(e -> primaryStage.setScene(mainpageScene));
+        MultiPlayerIntermidiatePage mp = new MultiPlayerIntermidiatePage();
+        multiPlayer.setOnAction(e -> {
+            try {
+                primaryStage.setScene(mp.multiPlayerIntInit());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
 
 
         //-------------------------Option Button-------------------------
@@ -419,7 +446,7 @@ public class App extends Application {
         exit.setCursor(Cursor.HAND);
 
         back1.setCursor(Cursor.HAND);
-        back3.setCursor(Cursor.HAND);
+        //back3.setCursor(Cursor.HAND);
         toggleButton.setCursor(Cursor.HAND);
         volSlider.setCursor(Cursor.HAND);
 
@@ -434,8 +461,8 @@ public class App extends Application {
 
         optnVbox.setSpacing(20);
 
-        multiPlyVbox.setPrefWidth(200);
-        multiPlyVbox.setSpacing(400);
+        //multiPlyVbox.setPrefWidth(200);
+        //multiPlyVbox.setSpacing(400);
 
         //-------------------------vBox Alignment-------------------------
 
@@ -452,8 +479,8 @@ public class App extends Application {
         optnVbox.setAlignment(Pos.CENTER);
         optnVbox.getChildren().addAll(musicBtnText, toggleButton ,musicBtnText2,toggleButton2,volSliderText, volSlider, back1);
 
-        multiPlyVbox.setAlignment(Pos.CENTER);
-        multiPlyVbox.getChildren().addAll(title3, back3);
+        //multiPlyVbox.setAlignment(Pos.CENTER);
+        //multiPlyVbox.getChildren().addAll(title3, back3);
 
 
         primaryStage.show();
