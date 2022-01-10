@@ -1,15 +1,11 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
 
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.game.Gameview;
-import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.ButtonStyle;
-import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.CreditsPage;
-import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.LoadingPage;
-import javafx.animation.FadeTransition;
-import javafx.animation.KeyFrame;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.*;
 import javafx.animation.PauseTransition;
-import javafx.animation.SequentialTransition;
-//import javafx.animation.SequentialTransitionBuilder;
 import javafx.application.Application;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -17,19 +13,19 @@ import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.skin.ButtonSkin;
+import javafx.scene.control.Slider;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 
@@ -39,7 +35,6 @@ import java.io.IOException;
 
 
 public class App extends Application {
-
 
 
     public static final int[] windowSize = {1000, 600};
@@ -58,9 +53,8 @@ public class App extends Application {
 
         ButtonStyle bs = new ButtonStyle();
 
-        VBox vbox = new VBox ();
+        VBox vbox = new VBox();
         VBox vbox1 = new VBox();
-        VBox vbox2 = new VBox();
         HBox hbox = new HBox();
 
         border.setCenter(vbox);
@@ -73,248 +67,77 @@ public class App extends Application {
 
         primaryStage.setResizable(false);
 
+        ToggleButton toggleButton2 = new ToggleButton();
 
 
         //-------------------------Title & Background-------------------------
 
-        String pathCoverM = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/titleCards/coverM.png";
-        File directoryCoverM = new File(pathCoverM);
-        Image imageCoverM = new Image(new FileInputStream(directoryCoverM.getAbsoluteFile()));
-        ImageView CoverM = new ImageView(imageCoverM);
-        ImageView CoverM1 = new ImageView(imageCoverM);
-        CoverM.setFitHeight(100);
-        CoverM.setPreserveRatio(true);
-
-        String pathCoverE = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/titleCards/coverE.png";
-        File directoryCoverE = new File(pathCoverE);
-        Image imageCoverE = new Image(new FileInputStream(directoryCoverE.getAbsoluteFile()));
-        ImageView CoverE = new ImageView(imageCoverE);
-
-        String pathCoverO = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/titleCards/coverO.png";
-        File directoryCoverO = new File(pathCoverO);
-        Image imageCoverO = new Image(new FileInputStream(directoryCoverO.getAbsoluteFile()));
-        ImageView CoverO = new ImageView(imageCoverO);
-
-        String pathCoverR = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/titleCards/coverR.png";
-        File directoryCoverR = new File(pathCoverR);
-        Image imageCoverR = new Image(new FileInputStream(directoryCoverR.getAbsoluteFile()));
-        ImageView CoverR = new ImageView(imageCoverR);
-
-        String pathCoverY = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/titleCards/coverY.png";
-        File directoryCoverY = new File(pathCoverY);
-        Image imageCoverY = new Image(new FileInputStream(directoryCoverY.getAbsoluteFile()));
-        ImageView CoverY = new ImageView(imageCoverY);
-
-
-
-        String path0 = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/cover/cover1.png";
-        File directory0 = new File(path0);
-        Image image0 = new Image(new FileInputStream(directory0.getAbsoluteFile()));
-        ImageView card1 = new ImageView(image0);
-        ImageView card2 = new ImageView(image0);
-        ImageView card3 = new ImageView(image0);
-        ImageView card4 = new ImageView(image0);
-        ImageView card5 = new ImageView(image0);
-        ImageView card6 = new ImageView(image0);
-        card1.setFitHeight(100);
-        card1.setPreserveRatio(true);
-        card2.setFitHeight(100);
-        card2.setPreserveRatio(true);
-        card3.setFitHeight(100);
-        card3.setPreserveRatio(true);
-        card4.setFitHeight(100);
-        card4.setPreserveRatio(true);
-        card5.setFitHeight(100);
-        card5.setPreserveRatio(true);
-        card6.setFitHeight(100);
-        card6.setPreserveRatio(true);
-
+        at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background buttonback = new at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background();
 
         Button mBtn = new Button();
-        mBtn.setGraphic(card1);
+        Button mBtn1 = new Button();
+        ImageView CoverM = new ImageView();
+        ImageView CoverM1 = new ImageView();
+        CoverM = buttonback.ButtonBack("CoverM");
+        CoverM1 = buttonback.ButtonBack("CoverM");
+        mBtn.setGraphic(CoverM);
+        mBtn1.setGraphic(CoverM1);
         mBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
-        mBtn.setFont(Font.font("Calibri", 25));
-        mBtn.setText("");
-        mBtn.setPrefSize(10,10);
+        mBtn1.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
 
         Button eBtn = new Button();
-        eBtn.setGraphic(card2);
+        ImageView CoverE = new ImageView();
+        CoverE = buttonback.ButtonBack("CoverE");
+        eBtn.setGraphic(CoverE);
         eBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
-        eBtn.setFont(Font.font("Calibri", 25));
-        eBtn.setText("");
-        eBtn.setPrefSize(10,10);
-
-        Button mBtn1 = new Button();
-        mBtn1.setGraphic(card3);
-        mBtn1.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
-        mBtn1.setFont(Font.font("Calibri", 25));
-        mBtn1.setText("");
-        mBtn1.setPrefSize(10,10);
 
         Button oBtn = new Button();
-        oBtn.setGraphic(card4);
+        ImageView CoverO = new ImageView();
+        CoverO = buttonback.ButtonBack("CoverO");
+        oBtn.setGraphic(CoverO);
         oBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
-        oBtn.setFont(Font.font("Calibri", 25));
-        oBtn.setText("");
-        oBtn.setPrefSize(10,10);
 
         Button rBtn = new Button();
-        rBtn.setGraphic(card5);
+        ImageView CoverR = new ImageView();
+        CoverR = buttonback.ButtonBack("CoverR");
+        rBtn.setGraphic(CoverR);
         rBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
-        rBtn.setFont(Font.font("Calibri", 25));
-        rBtn.setText("");
-        rBtn.setPrefSize(10,10);
+
 
         Button yBtn = new Button();
-        yBtn.setGraphic(card6);
+        ImageView CoverY = new ImageView();
+        CoverY = buttonback.ButtonBack("CoverY");
+        yBtn.setGraphic(CoverY);
         yBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
-        yBtn.setFont(Font.font("Calibri", 25));
-        yBtn.setText("");
-        yBtn.setPrefSize(10,10);
-
-        hbox.setAlignment(Pos.CENTER);
-        hbox.getChildren().addAll(mBtn,eBtn,mBtn1,oBtn,rBtn,yBtn);
-
-        mainpageScene.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-
-                FadeTransition fadeOut = new FadeTransition();
-                fadeOut.setDuration(Duration.millis(1000));
-                fadeOut.setFromValue(10);
-                fadeOut.setToValue(0.1);
-                fadeOut.setCycleCount(1000);
-                fadeOut.setAutoReverse(true);
-                fadeOut.setNode(card1);
-                //fade.setNode(CoverM);
-                fadeOut.play();
 
 
+        at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background pageBack = new at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background();
 
-            }
-        });
-
-        mainpageScene.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-
-
-                mBtn.setGraphic(CoverM);
-
-                FadeTransition fadeIn = new FadeTransition();
-                fadeIn.setDuration(Duration.millis(1000));
-                fadeIn.setFromValue(10);
-                fadeIn.setToValue(0.1);
-                fadeIn.setCycleCount(1000);
-                fadeIn.setAutoReverse(true);
-                //fadeIn.setNode(card1);
-                fadeIn.setNode(CoverM);
-                fadeIn.play();
-
-            }
-        });
-
-
-
-        /*Text title = new Text(10, 50, "MEMORY");
-        title.setFont(Font.font("Calibri", FontWeight.EXTRA_BOLD, 80));
-        title.setFill(Color.ORANGERED);
-
-         */
-
-
-
-        //vbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
-
-        String path1 = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/background5.png";
-        File directory1 = new File(path1);
-        //FileInputStream inp = new FileInputStream("c:\\Users\\nikol\\Desktop\\pic\\background5.png");
-        Image bgImage1 = new Image(new FileInputStream(directory1.getAbsoluteFile()));
-
-        BackgroundImage bi = new BackgroundImage(bgImage1, BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT);
-
-
-        Background bg = new Background(bi);
-
+        Background bg = pageBack.PageBack("background5");
+        Background bg2 = pageBack.PageBack("background6");
+        Background bg3 = pageBack.PageBack("catLove2");
+        Background bg4 = pageBack.PageBack("background4");
         border.setBackground(bg);
 
-        String path2 = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/background6.png";
-        File directory2 = new File(path2);
-        //FileInputStream inp1 = new FileInputStream("c:\\Users\\nikol\\Desktop\\pic\\background6.png");
-        Image bgImage2 = new Image(new FileInputStream(directory2.getAbsoluteFile()));
-
-        BackgroundImage bi2 = new BackgroundImage(bgImage2, BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT);
-
-
-        Background bg2 = new Background(bi2);
-
-
-        String path3 = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/catLove2.gif";
-        File directory3 = new File(path3);
-        //FileInputStream inp = new FileInputStream("c:\\Users\\nikol\\Desktop\\pic\\background5.png");
-        Image bgImage3 = new Image(new FileInputStream(directory3.getAbsoluteFile()));
-
-        BackgroundImage bi3 = new BackgroundImage(bgImage3, BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT);
-
-        Background bg3 = new Background(bi3);
-
-
-        String path4 = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/background4.png";
-        File directory4 = new File(path4);
-        //FileInputStream inp = new FileInputStream("c:\\Users\\nikol\\Desktop\\pic\\background5.png");
-        Image bgImage4 = new Image(new FileInputStream(directory4.getAbsoluteFile()));
-
-        BackgroundImage bi4 = new BackgroundImage(bgImage4, BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT);
-
-        Background bg4 = new Background(bi4);
 
 
 
+        //-------------------------Music-------------------------
 
-
-
+        Music media = new Music();
+        MediaPlayer mediaPlayer = media.MusicPlayer();
 
         //-------------------------Singleplayer Button-------------------------
         Button singlePlayer = new Button();
         singlePlayer.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         singlePlayer.setFont(Font.font("Calibri", 25));
+        singlePlayer.setText("Singleplayer");
 
-        singlePlayer.setText("Einzelspieler");
-
-        singlePlayer.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-
-                singlePlayer.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
-
-            }
-        });
-
-        singlePlayer.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-
-                singlePlayer.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-
-            }
-        });
+        singlePlayer = bs.ButtonStyleInit(singlePlayer, border, bg, bg, toggleButton2);
 
         singlePlayer.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
                 //Loading Page
                 LoadingPage lp = new LoadingPage();
                 try {
@@ -335,48 +158,21 @@ public class App extends Application {
                     }
                 });
                 pause.play();
-
-
-
                 //Application.launch(Gameview.class);
-
-
-
-
-
             }
         });
-
-
-
-
 
 
         //-------------------------Multiplayer Button-------------------------
         Button multiPlayer = new Button();
         multiPlayer.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         multiPlayer.setFont(Font.font("Calibri", 25));
-        multiPlayer.setText("Mehrspieler");
+        multiPlayer.setText("Multiplayer");
 
-        multiPlayer.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
+        multiPlayer = bs.ButtonStyleInit(multiPlayer, border, bg3, bg, toggleButton2);
 
-                multiPlayer.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
-                border.setBackground(bg3);
-            }
-        });
 
-        multiPlayer.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-
-                multiPlayer.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-                border.setBackground(bg);
-
-            }
-        });
-
+        //-------------------------Multiplayer Placeholder-------------------------
         VBox multiPlyVbox = new VBox();
         Scene multiPlyScene = new Scene(multiPlyVbox, windowSize[0], windowSize[1]);
         multiPlyVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
@@ -396,37 +192,137 @@ public class App extends Application {
         multiPlayer.setOnAction(e -> primaryStage.setScene(multiPlyScene));
 
 
-
         //-------------------------Option Button-------------------------
         Button options = new Button();
         options.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         options.setFont(Font.font("Calibri", 25));
         options.setText("Optionen");
 
-        options = bs.ButtonStyleInit(options, border, bg4, bg);
+        options = bs.ButtonStyleInit(options, border, bg4, bg,toggleButton2);
 
+
+        //-------------------------Options-------------------------
         VBox optnVbox = new VBox();
-        optnVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
-
-        //String path2 = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/Logo_Wasserball.png";
-        //File directory2 = new File(path2);
-        //Image image = new Image(new FileInputStream(directory2.getAbsoluteFile()));
-        //ImageView imageView = new ImageView(image);
-
-        //imageView.setFitHeight(400);
-        //imageView.setFitWidth(400);
+        optnVbox.setBackground(bg4);
 
         Scene optnScene = new Scene(optnVbox, windowSize[0], windowSize[1]);
 
+
+
+
+        Text volSliderText = new Text(10,50, "Volume");
+        volSliderText.setFont(Font.font("Calibri", 50));
+        volSliderText.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+
+        Slider volSlider = new Slider(0,100,50);
+        volSlider.setMajorTickUnit(8.0);
+        volSlider.setMinorTickCount(3);
+        volSlider.setMaxWidth(500);
+        volSlider.setMinHeight(50);
+        volSlider.setSnapToTicks(false);
+        volSlider.setShowTickMarks(false);
+        volSlider.setShowTickLabels(false);
+        //volSlider.setBackground();
+        volSlider.setStyle("-fx-background-color: darkslateblue; ");
+
+        volSlider.setValue(mediaPlayer.getVolume() * 100);
+        volSlider.valueProperty().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                mediaPlayer.setVolume(volSlider.getValue() / 100);
+
+            }
+        });
+
+
+        Text musicBtnText = new Text(10,50, "Music");
+        musicBtnText.setFont(Font.font("Calibri", 50));
+        musicBtnText.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+
+
+        ToggleButton toggleButton = new ToggleButton();
+        toggleButton.setMinSize(150,100);
+        toggleButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        toggleButton.setSelected(true);
+        toggleButton.setText("ON");
+        toggleButton.setFont(Font.font("Calibri", 50));
+
+
+        toggleButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                if (toggleButton.isSelected()) {
+
+                    toggleButton.setText("ON");
+                    toggleButton.setMinSize(150, 100);
+                    toggleButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+                    mediaPlayer.play();
+
+                }
+                else {
+                    toggleButton.setText("OFF");
+                    toggleButton.setMinSize(150, 100);
+                    toggleButton.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+                    mediaPlayer.pause();
+
+                }
+            }
+        });
+
+        Text musicBtnText2 = new Text(10,50, "Soundeffect");
+        musicBtnText2.setFont(Font.font("Calibri", 50));
+        musicBtnText2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+
+
+
+        toggleButton2.setMinSize(150,100);
+        toggleButton2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        toggleButton2.setSelected(true);
+        toggleButton2.setText("ON");
+        toggleButton2.setFont(Font.font("Calibri", 50));
+
+
+
+        toggleButton2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                if (toggleButton2.isSelected()) {
+
+                    toggleButton2.setText("ON");
+                    toggleButton2.setMinSize(150, 100);
+                    toggleButton2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+
+
+
+
+                }
+                else {
+                    toggleButton2.setText("OFF");
+                    toggleButton2.setMinSize(150, 100);
+                    toggleButton2.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+
+
+                }
+            }
+        });
+
         Button back1 = new Button("Back");
-        back1.setFont(new Font(20));
+        back1.setFont(new Font(25));
         back1.setMinWidth(200);
         back1.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        back1 = bs.ButtonStyleInit(back1, border, bg, bg, toggleButton2);
+
+
+
+
 
 
         options.setOnAction(e -> primaryStage.setScene(optnScene));
         back1.setOnAction(e -> primaryStage.setScene(mainpageScene));
+
 
 
 
@@ -436,7 +332,7 @@ public class App extends Application {
         credits.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         credits.setFont(Font.font("Calibri", 25));
 
-        credits = bs.ButtonStyleInit(credits, border, bg, bg);
+        credits = bs.ButtonStyleInit(credits, border, bg, bg,toggleButton2);
 
 
         CreditsPage cp = new CreditsPage();
@@ -446,7 +342,6 @@ public class App extends Application {
 
         button.setOnAction(e -> primaryStage.setScene(mainpageScene));
         credits.setOnAction(e -> primaryStage.setScene(credScene));
-
 
 
         //-------------------------Exit Button-------------------------
@@ -468,6 +363,12 @@ public class App extends Application {
 
                 border.setBackground(bg2);
                 exit.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+                Music media = new Music();
+                if (toggleButton2.isSelected()) {
+                    MediaPlayer mediaPlayer = media.Soundeffect();
+                    mediaPlayer.play();
+                }
+
 
             }
         });
@@ -494,9 +395,6 @@ public class App extends Application {
         });
 
 
-
-
-
         //-------------------------width & height Setting-------------------------
 
 
@@ -520,6 +418,12 @@ public class App extends Application {
         exit.setMinHeight(40);
         exit.setCursor(Cursor.HAND);
 
+        back1.setCursor(Cursor.HAND);
+        back3.setCursor(Cursor.HAND);
+        toggleButton.setCursor(Cursor.HAND);
+        volSlider.setCursor(Cursor.HAND);
+
+
         //-------------------------VBox Button Width & Spacing  Setting-------------------------
 
         hbox.setPrefWidth(50);
@@ -530,31 +434,60 @@ public class App extends Application {
 
         optnVbox.setSpacing(20);
 
-
-
         multiPlyVbox.setPrefWidth(200);
         multiPlyVbox.setSpacing(400);
 
         //-------------------------vBox Alignment-------------------------
 
-        vbox.setAlignment(Pos.CENTER);
+        hbox.setAlignment(Pos.CENTER);
+        hbox.getChildren().addAll(mBtn, eBtn, mBtn1, oBtn, rBtn, yBtn);
 
+        vbox.setAlignment(Pos.CENTER);
 
         vbox.getChildren().addAll(singlePlayer, multiPlayer, options, credits, exit);
 
         vbox1.getChildren().add(exit1);
 
 
-
-
         optnVbox.setAlignment(Pos.CENTER);
-        optnVbox.getChildren().addAll(back1);
+        optnVbox.getChildren().addAll(musicBtnText, toggleButton ,musicBtnText2,toggleButton2,volSliderText, volSlider, back1);
 
         multiPlyVbox.setAlignment(Pos.CENTER);
         multiPlyVbox.getChildren().addAll(title3, back3);
 
 
         primaryStage.show();
+
+
+        /*
+        border.setOnMouseMoved(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+
+                Rotate rotate = new Rotate();
+
+                rotate.setAngle(0.5);
+
+                rotate.setPivotX(50);
+                rotate.setPivotY(50);
+
+
+
+
+                mBtn.getTransforms().addAll(rotate);
+                mBtn1.getTransforms().addAll(rotate);
+                eBtn.getTransforms().addAll(rotate);
+                oBtn.getTransforms().addAll(rotate);
+                rBtn.getTransforms().addAll(rotate);
+                yBtn.getTransforms().addAll(rotate);
+
+            }
+
+        });
+
+         */
+
+
 
 
     }
