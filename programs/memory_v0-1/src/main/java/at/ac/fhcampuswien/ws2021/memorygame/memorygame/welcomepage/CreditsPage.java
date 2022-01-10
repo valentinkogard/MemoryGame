@@ -43,10 +43,12 @@ public class CreditsPage {
 
 
         Text title1 = new Text("CREDITS");
-        title1.setFont(Font.font("Calibri", FontWeight.BOLD, 80));
+        title1.setFont(Font.font("Calibri", FontWeight.BOLD, 70));
+        title1.setFill(Color.WHITE);
 
-        Text names = new Text("Magdalena\n\nMax\n\nValentin\n\nChristina\n\nNiko");
-        names.setFont(Font.font("Calibri", 40));
+        Text names = new Text("Project supervisor: \nValentin\n\nRest of the team:\nMagdalena\nMax\nChristina\nNiko");
+        names.setFont(Font.font("Calibri",40 ));
+        names.setFill(Color.WHITE);
 
 
         Button back = new Button("Back");
