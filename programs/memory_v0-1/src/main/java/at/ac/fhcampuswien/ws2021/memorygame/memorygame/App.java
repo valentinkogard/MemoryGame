@@ -15,7 +15,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -29,8 +28,6 @@ import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 
@@ -72,7 +69,7 @@ public class App extends Application {
 
         //-------------------------Title & Background-------------------------
 
-        at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background buttonback = new at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background();
+        BackgroundPage buttonback = new BackgroundPage();
 
         Button mBtn = new Button();
         Button mBtn1 = new Button();
@@ -111,12 +108,14 @@ public class App extends Application {
         yBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
 
 
-        at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background pageBack = new at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.Background();
+        BackgroundPage pageBack = new BackgroundPage();
 
-        Background bg = pageBack.PageBack("background5");
-        Background bg2 = pageBack.PageBack("background6");
-        Background bg3 = pageBack.PageBack("catLove2");
-        Background bg4 = pageBack.PageBack("background4");
+        //Background bg = pageBack.PageBack("background5");
+        String pathToBg = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/";
+        Background bg = pageBack.PageBack(pathToBg + "background5.png");
+        Background bg2 = pageBack.PageBack(pathToBg + "background6.png");
+        Background bg3 = pageBack.PageBack(pathToBg + "catLove2.gif");
+        Background bg4 = pageBack.PageBack(pathToBg + "background4.png");
         border.setBackground(bg);
 
 
