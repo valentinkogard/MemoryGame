@@ -17,7 +17,12 @@ import javafx.scene.text.Text;
 
 public class OptionsPage {
 
-    public static final int[] windowSize = {1000, 600};
+    //public static final int[] windowSize = {1000, 600};
+    /*
+            public static int[] windowSize;
+            WindowSize ws = new WindowSize();
+            windowSize = ws.getWindowSize();
+     */
 
     public OptionsPage(Background bg, MediaPlayer mediaPlayer) {
 

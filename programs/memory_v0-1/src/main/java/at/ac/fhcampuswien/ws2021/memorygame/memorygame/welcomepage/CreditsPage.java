@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage;
 
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.WindowSize;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,10 +19,11 @@ import java.io.FileNotFoundException;
 
 public class CreditsPage {
 
-    public static final int[] windowSize = {1000, 600};
-
+    public static int[] windowSize;
 
     public Object [] CreditsPageInit() throws FileNotFoundException {
+        WindowSize ws = new WindowSize();
+        windowSize = ws.getWindowSize();
 
         VBox credVbox = new VBox();
         Scene credScene = new Scene(credVbox, windowSize[0], windowSize[1]);

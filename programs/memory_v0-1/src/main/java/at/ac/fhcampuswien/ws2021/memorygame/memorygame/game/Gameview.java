@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame.game;
 
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.WindowSize;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -23,7 +24,7 @@ public class Gameview { // implements EventHandler<MouseEvent>{
     public static int size, spaceX, spaceY;
 
     public static int gameheaderSize = 50;
-    public static final int[] windowSize = {1000, 600};
+    public static int[] windowSize;
 
     public void findImageToChange(double mouseX, double mouseY, Rules r) throws FileNotFoundException {
         for(int i = 0; i < cards.length; i++){
@@ -43,6 +44,9 @@ public class Gameview { // implements EventHandler<MouseEvent>{
     }
 
     public Scene mainGame() throws IOException{
+        WindowSize ws = new WindowSize();
+        windowSize = ws.getWindowSize();
+
         int numberOfPlayer = 2;
         for(int i = 0; i < numberOfPlayer; i++){
             gamePlayer.add(new Player("Player" + i));

@@ -4,6 +4,7 @@ import at.ac.fhcampuswien.ws2021.memorygame.memorygame.game.Gameview;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.*;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.ButtonStyle;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.Music;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.WindowSize;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.beans.InvalidationListener;
@@ -36,7 +37,7 @@ import java.io.IOException;
 public class App extends Application {
 
 
-    public static final int[] windowSize = {1000, 600};
+    public static int[] windowSize;
 
     public static void main(String[] args) {
 
@@ -45,7 +46,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+        WindowSize ws = new WindowSize();
+        windowSize = ws.getWindowSize();
 
         primaryStage.setTitle("MEMORY");
         BorderPane border = new BorderPane();

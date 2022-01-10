@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage;
 
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.WindowSize;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,9 +12,12 @@ import java.io.FileNotFoundException;
 
 public class LoadingPage {
 
-    public static final int[] windowSize = {1000, 600};
+    public static int[] windowSize;
 
     public Scene loadingPageInit() throws FileNotFoundException {
+        WindowSize ws = new WindowSize();
+        windowSize = ws.getWindowSize();
+
         StackPane stackPane = new StackPane();
 
         //Loading GIF
