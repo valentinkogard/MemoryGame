@@ -148,4 +148,23 @@ Spontaneous coding session:
 
 Present: Valentin, Niko
 
+## 10.01.2022 - 14:30 - 15:30
+
+- Talked about the status quo of the project
+- Niko: Created the Mainmenu; added music and soundeffects; created differend backgrounds; created button layout
+- Max: Created the Singleplayer- and Multiplayerpage;
+- Christina: Created the Creditspage; added additional background 
+- Valentin: Changed Maven to Gradle (multiple times); merged branches; bugfixes
+- Magdalena: Created the Gameheader; added Settings-Button and Exit-Button
+
+Absent: -none-
+
+## 10.01.2022 - 15:30 - 17:30
+
+Gereral Coding Session:
+
+- Changed and simplified the BackgroundPage
+- Changed the Gameheader
+
+Present: Magdalena, Valentin, Niko
 
