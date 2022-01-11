@@ -22,7 +22,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class MultiPlayerIntermidiatePage {
+public class SinglePlayerIntermidiatePage {
 
     public static int[] windowSize;
 
@@ -30,7 +30,7 @@ public class MultiPlayerIntermidiatePage {
 
     private GameSettings settings;
 
-    public Object[] multiPlayerIntInit() throws Exception {
+    public Object[] singlePlayerIntInit() throws Exception {
         WindowSize ws = new WindowSize();
         windowSize = ws.getWindowSize();
 
@@ -59,28 +59,22 @@ public class MultiPlayerIntermidiatePage {
         HBox hboxPlayerNameLabels = new HBox();
         hboxPlayerNameLabels.setAlignment(Pos.TOP_CENTER);
         hboxPlayerNameLabels.setPadding(new Insets(75, 0, 0, 0));
-        hboxPlayerNameLabels.getChildren().addAll(playerOneNameLabel, playerTwoNameLabel);
-        hboxPlayerNameLabels.setMargin(playerOneNameLabel, new Insets(0, 200, 0, 100));
+        hboxPlayerNameLabels.getChildren().addAll(playerOneNameLabel);
+        hboxPlayerNameLabels.setMargin(playerOneNameLabel, new Insets(0, 0, 0, 110));
         playerOneNameLabel.setStyle("-fx-text-fill: darkslateblue;");
         playerOneNameLabel.setFont(new Font(20));
         playerOneNameLabel.setMinWidth(200);
-        playerTwoNameLabel.setStyle("-fx-text-fill: darkslateblue;");
-        playerTwoNameLabel.setFont(new Font(20));
-        playerTwoNameLabel.setMinWidth(200);
 
         HBox hboxPlayerNames = new HBox();
         hboxPlayerNames.setAlignment(Pos.TOP_CENTER);
         hboxPlayerNames.setPadding(new Insets(0, 0, 0, 0));
-        hboxPlayerNames.getChildren().addAll(playerOneName, playerTwoName);
-        hboxPlayerNames.setMargin(playerOneName, new Insets(0, 150, 0, 0));
+        hboxPlayerNames.getChildren().addAll(playerOneName);
+        hboxPlayerNames.setMargin(playerOneName, new Insets(0, 0, 0, 0));
         playerOneName.setOnKeyReleased(keyEvent -> setPlayerOneName(playerOneName));
-        playerTwoName.setOnKeyReleased(keyEvent -> setPlayerTwoName(playerTwoName));
         playerOneName.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         playerOneName.setFont(new Font(20));
         playerOneName.setMinWidth(200);
-        playerTwoName.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-        playerTwoName.setFont(new Font(20));
-        playerTwoName.setMinWidth(200);
+
 
         HBox hboxnumOfCardsLabel = new HBox();
         hboxnumOfCardsLabel.setAlignment(Pos.TOP_CENTER);
@@ -161,9 +155,6 @@ public class MultiPlayerIntermidiatePage {
         settings.setPlayerOne(playerOneName.getText());
     }
 
-    private void setPlayerTwoName(TextField playerTwoName) {
-        settings.setPlayerTwo(playerTwoName.getText());
-    }
 
     public Background PageBack(String path) throws FileNotFoundException {
 
