@@ -53,14 +53,14 @@ public class SinglePlayerIntermidiatePage {
         TextField playerTwoName = new TextField();
         Label playerOneNameLabel = new Label("Player One");
         Label playerTwoNameLabel = new Label("Player Two");
-        Label numOfCardsLabel = new Label("Number of Cards");
+        Label numOfCardsLabel = new Label("Difficulty");
         Label themeOfCardsLabel = new Label("Theme");
 
         HBox hboxPlayerNameLabels = new HBox();
         hboxPlayerNameLabels.setAlignment(Pos.TOP_CENTER);
         hboxPlayerNameLabels.setPadding(new Insets(75, 0, 0, 0));
         hboxPlayerNameLabels.getChildren().addAll(playerOneNameLabel);
-        hboxPlayerNameLabels.setMargin(playerOneNameLabel, new Insets(0, 200, 0, 100));
+        hboxPlayerNameLabels.setMargin(playerOneNameLabel, new Insets(0, 0, 0, 110));
         playerOneNameLabel.setStyle("-fx-text-fill: darkslateblue;");
         playerOneNameLabel.setFont(new Font(20));
         playerOneNameLabel.setMinWidth(200);
@@ -69,7 +69,7 @@ public class SinglePlayerIntermidiatePage {
         hboxPlayerNames.setAlignment(Pos.TOP_CENTER);
         hboxPlayerNames.setPadding(new Insets(0, 0, 0, 0));
         hboxPlayerNames.getChildren().addAll(playerOneName);
-        hboxPlayerNames.setMargin(playerOneName, new Insets(0, 150, 0, 0));
+        hboxPlayerNames.setMargin(playerOneName, new Insets(0, 0, 0, 0));
         playerOneName.setOnKeyReleased(keyEvent -> setPlayerOneName(playerOneName));
         playerOneName.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         playerOneName.setFont(new Font(20));
@@ -78,7 +78,7 @@ public class SinglePlayerIntermidiatePage {
 
         HBox hboxnumOfCardsLabel = new HBox();
         hboxnumOfCardsLabel.setAlignment(Pos.TOP_CENTER);
-        hboxnumOfCardsLabel.setPadding(new Insets(75, 0, 0, 50));
+        hboxnumOfCardsLabel.setPadding(new Insets(75, 0, 0, 120));
         hboxnumOfCardsLabel.getChildren().addAll(numOfCardsLabel);
         numOfCardsLabel.setStyle("-fx-text-fill: darkslateblue;");
         numOfCardsLabel.setFont(new Font(20));
@@ -139,6 +139,9 @@ public class SinglePlayerIntermidiatePage {
             settings.setNumOfCards(16);
         } else if ("Extreme".equals(level.getValue())) {
             settings.setNumOfCards(20);
+        }else {
+            System.out.println("Invalid Difficulty");
+            System.exit(1);
         }
     }
 

@@ -195,7 +195,7 @@ public class App extends Application {
 
         MultiPlayerIntermidiatePage mp = new MultiPlayerIntermidiatePage();
         Object[] mPScene = mp.multiPlayerIntInit();
-        Button startMemorymulti = (Button) mPScene[1];
+        Button startMemorymulty = (Button) mPScene[1];
         multiPlayer.setOnAction(e -> {
             try {
                 primaryStage.setScene((Scene) mPScene[0]);
@@ -204,7 +204,7 @@ public class App extends Application {
             }
         });
 
-        startMemory.setOnAction(e -> {
+        startMemorymulty.setOnAction(e -> {
             try {
                 Gameview gv = new Gameview();
                 primaryStage.setScene(gv.mainGame((GameSettings) mPScene[2]));

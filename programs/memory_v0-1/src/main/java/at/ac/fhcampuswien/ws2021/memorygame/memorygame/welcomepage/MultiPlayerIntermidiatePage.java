@@ -53,7 +53,7 @@ public class MultiPlayerIntermidiatePage {
         TextField playerTwoName = new TextField();
         Label playerOneNameLabel = new Label("Player One");
         Label playerTwoNameLabel = new Label("Player Two");
-        Label numOfCardsLabel = new Label("Number of Cards");
+        Label numOfCardsLabel = new Label("Difficulty");
         Label themeOfCardsLabel = new Label("Theme");
 
         HBox hboxPlayerNameLabels = new HBox();
@@ -84,7 +84,7 @@ public class MultiPlayerIntermidiatePage {
 
         HBox hboxnumOfCardsLabel = new HBox();
         hboxnumOfCardsLabel.setAlignment(Pos.TOP_CENTER);
-        hboxnumOfCardsLabel.setPadding(new Insets(75, 0, 0, 50));
+        hboxnumOfCardsLabel.setPadding(new Insets(75, 0, 0, 120));
         hboxnumOfCardsLabel.getChildren().addAll(numOfCardsLabel);
         numOfCardsLabel.setStyle("-fx-text-fill: darkslateblue;");
         numOfCardsLabel.setFont(new Font(20));
