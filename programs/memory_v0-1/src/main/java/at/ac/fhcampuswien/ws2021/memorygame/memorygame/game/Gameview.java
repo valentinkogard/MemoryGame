@@ -2,6 +2,9 @@ package at.ac.fhcampuswien.ws2021.memorygame.memorygame.game;
 
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.App;
 import javafx.application.Application;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableIntegerValue;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -25,6 +28,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 import static java.awt.SystemColor.text;
 import static javafx.scene.text.Font.*;
@@ -32,7 +36,8 @@ import static javafx.scene.text.Font.*;
 public class Gameview { // implements EventHandler<MouseEvent>{
 
     private AnchorPane[] arr;
-    private List<Player> gamePlayer = new ArrayList<Player>();
+    private List<Player> gamePlayer = new ArrayList<>();
+    private List<Label> gameHeaderLabel = new ArrayList<>();
 
     public static Card[] cards;
 
@@ -76,12 +81,12 @@ public class Gameview { // implements EventHandler<MouseEvent>{
                     System.out.println(gamePlayer.get(r.getPlayerInTurn(gamePlayer)).getPlayerName() + " it's your turn");
                     if(r.isMoveAllowed(cards)){
                         findImageToChange(feedback[0], feedback[1], r);
-
                     }
                     else {
                         if(r.twoCardsUncovered(cards, arr)){
                             //p1.incPlayerPoints();
                             gamePlayer.get(r.getPlayerInTurn(gamePlayer)).incPlayerPoints();
+                            gameHeaderLabel.get(r.getPlayerInTurn(gamePlayer)).setText(gamePlayer.get(r.getPlayerInTurn(gamePlayer)).getHeader());
                             System.out.println("Bravo...");
                         }
                         else {
@@ -112,27 +117,28 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         header.setPadding(new Insets(15, 30, 10, 40));
         header.setSpacing(20);
 
-        Label player1 = new Label("Player 1  " + gamePlayer.get(0).getPlayerName() + "\t " + gamePlayer.get(0).getPlayerPoints() + " Points" + "\t\t");
-        player1.setFont(font("Calibri", 25));
-        player1.setVisible(true);
+        //Label player1 = new Label();
+        gameHeaderLabel.add(new Label());
+        gameHeaderLabel.get(0).setFont(font("Calibri", 25));
+        gameHeaderLabel.get(0).setVisible(true);
+        gameHeaderLabel.get(0).setText(gamePlayer.get(0).getHeader());
 
-        Label player2 = new Label("Player 2  " +gamePlayer.get(1).getPlayerName() + "\t " + gamePlayer.get(1).getPlayerPoints()  + " Points" + "\t\t" );
-        player2.setFont(font("Calibri", 25));
-        player2.setVisible(true);
-
-        Label tab = new Label("\t");
+        gameHeaderLabel.add(new Label());
+        gameHeaderLabel.get(1).setFont(font("Calibri", 25));
+        gameHeaderLabel.get(1).setVisible(true);
+        gameHeaderLabel.get(1).setText(gamePlayer.get(1).getHeader());
 
         Button back = new Button("Back");
         back.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-        back.setFont(new Font(20));
+        back.setFont(new Font(15));
         back.setMinWidth(80);
 
 
 
         Button options = new Button();
         options.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-        options.setFont(new Font(15));
-        options.setMinWidth(80);
+        options.setFont(new Font(9));
+        options.setMinWidth(35);
 
         String optionPic = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/zahnrad1.png";
         File directoryoptionPic = new File(optionPic);
@@ -142,8 +148,9 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         imageViewOptionPic.setPreserveRatio(true);
         options.setGraphic(imageViewOptionPic);
 
+
         //header.setVisible(true);
-        header.getChildren().addAll(player1, player2, tab, options, back);
+        header.getChildren().addAll(gameHeaderLabel);//, player2, tab, options, back);
         root.getChildren().add(header);
 
         //create cards and there corresponding nodes
