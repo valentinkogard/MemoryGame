@@ -25,7 +25,7 @@ public class SinglePlayerIntermidiatePage {
 
     Button button;
 
-    public Scene multiPlayerIntInit() throws Exception {
+    public Object[] singlePlayerIntInit() throws Exception {
         WindowSize ws = new WindowSize();
         windowSize = ws.getWindowSize();
         //stage.setTitle("Intermediate Page");
@@ -118,7 +118,7 @@ public class SinglePlayerIntermidiatePage {
         //stage.setScene(scene);
         //stage.show();
 
-        return scene;
+        return new Object[] {scene, button};
 
 
     }
