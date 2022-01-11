@@ -1,6 +1,7 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame.game;
 
 
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.GameSettings;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -22,7 +23,7 @@ public class ImageController extends Gameview {
 
         String path;
         if (cards[i].isPictureShown()) {
-            path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/theme2/image" + cards[i].getPictureId() + ".png";
+            path = Gameview.settings.getTheme() + cards[i].getPictureId() + ".png";
         } else {
             path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/cover/cover1.png";
         }

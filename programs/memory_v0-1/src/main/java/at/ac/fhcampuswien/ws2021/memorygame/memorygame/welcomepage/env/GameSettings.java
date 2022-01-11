@@ -6,6 +6,7 @@ public class GameSettings {
     private int numOfCards;
     private String theme;
 
+
     public GameSettings(){};
 
     public String getPlayerOne() {
@@ -37,6 +38,10 @@ public class GameSettings {
     }
 
     public void setTheme(String theme) {
-        this.theme = theme;
+        if (theme == "Katzen"){
+            this.theme = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/theme1/image";
+        }else {
+            this.theme = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/theme2/image";
+        }
     }
 }

@@ -34,6 +34,8 @@ public class Gameview { // implements EventHandler<MouseEvent>{
     public static int gameheaderSize = 50;
     public static int[] windowSize;
 
+    protected static GameSettings settings;
+
     public void findImageToChange(double mouseX, double mouseY, Rules r) throws FileNotFoundException {
         for(int i = 0; i < cards.length; i++){
             int[] pixel = cards[i].getPixel();
@@ -54,6 +56,8 @@ public class Gameview { // implements EventHandler<MouseEvent>{
     public Scene mainGame(GameSettings settings) throws IOException{
         WindowSize ws = new WindowSize();
         windowSize = ws.getWindowSize();
+
+        this.settings = settings;
 
         if(settings.getPlayerOne() != ""){
             gamePlayer.add(new Player(settings.getPlayerOne()));
