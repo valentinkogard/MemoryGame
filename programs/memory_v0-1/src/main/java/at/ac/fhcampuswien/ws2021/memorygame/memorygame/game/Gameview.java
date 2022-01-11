@@ -67,13 +67,13 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         //System.out.println("0");
     }
 
-    public Scene mainGame(GameSettings settings) throws IOException{
+    public Object[] mainGame(GameSettings settings) throws IOException{
         WindowSize ws = new WindowSize();
         windowSize = ws.getWindowSize();
 
         this.settings = settings;
 
-        if(settings.getPlayerOne() != ""){
+        if(settings.getPlayerOne() != null){
             gamePlayer.add(new Player(settings.getPlayerOne()));
         }
         if(settings.getPlayerTwo() != null){
@@ -128,23 +128,17 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         header.setPadding(new Insets(15, 30, 10, 40));
         header.setSpacing(20);
 
-        //Label player1 = new Label();
-        gameHeaderLabel.add(new Label());
-        gameHeaderLabel.get(0).setFont(font("Calibri", 25));
-        gameHeaderLabel.get(0).setVisible(true);
-        gameHeaderLabel.get(0).setText(gamePlayer.get(0).getHeader());
-
-        gameHeaderLabel.add(new Label());
-        gameHeaderLabel.get(1).setFont(font("Calibri", 25));
-        gameHeaderLabel.get(1).setVisible(true);
-        gameHeaderLabel.get(1).setText(gamePlayer.get(1).getHeader());
+        for (int i = 0; i < gamePlayer.size(); i++) {
+            gameHeaderLabel.add(new Label());
+            gameHeaderLabel.get(i).setFont(font("Calibri", 25));
+            gameHeaderLabel.get(i).setVisible(true);
+            gameHeaderLabel.get(i).setText(gamePlayer.get(i).getHeader());
+        }
 
         Button back = new Button("Back");
         back.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         back.setFont(new Font(15));
         back.setMinWidth(80);
-
-
 
         Button options = new Button();
         options.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
@@ -159,9 +153,9 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         imageViewOptionPic.setPreserveRatio(true);
         options.setGraphic(imageViewOptionPic);
 
-
-        //header.setVisible(true);
-        header.getChildren().addAll(gameHeaderLabel);//, player2, tab, options, back);
+        header.getChildren().addAll(gameHeaderLabel);
+        header.getChildren().addAll(options, back);
+        header.setAlignment(Pos.BASELINE_RIGHT);
         root.getChildren().add(header);
 
         //create cards and there corresponding nodes
@@ -186,7 +180,7 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         //stage.show();
         //stage.setResizable(false);
 
-        return gamescene;
+        return new Object[] {gamescene, back, options};
 
     }
 
