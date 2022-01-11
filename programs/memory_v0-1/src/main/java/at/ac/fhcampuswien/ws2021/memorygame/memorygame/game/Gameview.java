@@ -113,12 +113,14 @@ public class Gameview { // implements EventHandler<MouseEvent>{
                             r.setPlayerInTurn(gamePlayer);
                         }
                     }
+                    for (int i = 0; i < gameHeaderLabel.size(); i++) {
+                        gameHeaderLabel.get(i).setStyle("-fx-background-color: transparent;");
+                    }
+                    gameHeaderLabel.get(r.getPlayerInTurn(gamePlayer)).setStyle("-fx-background-color: yellow;");
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
-
-
             }
         };
         //!!! change methode that is can also handle e.g 80 cards
