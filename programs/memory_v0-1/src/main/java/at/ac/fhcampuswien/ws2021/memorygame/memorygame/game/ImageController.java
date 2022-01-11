@@ -31,7 +31,7 @@ public class ImageController extends Gameview {
         Image image = new Image(new FileInputStream(directory.getAbsoluteFile()));
         ImageView imageView = new ImageView(image);
         int x = spaceX + cards[i].getPosition()[0] * (size + spaceX);
-        int y = spaceY + cards[i].getPosition()[1] * (size + spaceY) + gameheaderSize;
+        int y = spaceY + cards[i].getPosition()[1] * (size + spaceY);
         imageView.setX(x);
         imageView.setY(y);
         //imageView.setTranslateZ(20);
@@ -59,7 +59,7 @@ public class ImageController extends Gameview {
      * @param stackPane
      * @throws FileNotFoundException
      */
-    public static void setBackground(StackPane stackPane) throws FileNotFoundException {
+    public static void setBackground(VBox stackPane) throws FileNotFoundException {
         String path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/background2.jpg"; //3.gif
         File directory = new File(path);
         BackgroundImage myBI = new BackgroundImage(new Image(new FileInputStream(directory.getAbsoluteFile()), windowSize[0], windowSize[1], false, true),

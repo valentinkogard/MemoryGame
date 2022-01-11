@@ -3,9 +3,9 @@ package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.game.Gameview;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.CreditsPage;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.MultiPlayerIntermidiatePage;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.OptionsPage;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.SinglePlayerIntermidiatePage;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.*;
-import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.*;
@@ -21,7 +21,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.HBox;
 import javafx.scene.media.MediaPlayer;
-import javafx.util.Duration;
 
 
 import java.io.IOException;
@@ -54,6 +53,8 @@ public class App extends Application {
 
         //for general background settings - Mouse entered / Mouse exited
         ButtonStyle bs = new ButtonStyle();
+
+        Gameview gv = new Gameview();
 
         VBox vbox = new VBox();
         vbox.setPrefWidth(200); //spacing
@@ -125,6 +126,31 @@ public class App extends Application {
         Music media = new Music();
         MediaPlayer mediaPlayer = media.MusicPlayer();
 
+        //-------------------------Option Button-------------------------
+
+        Button options = new Button();
+        options.setStyle(menuButtonStyle);
+        options.setFont(Font.font(buttonTextStyle[0], Integer.parseInt(buttonTextStyle[1])));
+        options.setText("Optionen");
+        options.setMinWidth(minButtonSize[0]);
+        options.setMinHeight(minButtonSize[1]);
+        options.setCursor(Cursor.HAND);
+        options = bs.ButtonStyleInit(options, border, bg4, bg,toggleButton2);
+
+        //-------------------------Options-------------------------
+
+        OptionsPage op = new OptionsPage();
+        Object[] optnSceneObj = op.OptionsPageInit(bg4, mediaPlayer, toggleButton2);
+        Scene optnScene = (Scene) optnSceneObj[0];
+        Button back1 = (Button) optnSceneObj[1];
+        ToggleButton toggleButton = (ToggleButton) optnSceneObj[2];
+        back1 = bs.ButtonStyleInit(back1, border, bg, bg, toggleButton2);
+
+
+
+        options.setOnAction(e -> primaryStage.setScene(optnScene));
+        back1.setOnAction(e -> primaryStage.setScene(mainpageScene));
+
         //-------------------------Singleplayer Button-------------------------
 
         Button singlePlayer = new Button();
@@ -138,46 +164,36 @@ public class App extends Application {
 
         Button finalSinglePlayer = singlePlayer;
 
-            SinglePlayerIntermidiatePage sp = new SinglePlayerIntermidiatePage();
-            Object[] sPScene = new Object[0];
-            try {
-                sPScene = sp.singlePlayerIntInit();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            Button startMemorySingle = (Button) sPScene[1];
-            Object[] finalSPScene1 = sPScene;
-            finalSinglePlayer.setOnAction(e -> {
-                try {
-                    primaryStage.setScene((Scene) finalSPScene1[0]);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            });
+        SinglePlayerIntermidiatePage sp = new SinglePlayerIntermidiatePage();
+        Object[] sPScene = sp.singlePlayerIntInit();
 
-            Button startMemory = (Button) sPScene[1];
+        //open SinglePlayerIntermidiatePage
+        Object[] finalSPScene1 = sPScene;
+        finalSinglePlayer.setOnAction(e -> {
+            primaryStage.setScene((Scene) finalSPScene1[0]);
+        });
 
-            Object[] finalSPScene = sPScene;
-            startMemory.setOnAction(e -> {
-                try {
-                    Gameview gv = new Gameview();
-                    primaryStage.setScene(gv.mainGame((GameSettings) finalSPScene[2]));
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            });
+        //start Gameview in SinglePlayer Mode
+        Button startMemory = (Button) sPScene[1];
+        Object[] finalSPScene = sPScene;
 
-        Object[] finalSPScene2 = sPScene;
         startMemory.setOnAction(e -> {
-                try {
-                    Gameview gv = new Gameview();
-                    primaryStage.setScene(gv.mainGame((GameSettings) finalSPScene2[2]));
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            });
+            Object[] gvObjSing = new Object[0];
+            try {
+                gvObjSing = gv.mainGame((GameSettings) finalSPScene[2]);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            primaryStage.setScene((Scene) gvObjSing[0]);
 
-            //-------------------------Multiplayer Button-------------------------
+            Button backSin = (Button) gvObjSing[1];
+            backSin.setOnAction(e2 -> {
+                //System.out.println("Back to mainScene");
+                primaryStage.setScene(mainpageScene);
+            });
+        });
+
+        //-------------------------Multiplayer Button-------------------------
 
         Button multiPlayer = new Button();
         multiPlayer.setStyle(menuButtonStyle);
@@ -198,6 +214,7 @@ public class App extends Application {
         MultiPlayerIntermidiatePage mp = new MultiPlayerIntermidiatePage();
         Object[] mPScene = mp.multiPlayerIntInit();
         Button startMemorymulty = (Button) mPScene[1];
+
         multiPlayer.setOnAction(e -> {
             try {
                 primaryStage.setScene((Scene) mPScene[0]);
@@ -207,115 +224,21 @@ public class App extends Application {
         });
 
         startMemorymulty.setOnAction(e -> {
+            Object[] gvObjMulti = new Object[0];
             try {
-                Gameview gv = new Gameview();
-                primaryStage.setScene(gv.mainGame((GameSettings) mPScene[2]));
+                gvObjMulti = gv.mainGame((GameSettings) mPScene[2]);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+            Button toMenu = (Button) gvObjMulti[1];
+            primaryStage.setScene((Scene) gvObjMulti[0]);
+            toMenu.setOnAction(e2 -> {
+                primaryStage.setScene(mainpageScene);
+            });
         });
 
 
-        //-------------------------Option Button-------------------------
 
-        Button options = new Button();
-        options.setStyle(menuButtonStyle);
-        options.setFont(Font.font(buttonTextStyle[0], Integer.parseInt(buttonTextStyle[1])));
-        options.setText("Optionen");
-        options.setMinWidth(minButtonSize[0]);
-        options.setMinHeight(minButtonSize[1]);
-        options.setCursor(Cursor.HAND);
-        options = bs.ButtonStyleInit(options, border, bg4, bg,toggleButton2);
-
-        //-------------------------Options-------------------------
-
-        VBox optnVbox = new VBox();
-        optnVbox.setSpacing(20);    //spacing
-        optnVbox.setAlignment(Pos.CENTER);  //alinment
-        optnVbox.setBackground(bg4);
-
-        Scene optnScene = new Scene(optnVbox, windowSize[0], windowSize[1]);
-
-        Text volSliderText = new Text(10,50, "Volume");
-        volSliderText.setFont(Font.font(buttonTextStyle[0], 50));
-        volSliderText.setStyle(menuButtonStyle);
-
-        Slider volSlider = new Slider(0,100,50);
-        volSlider.setMajorTickUnit(8.0);
-        volSlider.setMinorTickCount(3);
-        volSlider.setMaxWidth(500);
-        volSlider.setMinHeight(50);
-        volSlider.setSnapToTicks(false);
-        volSlider.setShowTickMarks(false);
-        volSlider.setShowTickLabels(false);
-        volSlider.setStyle("-fx-background-color: darkslateblue; ");
-        volSlider.setValue(mediaPlayer.getVolume() * 100);
-
-        volSlider.valueProperty().addListener(observable -> mediaPlayer.setVolume(volSlider.getValue() / 100));
-
-        Text musicBtnText = new Text(10,50, "Music");
-        musicBtnText.setFont(Font.font(buttonTextStyle[0], 50));
-        musicBtnText.setStyle(menuButtonStyle);
-
-        ToggleButton toggleButton = new ToggleButton();
-        toggleButton.setMinSize(150,100);
-        toggleButton.setStyle(menuButtonStyle);
-        toggleButton.setSelected(true);
-        toggleButton.setText("ON");
-        toggleButton.setFont(Font.font(buttonTextStyle[0], 50));
-
-        toggleButton.setOnAction(event -> {
-
-            if (toggleButton.isSelected()) {
-                toggleButton.setText("ON");
-                toggleButton.setMinSize(150, 100);
-                toggleButton.setStyle(menuButtonStyle);
-                mediaPlayer.play();
-            }
-            else {
-                toggleButton.setText("OFF");
-                toggleButton.setMinSize(150, 100);
-                toggleButton.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
-                mediaPlayer.pause();
-            }
-        });
-
-        Text musicBtnText2 = new Text(10,50, "Soundeffect");
-        musicBtnText2.setFont(Font.font(buttonTextStyle[0], 50));
-        musicBtnText2.setStyle(menuButtonStyle);
-
-        toggleButton2.setMinSize(150,100);
-        toggleButton2.setStyle(menuButtonStyle);
-        toggleButton2.setSelected(true);
-        toggleButton2.setText("ON");
-        toggleButton2.setFont(Font.font(buttonTextStyle[0], 50));
-
-        toggleButton2.setOnAction(event -> {
-
-            if (toggleButton2.isSelected()) {
-                toggleButton2.setText("ON");
-                toggleButton2.setMinSize(150, 100);
-                toggleButton2.setStyle(menuButtonStyle);
-            }
-            else {
-                toggleButton2.setText("OFF");
-                toggleButton2.setMinSize(150, 100);
-                toggleButton2.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
-            }
-        });
-
-        Button back1 = new Button("Back");
-        back1.setFont(new Font(25));
-        back1.setMinWidth(200);
-        back1.setStyle(menuButtonStyle);
-        back1 = bs.ButtonStyleInit(back1, border, bg, bg, toggleButton2);
-
-        back1.setCursor(Cursor.HAND);
-        toggleButton.setCursor(Cursor.HAND);
-        volSlider.setCursor(Cursor.HAND);
-
-        options.setOnAction(e -> primaryStage.setScene(optnScene));
-        back1.setOnAction(e -> primaryStage.setScene(mainpageScene));
 
         //-------------------------Credit Button-------------------------
 
@@ -359,7 +282,6 @@ public class App extends Application {
         hbox.getChildren().addAll(mBtn, eBtn, mBtn1, oBtn, rBtn, yBtn);
         vbox.getChildren().addAll(finalSinglePlayer, multiPlayer, options, credits, exit);
 
-        optnVbox.getChildren().addAll(musicBtnText, toggleButton ,musicBtnText2,toggleButton2,volSliderText, volSlider, back1);
 
         primaryStage.show();
 
