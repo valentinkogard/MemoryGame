@@ -134,35 +134,26 @@ public class App extends Application {
         singlePlayer.setCursor(Cursor.HAND);
         singlePlayer = bs.ButtonStyleInit(singlePlayer, border, bg, bg, toggleButton2);
 
-        singlePlayer.setOnAction(event -> {
-            //MultiPlayerInitPage
+        Button finalSinglePlayer = singlePlayer;
 
-            //Loading Page
-            /*LoadingPage lp = new LoadingPage();
-            try {
-                Scene loadSc = lp.loadingPageInit();
-                primaryStage.setScene(loadSc);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }*/
-            //game page - Class: Gameview
             SinglePlayerIntermidiatePage sp = new SinglePlayerIntermidiatePage();
-           // Gameview gv = new Gameview();
-            //PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
             Object[] sPScene = new Object[0];
             try {
                 sPScene = sp.singlePlayerIntInit();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Button startMemory = (Button) sPScene[1];
-            /*multiPlayer.setOnAction(e -> {
+            Button startMemorySingle = (Button) sPScene[1];
+            Object[] finalSPScene1 = sPScene;
+            finalSinglePlayer.setOnAction(e -> {
                 try {
-                    primaryStage.setScene((Scene) sPScene[0]);
+                    primaryStage.setScene((Scene) finalSPScene1[0]);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
-            });*/
+            });
+
+            Button startMemory = (Button) sPScene[1];
 
             Object[] finalSPScene = sPScene;
             startMemory.setOnAction(e -> {
@@ -173,21 +164,18 @@ public class App extends Application {
                     ex.printStackTrace();
                 }
             });
-            /*
-            pause.setOnFinished(e ->
-            {
+
+        Object[] finalSPScene2 = sPScene;
+        startMemory.setOnAction(e -> {
                 try {
-                    primaryStage.setScene(gv.mainGame());
+                    Gameview gv = new Gameview();
+                    primaryStage.setScene(gv.mainGame((GameSettings) finalSPScene2[2]));
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             });
-            pause.play();
 
-             */
-        });
-
-        //-------------------------Multiplayer Button-------------------------
+            //-------------------------Multiplayer Button-------------------------
 
         Button multiPlayer = new Button();
         multiPlayer.setStyle(menuButtonStyle);
@@ -207,7 +195,7 @@ public class App extends Application {
 
         MultiPlayerIntermidiatePage mp = new MultiPlayerIntermidiatePage();
         Object[] mPScene = mp.multiPlayerIntInit();
-        Button startMemory = (Button) mPScene[1];
+        Button startMemorymulti = (Button) mPScene[1];
         multiPlayer.setOnAction(e -> {
             try {
                 primaryStage.setScene((Scene) mPScene[0]);
@@ -367,7 +355,7 @@ public class App extends Application {
         //-------------------------vBox Alignment-------------------------
 
         hbox.getChildren().addAll(mBtn, eBtn, mBtn1, oBtn, rBtn, yBtn);
-        vbox.getChildren().addAll(singlePlayer, multiPlayer, options, credits, exit);
+        vbox.getChildren().addAll(finalSinglePlayer, multiPlayer, options, credits, exit);
 
         optnVbox.getChildren().addAll(musicBtnText, toggleButton ,musicBtnText2,toggleButton2,volSliderText, volSlider, back1);
 
