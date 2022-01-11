@@ -131,13 +131,13 @@ public class SinglePlayerIntermidiatePage {
     }
 
     private void getNumOfCards(ChoiceBox<String> level) {
-        if ("easy".equals(level.getValue())) {
+        if ("Easy".equals(level.getValue())) {
             settings.setNumOfCards(12);
-        } else if ("medium".equals(level.getValue())) {
+        } else if ("Medium".equals(level.getValue())) {
             settings.setNumOfCards(15);
-        } else if ("hard".equals(level.getValue())) {
+        } else if ("Hard".equals(level.getValue())) {
             settings.setNumOfCards(16);
-        } else if ("extreme".equals(level.getValue())) {
+        } else if ("Extreme".equals(level.getValue())) {
             settings.setNumOfCards(20);
         }
     }
