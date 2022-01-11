@@ -8,11 +8,6 @@ import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.Music;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.WindowSize;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.*;
 import javafx.scene.Scene;
@@ -20,10 +15,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.layout.Background;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -41,6 +34,13 @@ public class App extends Application {
     public static int[] windowSize;
     //minimum button size
     private static final int[] minButtonSize = {200, 40};  //0: Width; 1: Height
+    //title button style
+    private static final String titleButtonStyle = "-fx-background-color: transparent;";
+    //menu button style
+    private static final String menuButtonStyle = "-fx-background-color: darkslateblue; -fx-text-fill: white;";
+    // button text style
+    private static final String[] buttonTextStyle  = {"Calibri", String.valueOf(25)};   //0: Schriftart; 1: Schriftgröße
+
 
     public static void main(String[] args) {
         launch(args);
@@ -84,40 +84,34 @@ public class App extends Application {
 
         BackgroundPage buttonback = new BackgroundPage();
 
+        ImageView CoverM = buttonback.ButtonBack("CoverM");
+        ImageView CoverM1 = buttonback.ButtonBack("CoverM");
         Button mBtn = new Button();
         Button mBtn1 = new Button();
-        ImageView CoverM = new ImageView();
-        ImageView CoverM1 = new ImageView();
-        CoverM = buttonback.ButtonBack("CoverM");
-        CoverM1 = buttonback.ButtonBack("CoverM");
         mBtn.setGraphic(CoverM);
         mBtn1.setGraphic(CoverM1);
-        mBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
-        mBtn1.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
+        mBtn.setStyle(titleButtonStyle);
+        mBtn1.setStyle(titleButtonStyle);
 
+        ImageView CoverE = buttonback.ButtonBack("CoverE");
         Button eBtn = new Button();
-        ImageView CoverE = new ImageView();
-        CoverE = buttonback.ButtonBack("CoverE");
         eBtn.setGraphic(CoverE);
-        eBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
+        eBtn.setStyle(titleButtonStyle);
 
+        ImageView CoverO = buttonback.ButtonBack("CoverO");
         Button oBtn = new Button();
-        ImageView CoverO = new ImageView();
-        CoverO = buttonback.ButtonBack("CoverO");
         oBtn.setGraphic(CoverO);
-        oBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
+        oBtn.setStyle(titleButtonStyle);
 
         Button rBtn = new Button();
-        ImageView CoverR = new ImageView();
-        CoverR = buttonback.ButtonBack("CoverR");
+        ImageView CoverR = buttonback.ButtonBack("CoverR");
         rBtn.setGraphic(CoverR);
-        rBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
+        rBtn.setStyle(titleButtonStyle);
 
         Button yBtn = new Button();
-        ImageView CoverY = new ImageView();
-        CoverY = buttonback.ButtonBack("CoverY");
+        ImageView CoverY = buttonback.ButtonBack("CoverY");
         yBtn.setGraphic(CoverY);
-        yBtn.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
+        yBtn.setStyle(titleButtonStyle);
 
         BackgroundPage pageBack = new BackgroundPage();
         String pathToBg = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/";
@@ -135,80 +129,75 @@ public class App extends Application {
         //-------------------------Singleplayer Button-------------------------
 
         Button singlePlayer = new Button();
-        singlePlayer.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-        singlePlayer.setFont(Font.font("Calibri", 25));
+        singlePlayer.setStyle(menuButtonStyle);
+        singlePlayer.setFont(Font.font(buttonTextStyle[0], Integer.parseInt(buttonTextStyle[1])));
         singlePlayer.setText("Singleplayer");
         singlePlayer.setMinWidth(minButtonSize[0]);
         singlePlayer.setMinHeight(minButtonSize[1]);
         singlePlayer.setCursor(Cursor.HAND);
         singlePlayer = bs.ButtonStyleInit(singlePlayer, border, bg, bg, toggleButton2);
 
-        singlePlayer.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                //MultiPlayerInitPage
+        singlePlayer.setOnAction(event -> {
+            //MultiPlayerInitPage
 
-                //Loading Page
-                LoadingPage lp = new LoadingPage();
-                try {
-                    Scene loadSc = lp.loadingPageInit();
-                    primaryStage.setScene(loadSc);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                //game page - Class: Gameview
-                Gameview gv = new Gameview();
-                PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
-                pause.setOnFinished(e ->
-                {
-                    try {
-                        primaryStage.setScene(gv.mainGame());
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                });
-                pause.play();
+            //Loading Page
+            LoadingPage lp = new LoadingPage();
+            try {
+                Scene loadSc = lp.loadingPageInit();
+                primaryStage.setScene(loadSc);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            //game page - Class: Gameview
+            Gameview gv = new Gameview();
+            PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+            pause.setOnFinished(e ->
+            {
+                try {
+                    primaryStage.setScene(gv.mainGame());
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            });
+            pause.play();
         });
 
         //-------------------------Multiplayer Button-------------------------
 
         Button multiPlayer = new Button();
-        multiPlayer.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-        multiPlayer.setFont(Font.font("Calibri", 25));
+        multiPlayer.setStyle(menuButtonStyle);
+        multiPlayer.setFont(Font.font(buttonTextStyle[0], Integer.parseInt(buttonTextStyle[1])));
         multiPlayer.setText("Multiplayer");
         multiPlayer.setMinWidth(minButtonSize[0]);
         multiPlayer.setMinHeight(minButtonSize[1]);
         multiPlayer.setCursor(Cursor.HAND);
         multiPlayer = bs.ButtonStyleInit(multiPlayer, border, bg3, bg, toggleButton2);
 
-        VBox multiPlyVbox = new VBox();
-        Scene multiPlyScene = new Scene(multiPlyVbox, windowSize[0], windowSize[1]);
-        multiPlyVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
+        //VBox multiPlyVbox = new VBox();
+        //Scene multiPlyScene = new Scene(multiPlyVbox, windowSize[0], windowSize[1]);
+        //multiPlyVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
         Text title3 = new Text("Multiplayer placeholder");
         title3.setFont(new Font(40));
 
-        //Button back3 = new Button("Back");
-        //back3.setFont(new Font(20));
-        //back3.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-        //back3.setMinWidth(200);
-        //back3.setOnAction(e -> primaryStage.setScene(mainpageScene));
-
         MultiPlayerIntermidiatePage mp = new MultiPlayerIntermidiatePage();
+        Object[] mPScene = mp.multiPlayerIntInit();
+        Button mPBack = (Button) mPScene[1];
         multiPlayer.setOnAction(e -> {
             try {
-                primaryStage.setScene(mp.multiPlayerIntInit());
+                primaryStage.setScene((Scene) mPScene[0]);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         });
+        mPBack.setOnAction(e -> primaryStage.setScene(mainpageScene));
+
 
         //-------------------------Option Button-------------------------
 
         Button options = new Button();
-        options.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-        options.setFont(Font.font("Calibri", 25));
+        options.setStyle(menuButtonStyle);
+        options.setFont(Font.font(buttonTextStyle[0], Integer.parseInt(buttonTextStyle[1])));
         options.setText("Optionen");
         options.setMinWidth(minButtonSize[0]);
         options.setMinHeight(minButtonSize[1]);
@@ -225,8 +214,8 @@ public class App extends Application {
         Scene optnScene = new Scene(optnVbox, windowSize[0], windowSize[1]);
 
         Text volSliderText = new Text(10,50, "Volume");
-        volSliderText.setFont(Font.font("Calibri", 50));
-        volSliderText.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        volSliderText.setFont(Font.font(buttonTextStyle[0], 50));
+        volSliderText.setStyle(menuButtonStyle);
 
         Slider volSlider = new Slider(0,100,50);
         volSlider.setMajorTickUnit(8.0);
@@ -236,84 +225,69 @@ public class App extends Application {
         volSlider.setSnapToTicks(false);
         volSlider.setShowTickMarks(false);
         volSlider.setShowTickLabels(false);
-        //volSlider.setBackground();
         volSlider.setStyle("-fx-background-color: darkslateblue; ");
         volSlider.setValue(mediaPlayer.getVolume() * 100);
 
-        volSlider.valueProperty().addListener(new InvalidationListener() {
-            @Override
-            public void invalidated(Observable observable) {
-                mediaPlayer.setVolume(volSlider.getValue() / 100);
-
-            }
-        });
+        volSlider.valueProperty().addListener(observable -> mediaPlayer.setVolume(volSlider.getValue() / 100));
 
         Text musicBtnText = new Text(10,50, "Music");
-        musicBtnText.setFont(Font.font("Calibri", 50));
-        musicBtnText.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        musicBtnText.setFont(Font.font(buttonTextStyle[0], 50));
+        musicBtnText.setStyle(menuButtonStyle);
 
         ToggleButton toggleButton = new ToggleButton();
         toggleButton.setMinSize(150,100);
-        toggleButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        toggleButton.setStyle(menuButtonStyle);
         toggleButton.setSelected(true);
         toggleButton.setText("ON");
-        toggleButton.setFont(Font.font("Calibri", 50));
+        toggleButton.setFont(Font.font(buttonTextStyle[0], 50));
 
+        toggleButton.setOnAction(event -> {
 
-        toggleButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                if (toggleButton.isSelected()) {
-                    toggleButton.setText("ON");
-                    toggleButton.setMinSize(150, 100);
-                    toggleButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-                    mediaPlayer.play();
-                }
-                else {
-                    toggleButton.setText("OFF");
-                    toggleButton.setMinSize(150, 100);
-                    toggleButton.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
-                    mediaPlayer.pause();
-                }
+            if (toggleButton.isSelected()) {
+                toggleButton.setText("ON");
+                toggleButton.setMinSize(150, 100);
+                toggleButton.setStyle(menuButtonStyle);
+                mediaPlayer.play();
+            }
+            else {
+                toggleButton.setText("OFF");
+                toggleButton.setMinSize(150, 100);
+                toggleButton.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+                mediaPlayer.pause();
             }
         });
 
         Text musicBtnText2 = new Text(10,50, "Soundeffect");
-        musicBtnText2.setFont(Font.font("Calibri", 50));
-        musicBtnText2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        musicBtnText2.setFont(Font.font(buttonTextStyle[0], 50));
+        musicBtnText2.setStyle(menuButtonStyle);
 
         toggleButton2.setMinSize(150,100);
-        toggleButton2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        toggleButton2.setStyle(menuButtonStyle);
         toggleButton2.setSelected(true);
         toggleButton2.setText("ON");
-        toggleButton2.setFont(Font.font("Calibri", 50));
+        toggleButton2.setFont(Font.font(buttonTextStyle[0], 50));
 
-        toggleButton2.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        toggleButton2.setOnAction(event -> {
 
-                if (toggleButton2.isSelected()) {
-                    toggleButton2.setText("ON");
-                    toggleButton2.setMinSize(150, 100);
-                    toggleButton2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-                }
-                else {
-                    toggleButton2.setText("OFF");
-                    toggleButton2.setMinSize(150, 100);
-                    toggleButton2.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
-                }
+            if (toggleButton2.isSelected()) {
+                toggleButton2.setText("ON");
+                toggleButton2.setMinSize(150, 100);
+                toggleButton2.setStyle(menuButtonStyle);
+            }
+            else {
+                toggleButton2.setText("OFF");
+                toggleButton2.setMinSize(150, 100);
+                toggleButton2.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
             }
         });
 
         Button back1 = new Button("Back");
         back1.setFont(new Font(25));
         back1.setMinWidth(200);
-        back1.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        back1.setStyle(menuButtonStyle);
         back1 = bs.ButtonStyleInit(back1, border, bg, bg, toggleButton2);
 
         back1.setCursor(Cursor.HAND);
-        //back3.setCursor(Cursor.HAND);
         toggleButton.setCursor(Cursor.HAND);
         volSlider.setCursor(Cursor.HAND);
 
@@ -324,15 +298,15 @@ public class App extends Application {
 
         Button credits = new Button();
         credits.setText("Credits");
-        credits.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-        credits.setFont(Font.font("Calibri", 25));
+        credits.setStyle(menuButtonStyle);
+        credits.setFont(Font.font(buttonTextStyle[0], Integer.parseInt(buttonTextStyle[1])));
         credits.setMinWidth(minButtonSize[0]);
         credits.setMinHeight(minButtonSize[1]);
         credits.setCursor(Cursor.HAND);
         credits = bs.ButtonStyleInit(credits, border, bg, bg,toggleButton2);
 
         CreditsPage cp = new CreditsPage();
-        Object o1[] = cp.CreditsPageInit();
+        Object[] o1 = cp.CreditsPageInit();
         Scene credScene = (Scene) o1[0];
         Button button = (Button) o1[1];
 
@@ -342,48 +316,31 @@ public class App extends Application {
         //-------------------------Exit Button-------------------------
 
         Button exit = new Button();
-        exit.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-        exit.setFont(Font.font("Calibri", 25));
+        exit.setStyle(menuButtonStyle);
+        exit.setFont(Font.font(buttonTextStyle[0], Integer.parseInt(buttonTextStyle[1])));
         exit.setText("Exit");
         exit.setMinWidth(minButtonSize[0]);
         exit.setMinHeight(minButtonSize[1]);
         exit.setCursor(Cursor.HAND);
 
         exit = bs.ButtonStyleInit(exit, border, bg2, bg, toggleButton2);
-        /*
-        Button exit1 = new Button();
-        exit1.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-        exit1.setFont(Font.font("Calibri", 25));
-        exit1.setText("Exit");
-        */
+
         Button finalExit = exit;
-        exit.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Stage stage = (Stage) finalExit.getScene().getWindow();
-                stage.close();
-            }
+        exit.setOnAction(event -> {
+            Stage stage = (Stage) finalExit.getScene().getWindow();
+            stage.close();
         });
-
-        //-------------------------VBox Button Width & Spacing  Setting-------------------------
-
-        //multiPlyVbox.setPrefWidth(200);
-        //multiPlyVbox.setSpacing(400);
 
         //-------------------------vBox Alignment-------------------------
 
         hbox.getChildren().addAll(mBtn, eBtn, mBtn1, oBtn, rBtn, yBtn);
         vbox.getChildren().addAll(singlePlayer, multiPlayer, options, credits, exit);
-        //vbox1.getChildren().add(exit1);
 
         optnVbox.getChildren().addAll(musicBtnText, toggleButton ,musicBtnText2,toggleButton2,volSliderText, volSlider, back1);
 
-        //multiPlyVbox.setAlignment(Pos.CENTER);
-        //multiPlyVbox.getChildren().addAll(title3, back3);
-
         primaryStage.show();
 
-        /*
+/*
         border.setOnMouseMoved(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -403,6 +360,8 @@ public class App extends Application {
                 yBtn.getTransforms().addAll(rotate);
             }
         });
-         */
+
+
+ */
     }
 }
