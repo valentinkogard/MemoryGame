@@ -77,16 +77,16 @@ public class Rules {
      * @param players - List of all Players
      */
     public void setPlayerInTurn(List<Player> players){
-        players.get(0).incTriesOfPlayer();       //not pretty well coded...
-        if(players.get(0).getTriesOfPlayer() >= 2){
-            players.get(0).resetTriesOfPlayer();
-            int currentlyInTurn = getPlayerInTurn(players);
+        //players.get(0).incTriesOfPlayer();       //not pretty well coded...
+        //if(players.get(0).getTriesOfPlayer() >= 2){
+            //players.get(0).resetTriesOfPlayer();
+        int currentlyInTurn = getPlayerInTurn(players);
 
-            if(currentlyInTurn + 1 >= players.size()) players.get(0).setInTurn(true);
-            else players.get(currentlyInTurn + 1).setInTurn(true);
+        if(currentlyInTurn + 1 >= players.size()) players.get(0).setInTurn(true);
+        else players.get(currentlyInTurn + 1).setInTurn(true);
 
-            players.get(currentlyInTurn).setInTurn(false);
-        }
+        players.get(currentlyInTurn).setInTurn(false);
+        //}
     }
 
     /**
