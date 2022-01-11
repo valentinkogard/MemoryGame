@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame.game;
 
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.GameSettings;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.WindowSize;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -50,13 +51,15 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         //System.out.println("0");
     }
 
-    public Scene mainGame() throws IOException{
+    public Scene mainGame(GameSettings settings) throws IOException{
         WindowSize ws = new WindowSize();
         windowSize = ws.getWindowSize();
 
-        int numberOfPlayer = 2;
-        for(int i = 0; i < numberOfPlayer; i++){
-            gamePlayer.add(new Player("Player" + i));
+        if(settings.getPlayerOne() != ""){
+            gamePlayer.add(new Player(settings.getPlayerOne()));
+        }
+        if(settings.getPlayerTwo() != ""){
+            gamePlayer.add(new Player(settings.getPlayerTwo()));
         }
 
         //stage.setTitle("Mem(ory) game :<)");
@@ -92,7 +95,7 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         //!!! change methode that is can also handle e.g 80 cards
         //current problem: algorithm cases empty objects which leads in gameview to an error(1)
 
-        cards = CardInitialisation.cardGeneration(40);
+        cards = CardInitialisation.cardGeneration(settings.getNumOfCards()*2);
         StackPane root = new StackPane();
 
         arr = new AnchorPane[cards.length];

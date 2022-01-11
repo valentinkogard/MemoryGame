@@ -2,10 +2,7 @@ package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
 
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.game.Gameview;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.*;
-import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.BackgroundPage;
-import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.ButtonStyle;
-import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.Music;
-import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.WindowSize;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.*;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -141,16 +138,42 @@ public class App extends Application {
             //MultiPlayerInitPage
 
             //Loading Page
-            LoadingPage lp = new LoadingPage();
+            /*LoadingPage lp = new LoadingPage();
             try {
                 Scene loadSc = lp.loadingPageInit();
                 primaryStage.setScene(loadSc);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+            }*/
             //game page - Class: Gameview
-            Gameview gv = new Gameview();
-            PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+            SinglePlayerIntermidiatePage sp = new SinglePlayerIntermidiatePage();
+           // Gameview gv = new Gameview();
+            //PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+            Object[] sPScene = new Object[0];
+            try {
+                sPScene = sp.singlePlayerIntInit();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Button startMemory = (Button) sPScene[1];
+            /*multiPlayer.setOnAction(e -> {
+                try {
+                    primaryStage.setScene((Scene) sPScene[0]);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            });*/
+
+            Object[] finalSPScene = sPScene;
+            startMemory.setOnAction(e -> {
+                try {
+                    Gameview gv = new Gameview();
+                    primaryStage.setScene(gv.mainGame((GameSettings) finalSPScene[2]));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            });
+            /*
             pause.setOnFinished(e ->
             {
                 try {
@@ -160,6 +183,8 @@ public class App extends Application {
                 }
             });
             pause.play();
+
+             */
         });
 
         //-------------------------Multiplayer Button-------------------------
@@ -182,7 +207,7 @@ public class App extends Application {
 
         MultiPlayerIntermidiatePage mp = new MultiPlayerIntermidiatePage();
         Object[] mPScene = mp.multiPlayerIntInit();
-        Button mPBack = (Button) mPScene[1];
+        Button startMemory = (Button) mPScene[1];
         multiPlayer.setOnAction(e -> {
             try {
                 primaryStage.setScene((Scene) mPScene[0]);
@@ -190,7 +215,15 @@ public class App extends Application {
                 ex.printStackTrace();
             }
         });
-        mPBack.setOnAction(e -> primaryStage.setScene(mainpageScene));
+
+        startMemory.setOnAction(e -> {
+            try {
+                Gameview gv = new Gameview();
+                primaryStage.setScene(gv.mainGame((GameSettings) mPScene[2]));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
 
 
         //-------------------------Option Button-------------------------
