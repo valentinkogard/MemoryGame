@@ -95,7 +95,8 @@ public class MultiPlayerIntermidiatePage {
         hboxnumOfCards.setPadding(new Insets(0, 0, 0, 0));
         hboxnumOfCards.getChildren().addAll(numOfCards);
         numOfCards.getItems().addAll("Easy", "Medium", "Hard", "Extreme");
-        numOfCards.setValue("Select Difficulty");
+        numOfCards.getSelectionModel().selectFirst();
+        settings.setNumOfCards(12);
         numOfCards.setOnAction(actionEvent -> getNumOfCards(numOfCards));
 
 
@@ -112,7 +113,8 @@ public class MultiPlayerIntermidiatePage {
         hboxThemeOfCards.setPadding(new Insets(0, 0, 0, 0));
         hboxThemeOfCards.getChildren().addAll(themeOfCards);
         themeOfCards.getItems().addAll("Sehenswürdigkeiten", "Katzen");
-        themeOfCards.setValue("Select Theme");
+        themeOfCards.getSelectionModel().selectFirst();
+        settings.setTheme(themeOfCards.getValue());
         themeOfCards.setOnAction(actionEvent -> getThemeOfCards(themeOfCards));
 
         HBox hboxButton = new HBox();
