@@ -1,11 +1,16 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame.game;
 
-import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.GameSettings;
-import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.WindowSize;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.App;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
@@ -14,6 +19,8 @@ import javafx.stage.Stage;
 
 //import java.awt.*;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -111,12 +118,41 @@ public class Gameview { // implements EventHandler<MouseEvent>{
 
         //create gameheader
         HBox header = new HBox();
-        Label player1 = new Label(gamePlayer.get(0).getPlayerName() + "\t" + gamePlayer.get(0).getPlayerPoints());
-        player1.setFont(font("Calibri", 20));
+        header.setPadding(new Insets(15, 30, 10, 40));
+        header.setSpacing(20);
+
+        Label player1 = new Label("Player 1  " + gamePlayer.get(0).getPlayerName() + "\t " + gamePlayer.get(0).getPlayerPoints() + " Points" + "\t\t");
+        player1.setFont(font("Calibri", 25));
         player1.setVisible(true);
 
+        Label player2 = new Label("Player 2  " +gamePlayer.get(1).getPlayerName() + "\t " + gamePlayer.get(1).getPlayerPoints()  + " Points" + "\t\t" );
+        player2.setFont(font("Calibri", 25));
+        player2.setVisible(true);
+
+        Label tab = new Label("\t");
+
+        Button back = new Button("Back");
+        back.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        back.setFont(new Font(20));
+        back.setMinWidth(80);
+
+
+
+        Button options = new Button();
+        options.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        options.setFont(new Font(15));
+        options.setMinWidth(80);
+
+        String optionPic = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/zahnrad1.png";
+        File directoryoptionPic = new File(optionPic);
+        Image imageOptionPic = new Image(new FileInputStream(directoryoptionPic.getAbsoluteFile()));
+        ImageView imageViewOptionPic = new ImageView(imageOptionPic);
+        imageViewOptionPic.setFitHeight(25);
+        imageViewOptionPic.setPreserveRatio(true);
+        options.setGraphic(imageViewOptionPic);
+
         //header.setVisible(true);
-        header.getChildren().add(player1);
+        header.getChildren().addAll(player1, player2, tab, options, back);
         root.getChildren().add(header);
 
         //create cards and there corresponding nodes
