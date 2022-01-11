@@ -14,6 +14,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
@@ -110,6 +111,7 @@ public class MultiPlayerIntermidiatePage {
         hboxButton.setAlignment(Pos.TOP_CENTER);
         hboxButton.setPadding(new Insets(75,0,0,0));
         hboxButton.getChildren().addAll(button);
+
 
 
         vbox.getChildren().addAll(hboxPlayerNameLabels,hboxPlayerNames, hboxnumOfCardsLabel, hboxnumOfCards, hboxThemeOfCardsLabel, hboxThemeOfCards,hboxButton);
