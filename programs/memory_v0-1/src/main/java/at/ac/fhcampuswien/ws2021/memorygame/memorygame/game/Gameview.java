@@ -62,7 +62,7 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         if(settings.getPlayerOne() != ""){
             gamePlayer.add(new Player(settings.getPlayerOne()));
         }
-        if(settings.getPlayerTwo() != ""){
+        if(settings.getPlayerTwo() != null){
             gamePlayer.add(new Player(settings.getPlayerTwo()));
         }
 

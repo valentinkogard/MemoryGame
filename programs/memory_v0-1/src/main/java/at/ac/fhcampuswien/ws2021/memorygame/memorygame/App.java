@@ -1,7 +1,9 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame;
 
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.game.Gameview;
-import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.*;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.CreditsPage;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.MultiPlayerIntermidiatePage;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.SinglePlayerIntermidiatePage;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.*;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
