@@ -3,6 +3,7 @@ package at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
@@ -74,6 +75,7 @@ public class CreditsPage {
         back.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         back.setFont(new Font(20));
         back.setMinWidth(200);
+        back.setCursor(Cursor.HAND);
         back = bs.ButtonStyleInit(back, test, null, null, tg);
 
         /*back.setOnMouseEntered(new EventHandler<MouseEvent>() {
