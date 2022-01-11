@@ -1,6 +1,8 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame.game;
 
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.App;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.GameSettings;
+import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.WindowSize;
 import javafx.application.Application;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableIntegerValue;
