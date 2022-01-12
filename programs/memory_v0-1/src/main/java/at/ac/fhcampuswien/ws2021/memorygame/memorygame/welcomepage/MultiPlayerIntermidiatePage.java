@@ -30,14 +30,17 @@ public class MultiPlayerIntermidiatePage {
         settings.setPlayerOne(null);
         settings.setPlayerTwo(null);
 
+        //Creating and styling of the memory start button
         Button button = new Button();
         button.setText("Start Memory");
         button.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         button.setFont(new Font(20));
         button.setMinWidth(200);
 
+        //Scene settings
         VBox vbox = new VBox();
 
+        //Initialization of all graphical interactives
         ChoiceBox<String> numOfCards = new ChoiceBox<>();
         ChoiceBox<String> themeOfCards = new ChoiceBox<>();
         TextField playerOneName = new TextField();
@@ -47,6 +50,7 @@ public class MultiPlayerIntermidiatePage {
         Label numOfCardsLabel = new Label("Difficulty");
         Label themeOfCardsLabel = new Label("Theme");
 
+        //Label placing and styling for player names
         HBox hboxPlayerNameLabels = new HBox();
         hboxPlayerNameLabels.setAlignment(Pos.TOP_CENTER);
         hboxPlayerNameLabels.setPadding(new Insets(75, 0, 0, 0));
@@ -59,6 +63,7 @@ public class MultiPlayerIntermidiatePage {
         playerTwoNameLabel.setFont(new Font(20));
         playerTwoNameLabel.setMinWidth(200);
 
+        //Placing and styling of the player name inputs
         HBox hboxPlayerNames = new HBox();
         hboxPlayerNames.setAlignment(Pos.TOP_CENTER);
         hboxPlayerNames.setPadding(new Insets(0, 0, 0, 0));
@@ -73,6 +78,7 @@ public class MultiPlayerIntermidiatePage {
         playerTwoName.setFont(new Font(20));
         playerTwoName.setMinWidth(200);
 
+        //Placing and styling of the difficulty selection label
         HBox hboxnumOfCardsLabel = new HBox();
         hboxnumOfCardsLabel.setAlignment(Pos.TOP_CENTER);
         hboxnumOfCardsLabel.setPadding(new Insets(75, 0, 0, 120));
@@ -81,6 +87,7 @@ public class MultiPlayerIntermidiatePage {
         numOfCardsLabel.setFont(new Font(20));
         numOfCardsLabel.setMinWidth(200);
 
+        //Placing and styling of the difficulty selection
         HBox hboxnumOfCards = new HBox();
         hboxnumOfCards.setAlignment(Pos.TOP_CENTER);
         hboxnumOfCards.setPadding(new Insets(0, 0, 0, 0));
@@ -90,7 +97,7 @@ public class MultiPlayerIntermidiatePage {
         settings.setNumOfCards(12);
         numOfCards.setOnAction(actionEvent -> getNumOfCards(numOfCards));
 
-
+        //Placing and styling of the card theme label
         HBox hboxThemeOfCardsLabel = new HBox();
         hboxThemeOfCardsLabel.setAlignment(Pos.TOP_CENTER);
         hboxThemeOfCardsLabel.setPadding(new Insets(75, 0, 0, 135));
@@ -99,6 +106,7 @@ public class MultiPlayerIntermidiatePage {
         themeOfCardsLabel.setFont(new Font(20));
         themeOfCardsLabel.setMinWidth(200);
 
+        //Placing and styling of the card theme selection
         HBox hboxThemeOfCards = new HBox();
         hboxThemeOfCards.setAlignment(Pos.TOP_CENTER);
         hboxThemeOfCards.setPadding(new Insets(0, 0, 0, 0));
@@ -108,14 +116,17 @@ public class MultiPlayerIntermidiatePage {
         settings.setTheme(themeOfCards.getValue());
         themeOfCards.setOnAction(actionEvent -> getThemeOfCards(themeOfCards));
 
+        //Placing of the start memory button
         HBox hboxButton = new HBox();
         hboxButton.setAlignment(Pos.TOP_CENTER);
         hboxButton.setPadding(new Insets(75, 0, 0, 0));
         hboxButton.getChildren().addAll(button);
 
-
+        //Creating scenen and handing over the neccesary (h)orizontal boxes to a (v)ertical box
         vbox.getChildren().addAll(hboxPlayerNameLabels, hboxPlayerNames, hboxnumOfCardsLabel, hboxnumOfCards, hboxThemeOfCardsLabel, hboxThemeOfCards, hboxButton);
         Scene scene = new Scene(vbox, windowSize[0], windowSize[1]);
+
+        //setting the background
         String pathToBg = "src/main/resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/pics/background/background2.jpg";
         File directoryToBg = new File(pathToBg);
 
@@ -123,12 +134,17 @@ public class MultiPlayerIntermidiatePage {
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         vbox.setBackground(new Background(myBI));
-        //stage.setScene(scene);
-        //stage.show();
 
+        // Returning the scene, button and player chosen settings to the app, so the scene transition can be implemented
         return new Object[]{scene, button, settings};
     }
 
+    /**
+     * Is used to assign a value to the selected difficulty and hand it to the GameSettings object
+     *
+     * @param level
+     *
+     */
     private void getNumOfCards(ChoiceBox<String> level) {
         if ("Easy".equals(level.getValue())) {
             settings.setNumOfCards(12);
@@ -144,10 +160,18 @@ public class MultiPlayerIntermidiatePage {
         }
     }
 
+    /**
+     * Is used to hand the selected theme to the GameSettings object
+     * @param themeOfCards
+     */
     private void getThemeOfCards(ChoiceBox<String> themeOfCards) {
         settings.setTheme(themeOfCards.getValue());
     }
 
+    /**
+     * Sets playername on keystroke and hands it to the GameSettings object
+     * @param playerOneName
+     */
     private void setPlayerOneName(TextField playerOneName) {
         settings.setPlayerOne(playerOneName.getText());
     }
