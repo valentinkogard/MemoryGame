@@ -168,3 +168,8 @@ Gereral Coding Session:
 
 Present: Magdalena, Valentin, Niko
 
+## 12.01.2022 - 10:45
+
+Feedback round
+
+Absent: -
