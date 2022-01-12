@@ -181,17 +181,21 @@ public class App extends Application {
         startMemory.setOnAction(e -> {
             Object[] gvObjSing = new Object[0];
             try {
-                gvObjSing = gv.mainGame((GameSettings) finalSPScene[2]);
+                GameSettings settings = (GameSettings) sPScene[2];
+                if (settings.getPlayerOne() != null) {
+                    gvObjSing = gv.mainGame((GameSettings) finalSPScene[2]);
+                    primaryStage.setScene((Scene) gvObjSing[0]);
+
+                    Button backSin = (Button) gvObjSing[1];
+                    backSin.setOnAction(e2 -> {
+                        //System.out.println("Back to mainScene");
+                        primaryStage.setScene(mainpageScene);
+                    });
+                }
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            primaryStage.setScene((Scene) gvObjSing[0]);
 
-            Button backSin = (Button) gvObjSing[1];
-            backSin.setOnAction(e2 -> {
-                //System.out.println("Back to mainScene");
-                primaryStage.setScene(mainpageScene);
-            });
         });
 
         //-------------------------Multiplayer Button-------------------------
@@ -227,15 +231,20 @@ public class App extends Application {
         startMemorymulty.setOnAction(e -> {
             Object[] gvObjMulti = new Object[0];
             try {
-                gvObjMulti = gv.mainGame((GameSettings) mPScene[2]);
+              GameSettings settings = (GameSettings) mPScene[2];
+
+                if (settings.getPlayerOne() != null && settings.getPlayerTwo() != null) {
+                    gvObjMulti = gv.mainGame((GameSettings) mPScene[2]);
+                    Button toMenu = (Button) gvObjMulti[1];
+                    primaryStage.setScene((Scene) gvObjMulti[0]);
+                    toMenu.setOnAction(e2 -> {
+                        primaryStage.setScene(mainpageScene);
+                    });
+                }
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            Button toMenu = (Button) gvObjMulti[1];
-            primaryStage.setScene((Scene) gvObjMulti[0]);
-            toMenu.setOnAction(e2 -> {
-                primaryStage.setScene(mainpageScene);
-            });
+
         });
 
 
