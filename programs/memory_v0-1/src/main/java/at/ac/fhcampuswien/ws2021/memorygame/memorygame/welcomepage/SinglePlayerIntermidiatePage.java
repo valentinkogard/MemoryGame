@@ -2,7 +2,6 @@ package at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage;
 
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.GameSettings;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.WindowSize;
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,21 +11,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
-import javax.swing.*;
-import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class SinglePlayerIntermidiatePage {
 
     public static int[] windowSize;
-
-    private Button button;
 
     private GameSettings settings;
 
@@ -35,11 +27,10 @@ public class SinglePlayerIntermidiatePage {
         windowSize = ws.getWindowSize();
 
         settings = new GameSettings();
+        settings.setPlayerOne(null);
+        settings.setPlayerTwo(null);
 
-        String[] currentPlayers = new String[2];
-        //stage.setTitle("Intermediate Page");
-
-        button = new Button();
+        Button button = new Button();
         button.setText("Start Memory");
         button.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         button.setFont(new Font(20));
@@ -50,9 +41,7 @@ public class SinglePlayerIntermidiatePage {
         ChoiceBox<String> numOfCards = new ChoiceBox<>();
         ChoiceBox<String> themeOfCards = new ChoiceBox<>();
         TextField playerOneName = new TextField();
-        TextField playerTwoName = new TextField();
         Label playerOneNameLabel = new Label("Player One");
-        Label playerTwoNameLabel = new Label("Player Two");
         Label numOfCardsLabel = new Label("Difficulty");
         Label themeOfCardsLabel = new Label("Theme");
 
@@ -60,7 +49,7 @@ public class SinglePlayerIntermidiatePage {
         hboxPlayerNameLabels.setAlignment(Pos.TOP_CENTER);
         hboxPlayerNameLabels.setPadding(new Insets(75, 0, 0, 0));
         hboxPlayerNameLabels.getChildren().addAll(playerOneNameLabel);
-        hboxPlayerNameLabels.setMargin(playerOneNameLabel, new Insets(0, 0, 0, 110));
+        HBox.setMargin(playerOneNameLabel, new Insets(0, 0, 0, 110));
         playerOneNameLabel.setStyle("-fx-text-fill: darkslateblue;");
         playerOneNameLabel.setFont(new Font(20));
         playerOneNameLabel.setMinWidth(200);
@@ -69,7 +58,7 @@ public class SinglePlayerIntermidiatePage {
         hboxPlayerNames.setAlignment(Pos.TOP_CENTER);
         hboxPlayerNames.setPadding(new Insets(0, 0, 0, 0));
         hboxPlayerNames.getChildren().addAll(playerOneName);
-        hboxPlayerNames.setMargin(playerOneName, new Insets(0, 0, 0, 0));
+        HBox.setMargin(playerOneName, new Insets(0, 0, 0, 0));
         playerOneName.setOnKeyReleased(keyEvent -> setPlayerOneName(playerOneName));
         playerOneName.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         playerOneName.setFont(new Font(20));
@@ -154,8 +143,7 @@ public class SinglePlayerIntermidiatePage {
     private void setPlayerOneName(TextField playerOneName) {
         settings.setPlayerOne(playerOneName.getText());
     }
-
-
+/*
     public Background PageBack(String path) throws FileNotFoundException {
 
         File directory1 = new File(path);
@@ -169,4 +157,6 @@ public class SinglePlayerIntermidiatePage {
         javafx.scene.layout.Background bg = new javafx.scene.layout.Background(bi);
         return bg;
     }
+
+ */
 }

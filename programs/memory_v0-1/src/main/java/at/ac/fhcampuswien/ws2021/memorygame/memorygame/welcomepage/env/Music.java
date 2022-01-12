@@ -15,11 +15,7 @@ public class Music {
         Media media = new Media(new File(musicPath).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
-        mediaPlayer.setOnEndOfMedia(new Runnable() {
-            public void run() {
-                mediaPlayer.seek(Duration.ZERO);
-            }
-        });
+        mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
 
         mediaPlayer.setVolume(0.3);
 
@@ -30,10 +26,6 @@ public class Music {
         //mediaPlayer.setAutoPlay(true);
 
         return mediaPlayer;
-
-
-
-
     }
 
     public MediaPlayer Soundeffect() {
@@ -43,17 +35,9 @@ public class Music {
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setVolume(0.5);
 
-
-            mediaPlayer.play();
-
-
-
-
-
-
+        mediaPlayer.play();
 
         return mediaPlayer;
-
     }
 
 

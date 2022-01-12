@@ -40,7 +40,7 @@ public class Card {
     }
 
     public void setCardShown(boolean isCardShown) {
-        if(isCardShown == false) {
+        if(!isCardShown) {
             this.isCardShown = false;
         }
     }
@@ -50,7 +50,7 @@ public class Card {
         this.y1_pixel = y1;
         this.x2_pixel = x2;
         this.y2_pixel = y2;
-        System.out.println("Card location: "+ this.x1_pixel + " " + this.y1_pixel);
+        //System.out.println("Card location: "+ this.x1_pixel + " " + this.y1_pixel);
     }
 
     //get-Methods

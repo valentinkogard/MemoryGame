@@ -1,7 +1,5 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame.game;
 
-
-import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.GameSettings;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;

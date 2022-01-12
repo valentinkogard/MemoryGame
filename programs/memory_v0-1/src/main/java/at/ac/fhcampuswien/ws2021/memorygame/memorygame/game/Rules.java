@@ -15,15 +15,12 @@ public class Rules {
      */
     public boolean isMoveAllowed(Card[] cards){
         int counter = 0;
-        for(int i = 0; i < cards.length; i++){
-            if(cards[i].isPictureShown()){
+        for (Card card : cards) {
+            if (card.isPictureShown()) {
                 counter++;
             }
         }
-        if(counter >= 2){
-            return false;
-        }
-        return true;
+        return counter < 2;
     }
 
     /**
@@ -52,10 +49,7 @@ public class Rules {
      * @return true if player has won the game
      */
     public boolean playerWon(Player p){
-        if(p.getPlayerPoints() > (Gameview.cards.length/2)/p.getNumOfPlayers()){
-            return true;
-        }
-        return false;
+        return p.getPlayerPoints() > (Gameview.cards.length / 2) / p.getNumOfPlayers();
     }
 
     /**
@@ -95,8 +89,8 @@ public class Rules {
      */
     public boolean twoCardsUncovered(Card[] cards, AnchorPane[] arr) throws FileNotFoundException {
         int counter = 0;
-        boolean isMatch = false;
-        List<Integer> uncoveredCards = new ArrayList<Integer>();
+        boolean isMatch;
+        List<Integer> uncoveredCards = new ArrayList<>();
         for(int i = 0; i < cards.length; i++){
             if(cards[i].isPictureShown()){
                 counter++;

@@ -1,46 +1,30 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame.game;
 
-import at.ac.fhcampuswien.ws2021.memorygame.memorygame.App;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.GameSettings;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.WindowSize;
-import javafx.application.Application;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableIntegerValue;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
-//import java.awt.*;
-
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
+import java.util.Objects;
 
-import static java.awt.SystemColor.text;
 import static javafx.scene.text.Font.*;
 
 public class Gameview { // implements EventHandler<MouseEvent>{
 
     private AnchorPane[] arr;
-    private List<Player> gamePlayer;
-    private List<Label> gameHeaderLabel = new ArrayList<>();
+    private final List<Player> gamePlayer = new ArrayList<>();
+    private final List<Label> gameHeaderLabel = new ArrayList<>();
 
     public static Card[] cards;
 
@@ -52,17 +36,14 @@ public class Gameview { // implements EventHandler<MouseEvent>{
 
     protected static GameSettings settings;
 
-    public void findImageToChange(double mouseX, double mouseY, Rules r) throws FileNotFoundException {
+    public void findImageToChange(double mouseX, double mouseY) throws FileNotFoundException {
         for(int i = 0; i < cards.length; i++){
             int[] pixel = cards[i].getPixel();
             //0 -> x1; 1 -> y1; 2 -> x2; 3 -> y2
             if(pixel[0] < mouseX && mouseX < pixel[2] && pixel[1] < mouseY && mouseY < pixel[3] && cards[i].isCardShown()){
-                //cards[i].setPictureShown(!cards[i].isPictureShown());
                 cards[i].setPictureShown(true);
                 ImageController.removeChildren(i, arr);
                 arr[i] = ImageController.setImage(i, arr[i]);
-                //System.out.println("Children of " + i + ": "+ arr[i].getChildren().size());
-                //r.setPlayerInTurn(gamePlayer);
                 break;
             }
         }
@@ -73,13 +54,15 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         WindowSize ws = new WindowSize();
         windowSize = ws.getWindowSize();
 
-        this.settings = settings;
+        Gameview.settings = settings;
 
-        gamePlayer = new ArrayList<>();
         gamePlayer.add(new Player("Default"));
         gamePlayer.get(0).resetPlayerCounter();
-        gamePlayer.remove(0);
-
+        gameHeaderLabel.add(new Label());
+        for (int i = gamePlayer.size()-1; i >= 0; i--) {
+            gamePlayer.remove(i);
+            gameHeaderLabel.remove(i);
+        }
         if(settings.getPlayerOne() != null){
             gamePlayer.add(new Player(settings.getPlayerOne()));
         }
@@ -87,40 +70,32 @@ public class Gameview { // implements EventHandler<MouseEvent>{
             gamePlayer.add(new Player(settings.getPlayerTwo()));
         }
 
-        //stage.setTitle("Mem(ory) game :<)");
+        EventHandler<MouseEvent> eventHandler = mouseEvent -> {
+            EventController evC = new EventController();
+            double[] feedback = evC.controller(mouseEvent.getSceneX(), mouseEvent.getSceneY());
+            //System.out.println(mouseEvent.getButton().toString());
 
-        EventHandler<MouseEvent> eventHandler = new EventHandler<>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                EventController evC = new EventController();
-                double[] feedback = evC.controller(mouseEvent.getSceneX(), mouseEvent.getSceneY());
-                //System.out.println(mouseEvent.getButton().toString());
-
-                try {
-                    Rules r = new Rules();
-                    System.out.println(gamePlayer.get(r.getPlayerInTurn(gamePlayer)).getPlayerName() + " it's your turn");
-                    if(mouseEvent.getButton().toString() == "PRIMARY" && r.isMoveAllowed(cards)){
-                        findImageToChange(feedback[0], feedback[1], r);
-                    }
-                    else {
-                        if(mouseEvent.getButton().toString() == "PRIMARY" && r.twoCardsUncovered(cards, arr)){
-                            //p1.incPlayerPoints();
-                            gamePlayer.get(r.getPlayerInTurn(gamePlayer)).incPlayerPoints();
-                            gameHeaderLabel.get(r.getPlayerInTurn(gamePlayer)).setText(gamePlayer.get(r.getPlayerInTurn(gamePlayer)).getHeader());
-                            System.out.println("Bravo...");
-                        }
-                        else if(mouseEvent.getButton().toString() == "PRIMARY"){
-                            r.setPlayerInTurn(gamePlayer);
-                        }
-                    }
-                    for (int i = 0; i < gameHeaderLabel.size(); i++) {
-                        gameHeaderLabel.get(i).setStyle("-fx-background-color: transparent;");
-                    }
-                    gameHeaderLabel.get(r.getPlayerInTurn(gamePlayer)).setStyle("-fx-background-color: yellow;");
-
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
+            try {
+                Rules r = new Rules();
+                //System.out.println(gamePlayer.get(r.getPlayerInTurn(gamePlayer)).getPlayerName() + " it's your turn");
+                if(Objects.equals(mouseEvent.getButton().toString(), "PRIMARY") && r.isMoveAllowed(cards)){
+                    findImageToChange(feedback[0], feedback[1]);
+                } else if(Objects.equals(mouseEvent.getButton().toString(), "PRIMARY") && r.twoCardsUncovered(cards, arr)){
+                        //p1.incPlayerPoints();
+                        gamePlayer.get(r.getPlayerInTurn(gamePlayer)).incPlayerPoints();
+                        gameHeaderLabel.get(r.getPlayerInTurn(gamePlayer)).setText(gamePlayer.get(r.getPlayerInTurn(gamePlayer)).getHeader());
+                        //System.out.println("Bravo...");
+                } else if(Objects.equals(mouseEvent.getButton().toString(), "PRIMARY")){
+                    r.setPlayerInTurn(gamePlayer);
                 }
+
+                for (Label label : gameHeaderLabel) {
+                    label.setStyle("-fx-background-color: transparent;");
+                }
+                gameHeaderLabel.get(r.getPlayerInTurn(gamePlayer)).setStyle("-fx-background-color: yellow;");
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             }
         };
         //!!! change methode that is can also handle e.g 80 cards
@@ -185,7 +160,7 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         arr = new AnchorPane[cards.length];
         //create cards and there corresponding nodes
         StackPane cardArea = new StackPane();
-        System.out.println("cardArea Size: " + cardArea.getBoundsInParent().getHeight());
+        //System.out.println("cardArea Size: " + cardArea.getBoundsInParent().getHeight());
         for(int i = 0; i < cards.length; i++){
             AnchorPane holder = new AnchorPane(); //each "holder" should contain one playing card
             arr[i] = holder;
@@ -202,11 +177,10 @@ public class Gameview { // implements EventHandler<MouseEvent>{
 
         VBox root = new VBox();
         root.getChildren().addAll(headerStackPane, cardArea);
-        System.out.println("header Size: " + headerStackPane.getBoundsInParent().getHeight());
-        System.out.println("cardArea Size: " + cardArea.getBoundsInParent().getHeight());
+        //System.out.println("header Size: " + headerStackPane.getBoundsInParent().getHeight());
+        //System.out.println("cardArea Size: " + cardArea.getBoundsInParent().getHeight());
         //Background
         ImageController.setBackground(root);
-
 
         Scene gamescene = new Scene(root, windowSize[0], windowSize[1]);
         return new Object[] {gamescene, back};

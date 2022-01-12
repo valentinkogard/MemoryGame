@@ -18,7 +18,6 @@ public class Player {
         else this.inTurn = false;
 
         playerCounter++;
-
     }
 
     //get-Methods

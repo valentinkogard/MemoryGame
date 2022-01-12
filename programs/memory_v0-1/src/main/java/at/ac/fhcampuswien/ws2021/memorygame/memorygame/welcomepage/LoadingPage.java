@@ -37,8 +37,6 @@ public class LoadingPage {
                 BackgroundSize.DEFAULT);
         stackPane.setBackground(new Background(myBI));
 
-        Scene loadScene = new Scene(stackPane, windowSize[0], windowSize[1]);
-
-        return loadScene;
+        return new Scene(stackPane, windowSize[0], windowSize[1]);
     }
 }

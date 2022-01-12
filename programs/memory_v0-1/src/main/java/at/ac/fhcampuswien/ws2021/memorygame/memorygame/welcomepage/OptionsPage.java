@@ -1,12 +1,6 @@
 package at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage;
 
-import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.ButtonStyle;
 import at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env.WindowSize;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
@@ -14,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
