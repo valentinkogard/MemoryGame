@@ -29,7 +29,7 @@ public class CreditsPage {
         VBox credVbox = new VBox();
         Scene credScene = new Scene(credVbox, windowSize[0], windowSize[1]);
 
-        String path1 = "src\\main\\java\\at\\ac\\fhcampuswien\\ws2021\\memorygame\\memorygame\\pics\\background\\backgroundCredits.png";
+        String path1 = "src\\main\\resources\\at\\ac\\fhcampuswien\\ws2021\\memorygame\\memorygame\\data\\data\\pics\\background\\backgroundCredits.png";
         File directory1 = new File(path1);
         Image bgImage1 = new Image(new FileInputStream(directory1.getAbsoluteFile()));
 

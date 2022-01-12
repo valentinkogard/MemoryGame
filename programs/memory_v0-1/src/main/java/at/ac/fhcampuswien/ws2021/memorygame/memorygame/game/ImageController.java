@@ -23,7 +23,7 @@ public class ImageController extends Gameview {
         if (cards[i].isPictureShown()) {
             path = Gameview.settings.getTheme() + cards[i].getPictureId() + ".png";
         } else {
-            path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/cover/cover1.png";
+            path = "src/main/resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/pics/cover/cover1.png";
         }
         File directory = new File(path);
         Image image = new Image(new FileInputStream(directory.getAbsoluteFile()));
@@ -58,7 +58,7 @@ public class ImageController extends Gameview {
      * @throws FileNotFoundException
      */
     public static void setBackground(VBox stackPane) throws FileNotFoundException {
-        String path = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/background2.jpg"; //3.gif
+        String path = "src/main/resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/pics/background/background2.jpg"; //3.gif
         File directory = new File(path);
         BackgroundImage myBI = new BackgroundImage(new Image(new FileInputStream(directory.getAbsoluteFile()), windowSize[0], windowSize[1], false, true),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT,

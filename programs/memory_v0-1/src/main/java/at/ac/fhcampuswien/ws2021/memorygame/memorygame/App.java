@@ -114,7 +114,8 @@ public class App extends Application {
         yBtn.setStyle(titleButtonStyle);
 
         BackgroundPage pageBack = new BackgroundPage();
-        String pathToBg = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/";
+                        //   src\main\resources\at\ac\fhcampuswien\ws2021\memorygame\memorygame\data\data\pics\background\titleCards
+        String pathToBg = "src/main/resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/pics/background/";
         Background bg = pageBack.PageBack(pathToBg + "background5.png");
         Background bg2 = pageBack.PageBack(pathToBg + "background6.png");
         Background bg3 = pageBack.PageBack(pathToBg + "catLove2.gif");

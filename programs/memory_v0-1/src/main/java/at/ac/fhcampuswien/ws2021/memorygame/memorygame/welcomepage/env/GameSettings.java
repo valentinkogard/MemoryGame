@@ -40,9 +40,9 @@ public class GameSettings {
 
     public void setTheme(String theme) {
         if (Objects.equals(theme, "Katzen")){
-            this.theme = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/theme1/image";
+            this.theme = "src/main/resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/pics/theme1/image";
         }else {
-            this.theme = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/theme2/image";
+            this.theme = "src/main/resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/pics/theme2/image";
         }
     }
 }

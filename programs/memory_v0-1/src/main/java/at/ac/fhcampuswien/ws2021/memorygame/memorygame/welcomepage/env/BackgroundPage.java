@@ -29,7 +29,7 @@ public class BackgroundPage {
 
         if (Objects.equals(str, "CoverM")) {
 
-            String pathCoverM = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/titleCards/coverM.png";
+            String pathCoverM = "src/main/resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/pics/background/titleCards/coverM.png";
             File directoryCoverM = new File(pathCoverM);
             Image imageCoverM = new Image(new FileInputStream(directoryCoverM.getAbsoluteFile()));
             ImageView Cover = new ImageView(imageCoverM);
@@ -41,7 +41,7 @@ public class BackgroundPage {
 
         }else if (Objects.equals(str, "CoverE")) {
 
-            String pathCoverM = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/titleCards/coverE.png";
+            String pathCoverM = "src/main/resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/pics/background/titleCards/coverE.png";
             File directoryCoverM = new File(pathCoverM);
             Image imageCoverM = new Image(new FileInputStream(directoryCoverM.getAbsoluteFile()));
             ImageView Cover = new ImageView(imageCoverM);
@@ -52,7 +52,7 @@ public class BackgroundPage {
 
         }else if (Objects.equals(str, "CoverO")) {
 
-            String pathCoverM = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/titleCards/coverO.png";
+            String pathCoverM = "src/main/resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/pics/background/titleCards/coverO.png";
             File directoryCoverM = new File(pathCoverM);
             Image imageCoverM = new Image(new FileInputStream(directoryCoverM.getAbsoluteFile()));
             ImageView Cover = new ImageView(imageCoverM);
@@ -63,7 +63,7 @@ public class BackgroundPage {
 
         }else if (Objects.equals(str, "CoverR")) {
 
-            String pathCoverM = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/titleCards/coverR.png";
+            String pathCoverM = "src/main/resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/pics/background/titleCards/coverR.png";
             File directoryCoverM = new File(pathCoverM);
             Image imageCoverM = new Image(new FileInputStream(directoryCoverM.getAbsoluteFile()));
             ImageView Cover = new ImageView(imageCoverM);
@@ -74,7 +74,7 @@ public class BackgroundPage {
 
         }else if (Objects.equals(str, "CoverY")) {
 
-            String pathCoverM = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/titleCards/coverY.png";
+            String pathCoverM = "src/main/resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/pics/background/titleCards/coverY.png";
             File directoryCoverM = new File(pathCoverM);
             Image imageCoverM = new Image(new FileInputStream(directoryCoverM.getAbsoluteFile()));
             ImageView Cover = new ImageView(imageCoverM);

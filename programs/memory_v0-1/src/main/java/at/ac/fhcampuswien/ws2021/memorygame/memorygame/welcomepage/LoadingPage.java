@@ -21,7 +21,7 @@ public class LoadingPage {
         StackPane stackPane = new StackPane();
 
         //Loading GIF
-        String pathToGif = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/loader.gif";
+        String pathToGif = "src/main/resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/pics/background/loader.gif";
         File directoryToGif = new File(pathToGif);
         Image gif = new Image(new FileInputStream(directoryToGif.getAbsoluteFile()));
         ImageView imageView = new ImageView(gif);
@@ -29,7 +29,7 @@ public class LoadingPage {
         stackPane.getChildren().add(imageView);
 
         //Background
-        String pathToBg = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/background/background2.jpg";
+        String pathToBg = "src/main/resources/at/ac/fhcampuswien/ws2021/memorygame/memorygame/data/data/pics/background/background2.jpg";
         File directoryToBg = new File(pathToBg);
 
         BackgroundImage myBI = new BackgroundImage(new Image(new FileInputStream(directoryToBg.getAbsoluteFile()), windowSize[0], windowSize[1], false, true),
