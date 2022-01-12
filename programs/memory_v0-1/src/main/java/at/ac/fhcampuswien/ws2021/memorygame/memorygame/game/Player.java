@@ -64,7 +64,7 @@ public class Player {
     }
 
     public String getHeader(){
-        return "Player " + (this.playerId + 1) + " : " + this.getPlayerName() + "\t " + this.getPlayerPoints() + " Point(s)" + "\t\t";
+        return " Player " + (this.playerId + 1) + " : " + this.getPlayerName() + "\t " + this.getPlayerPoints() + " Point(s) ";
     }
 
     public void resetPlayerCounter(){

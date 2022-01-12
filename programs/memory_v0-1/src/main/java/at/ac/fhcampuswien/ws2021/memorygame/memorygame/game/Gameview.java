@@ -92,7 +92,11 @@ public class Gameview { // implements EventHandler<MouseEvent>{
                 for (Label label : gameHeaderLabel) {
                     label.setStyle("-fx-background-color: transparent;");
                 }
-                gameHeaderLabel.get(r.getPlayerInTurn(gamePlayer)).setStyle("-fx-background-color: yellow;");
+                gameHeaderLabel.get(r.getPlayerInTurn(gamePlayer)).setStyle("-fx-border-color: darkslateblue;" +
+                                                                            "-fx-boder-width: 2px;" +
+                                                                            "-fx-background-color: linear-gradient(to bottom, darkslateblue, violet);" +
+                                                                            "-fx-border-radius: 10 10 10 10;" +
+                                                                            "-fx-background-radius: 10 10 10 10;");
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -122,40 +126,22 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         back.setFont(new Font(15));
         back.setVisible(true);
         back.setMinWidth(80);
-        /*back.setOnAction(e -> {
-            System.out.println("Back was pressed");
-        });*/
-/*
-        Button options = new Button();
-        options.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-        options.setFont(new Font(9));
-        options.setVisible(true);
-        options.setMinWidth(35);
-        /*options.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Options was pressed");
-            }
-        });
 
-        String optionPic = "src/main/java/at/ac/fhcampuswien/ws2021/memorygame/memorygame/pics/zahnrad1.png";
-        File directoryoptionPic = new File(optionPic);
-        Image imageOptionPic = new Image(new FileInputStream(directoryoptionPic.getAbsoluteFile()));
-        ImageView imageViewOptionPic = new ImageView(imageOptionPic);
-        imageViewOptionPic.setFitHeight(25);
-        imageViewOptionPic.setPreserveRatio(true);
-        options.setGraphic(imageViewOptionPic);
- */
+        Region region1 = new Region();
+        HBox.setHgrow(region1, Priority.ALWAYS);
+
         StackPane headerStackPane = new StackPane();
         HBox header = new HBox();
-        header.setPadding(new Insets(15, 30, 10, 40));
-        header.setSpacing(20);
+        header.setPadding(new Insets(15, spaceX, 10, spaceX));
+        header.setSpacing(50);
         header.getChildren().addAll(gameHeaderLabel);
-        header.getChildren().addAll(back);
+        header.getChildren().addAll(region1, back);
         header.setAlignment(Pos.CENTER);
         headerStackPane.getChildren().add(header);
         headerStackPane.setMinHeight(gameheaderSize);
         headerStackPane.setMaxHeight(gameheaderSize);
+
+
 
         arr = new AnchorPane[cards.length];
         //create cards and there corresponding nodes
