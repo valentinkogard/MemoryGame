@@ -29,8 +29,12 @@ public class CreditsPage {
 
     public Object [] CreditsPageInit() throws FileNotFoundException {
 
+        //vertical box for creditsPage
+
         VBox credVbox = new VBox();
         Scene credScene = new Scene(credVbox, windowSize[0], windowSize[1]);
+
+        //added a image as background
 
         String path1 = "src\\main\\java\\at\\ac\\fhcampuswien\\ws2021\\memorygame\\memorygame\\pics\\background\\backgroundCredits.png";
         File directory1 = new File(path1);
@@ -56,6 +60,8 @@ public class CreditsPage {
         imageViewL.setFitWidth(200);*/
 
 
+        //Title and text for Credit Page
+
         Text title1 = new Text("CREDITS");
         title1.setFont(Font.font("Calibri", FontWeight.BOLD, 70));
         title1.setFill(Color.BLACK);
@@ -70,6 +76,7 @@ public class CreditsPage {
         ToggleButton tg = new ToggleButton();
 
 
+        //color of button  + cursor as hand
 
         Button back = new Button("Back");
         back.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
@@ -98,6 +105,8 @@ public class CreditsPage {
 
 
          */
+
+        //position, spacing and allignement
 
         credVbox.setPrefWidth(200);
         credVbox.setSpacing(50);
