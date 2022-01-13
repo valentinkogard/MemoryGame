@@ -92,6 +92,7 @@ public class Gameview { // implements EventHandler<MouseEvent>{
                 for (Label label : gameHeaderLabel) {
                     label.setStyle("-fx-background-color: transparent;");
                 }
+                //highlight the player who's turn it is
                 gameHeaderLabel.get(r.getPlayerInTurn(gamePlayer)).setStyle("-fx-border-color: darkslateblue;" +
                                                                             "-fx-boder-width: 2px;" +
                                                                             "-fx-background-color: linear-gradient(to bottom, darkslateblue, violet);" +
@@ -116,7 +117,7 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         //create gameheader
         for (int i = 0; i < gamePlayer.size(); i++) {
             gameHeaderLabel.add(new Label());
-            gameHeaderLabel.get(i).setFont(font("Calibri", 25));
+            gameHeaderLabel.get(i).setFont(font("Calibri", 22));
             gameHeaderLabel.get(i).setVisible(true);
             gameHeaderLabel.get(i).setText(gamePlayer.get(i).getHeader());
         }
@@ -128,19 +129,19 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         back.setMinWidth(80);
 
         Region region1 = new Region();
-        HBox.setHgrow(region1, Priority.ALWAYS);
+        HBox.setHgrow(region1, Priority.ALWAYS); // buffer between player names (left) and back button (right)
 
+        // create Stack pane, add h box, add label, region, button
         StackPane headerStackPane = new StackPane();
+        headerStackPane.setMinHeight(gameheaderSize);
+        headerStackPane.setMaxHeight(gameheaderSize);
         HBox header = new HBox();
-        header.setPadding(new Insets(15, spaceX, 10, spaceX));
+        header.setPadding(new Insets(15, spaceX, 10, spaceX)); //align header with the playing cards
+        header.setAlignment(Pos.CENTER);
         header.setSpacing(50);
         header.getChildren().addAll(gameHeaderLabel);
         header.getChildren().addAll(region1, back);
-        header.setAlignment(Pos.CENTER);
         headerStackPane.getChildren().add(header);
-        headerStackPane.setMinHeight(gameheaderSize);
-        headerStackPane.setMaxHeight(gameheaderSize);
-
 
 
         arr = new AnchorPane[cards.length];

@@ -63,6 +63,7 @@ public class Player {
         triesOfPlayer = 0;
     }
 
+    // method to get player names and points for the game header
     public String getHeader(){
         return " Player " + (this.playerId + 1) + " : " + this.getPlayerName() + "\t " + this.getPlayerPoints() + " Point(s) ";
     }
