@@ -1,6 +1,16 @@
 ## MemoryGame
 Development of a memory puzzle with up to two players and with a nice GUI (Graphical User Interface)
 
+## How to run MemoryGame
+
+1. copy link to repo: https://github.com/valentinkogard/MemoryGame.git
+2. open intellij -> File - New - Project from Version Control
+3. it won't be possible to run the project here
+4. press File - Open -> navigate to the pulled repo and open "memory_v0-1"
+5. now run the program using Gradle
+6. enjoy :)
+
+
 ## How to use Git branches
 https://launchdarkly.com/blog/git-branching-strategies-vs-trunk-based-development/
 
