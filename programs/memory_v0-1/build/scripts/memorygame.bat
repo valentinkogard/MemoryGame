@@ -33,7 +33,7 @@ set APP_HOME=%DIRNAME%..
 for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
 
 @rem Add default JVM options here. You can also use JAVA_OPTS and MEMORYGAME_OPTS to pass JVM options to this script.
-set DEFAULT_JVM_OPTS="--module-path" "APP_HOME_LIBS_PLACEHOLDER" "--module" "at.ac.fhcampuswien.ws2021.memorygame.memorygame/at.ac.fhcampuswien.ws2021.memorygame.memorygame.Cover"
+set DEFAULT_JVM_OPTS="--module-path" "APP_HOME_LIBS_PLACEHOLDER" "--module" "at.ac.fhcampuswien.memorygame.memorygame/at.ac.fhcampuswien.memorygame.App"
 
 @rem Find java.exe
 if defined JAVA_HOME goto findJavaFromJavaHome
@@ -71,7 +71,7 @@ set CLASSPATH=
 
 
 @rem Execute memorygame
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %MEMORYGAME_OPTS%  -classpath "%CLASSPATH%" at.ac.fhcampuswien.ws2021.memorygame.memorygame.Cover %*
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %MEMORYGAME_OPTS%  -classpath "%CLASSPATH%" at.ac.fhcampuswien.memorygame.App %*
 
 :end
 @rem End local scope for the variables with windows NT shell

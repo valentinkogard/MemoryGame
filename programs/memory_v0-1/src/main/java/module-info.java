@@ -1,4 +1,4 @@
-module at.ac.fhcampuswien.ws2021.memorygame.memorygame {
+module at.ac.fhcampuswien.memorygame.memorygame {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
@@ -6,8 +6,10 @@ module at.ac.fhcampuswien.ws2021.memorygame.memorygame {
     requires javafx.media;
 
     //opens at.ac.fhcampuswien.ws2021.memorygame.memorygame to javafx.fxml;
-    exports at.ac.fhcampuswien.ws2021.memorygame.memorygame;
-    exports at.ac.fhcampuswien.ws2021.memorygame.memorygame.game;
-    exports at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage;
-    exports at.ac.fhcampuswien.ws2021.memorygame.memorygame.welcomepage.env;
+    //exports at.ac.fhcampuswien.memorygame.memorygame;
+    //exports at.ac.fhcampuswien.memorygame.memorygame.game;
+    exports at.ac.fhcampuswien.memorygame;
+    exports at.ac.fhcampuswien.memorygame.game;
+    exports at.ac.fhcampuswien.memorygame.welcomepage;
+    exports at.ac.fhcampuswien.memorygame.welcomepage.env;
 }
