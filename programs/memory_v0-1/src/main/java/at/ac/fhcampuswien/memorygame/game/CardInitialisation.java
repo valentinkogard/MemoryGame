@@ -49,8 +49,7 @@ public class CardInitialisation {
      */
     private void boardSetup(int numberOfCards){
         if(numberOfCards % 2 == 0){
-            //i'ld suggest to show the cards in a 16:9 format (the standard format of a screen)
-
+            //show the cards in a 16:9 format (the standard format of a screen)
             float[] proportion = {16, 9};
             int y = (int) Math.ceil(Math.sqrt((proportion[1] / proportion[0]) * numberOfCards));
             int x = (int) Math.ceil(numberOfCards / y);
@@ -88,9 +87,6 @@ public class CardInitialisation {
     public static Card[] cardGeneration(int numberOfCards){
         CardInitialisation a = new CardInitialisation();
 
-        //Scanner scanner = new Scanner(System.in);
-        //System.out.print("Number of Cards: ");
-        //int numberOfCards = scanner.nextInt();
         System.out.println("Number of cards created: " + numberOfCards);
 
         a.fillList(numberOfCards);

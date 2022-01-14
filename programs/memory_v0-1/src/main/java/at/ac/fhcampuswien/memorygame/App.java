@@ -142,8 +142,6 @@ public class App extends Application {
         ToggleButton toggleButton = (ToggleButton) optnSceneObj[2];
         back1 = bs.ButtonStyleInit(back1, border, bg, bg, toggleButton2);
 
-
-
         options.setOnAction(e -> primaryStage.setScene(optnScene));
         back1.setOnAction(e -> primaryStage.setScene(mainpageScene));
 
@@ -190,7 +188,6 @@ public class App extends Application {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-
         });
 
         //-------------------------Multiplayer Button-------------------------
@@ -239,11 +236,7 @@ public class App extends Application {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-
         });
-
-
-
 
         //-------------------------Credit Button-------------------------
 
@@ -290,7 +283,7 @@ public class App extends Application {
 
         primaryStage.show();
 
-/*
+        /*
         border.setOnMouseMoved(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -310,8 +303,6 @@ public class App extends Application {
                 yBtn.getTransforms().addAll(rotate);
             }
         });
-
-
- */
+        */
     }
 }

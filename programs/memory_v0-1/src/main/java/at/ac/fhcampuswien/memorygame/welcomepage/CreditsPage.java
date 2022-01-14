@@ -26,10 +26,12 @@ public class CreditsPage {
         WindowSize ws = new WindowSize();
         windowSize = ws.getWindowSize();
 
+        //vertical box for creditsPage
         VBox credVbox = new VBox();
         Scene credScene = new Scene(credVbox, windowSize[0], windowSize[1]);
 
-        String path1 = "src\\main\\resources\\at\\ac\\fhcampuswien\\memorygame\\pics\\background\\backgroundCredits.png";
+        //added a image as background
+        String path1 = "src/main/resources/at/ac/fhcampuswien/memorygame/pics/background/backgroundCredits.png";
         File directory1 = new File(path1);
         Image bgImage1 = new Image(new FileInputStream(directory1.getAbsoluteFile()));
 
@@ -38,21 +40,11 @@ public class CreditsPage {
                 BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
 
-
         Background bg = new Background(bi);
-
 
         credVbox.setBackground(bg);
 
-        /*String path2 = "src/main/java/at/ac/fhcampuswien/memorygame/memorygame/pics/Logo_Wasserball.png";
-        File directory2 = new File(path2);
-        Image imageLogo = new Image(new FileInputStream(directory2.getAbsoluteFile()));
-        ImageView imageViewL = new ImageView(imageLogo);
-
-        imageViewL.setFitHeight(200);
-        imageViewL.setFitWidth(200);*/
-
-
+        //Title and text for Credit Page
         Text title1 = new Text("CREDITS");
         title1.setFont(Font.font("Calibri", FontWeight.BOLD, 70));
         title1.setFill(Color.BLACK);
@@ -66,8 +58,7 @@ public class CreditsPage {
         BorderPane test = new BorderPane();
         ToggleButton tg = new ToggleButton();
 
-
-
+        //color of button  + cursor as hand
         Button back = new Button("Back");
         back.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         back.setFont(new Font(20));
@@ -75,27 +66,7 @@ public class CreditsPage {
         back.setCursor(Cursor.HAND);
         back = bs.ButtonStyleInit(back, test, null, null, tg);
 
-        /*back.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-
-                back.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
-
-            }
-        });
-
-        back.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-
-                back.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
-
-            }
-        });
-
-
-         */
-
+        //position, spacing and allignement
         credVbox.setPrefWidth(200);
         credVbox.setSpacing(20);
 

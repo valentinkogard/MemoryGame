@@ -1,5 +1,8 @@
 package at.ac.fhcampuswien.memorygame.game;
 
+/**
+ * Contains all the important features of a playing card
+ */
 public class Card {
     private int id;
     private int x_position, y_position; //are no pixel - the top/left card has the id 0/0 then 0/1, 0/2, ...

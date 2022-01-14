@@ -36,6 +36,12 @@ public class Gameview { // implements EventHandler<MouseEvent>{
 
     protected static GameSettings settings;
 
+    /**
+     * checks if the mouse click was on a card
+     * @param mouseX
+     * @param mouseY
+     * @throws FileNotFoundException
+     */
     public void findImageToChange(double mouseX, double mouseY) throws FileNotFoundException {
         for(int i = 0; i < cards.length; i++){
             int[] pixel = cards[i].getPixel();
@@ -50,12 +56,19 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         //System.out.println("0");
     }
 
+    /**
+     * creates the Game scene (i.e. the actual playing field).
+     * @param settings
+     * @return Scene and "back to main scene" button
+     * @throws IOException
+     */
     public Object[] mainGame(GameSettings settings) throws IOException{
         WindowSize ws = new WindowSize();
         windowSize = ws.getWindowSize();
 
         Gameview.settings = settings;
 
+        //is necessary to switch from multiplaer to single player
         gamePlayer.add(new Player("Default"));
         gamePlayer.get(0).resetPlayerCounter();
         gameHeaderLabel.add(new Label());
@@ -70,6 +83,8 @@ public class Gameview { // implements EventHandler<MouseEvent>{
             gamePlayer.add(new Player(settings.getPlayerTwo()));
         }
 
+        //listens to every mouse event in the StackPane "cardArea"
+        //-> if an event occurs this code is being executed
         EventHandler<MouseEvent> eventHandler = mouseEvent -> {
             EventController evC = new EventController();
             double[] feedback = evC.controller(mouseEvent.getSceneX(), mouseEvent.getSceneY());
@@ -98,21 +113,17 @@ public class Gameview { // implements EventHandler<MouseEvent>{
                                                                             "-fx-background-color: linear-gradient(to bottom, darkslateblue, violet);" +
                                                                             "-fx-border-radius: 10 10 10 10;" +
                                                                             "-fx-background-radius: 10 10 10 10;");
-
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         };
-        //!!! change methode that is can also handle e.g 80 cards
-        //current problem: algorithm cases empty objects which leads in gameview to an error(1)
 
         cards = CardInitialisation.cardGeneration(settings.getNumOfCards()*2);
-
+        //defines location of cards on the gameboard
         size = 85;
         spaceX = (windowSize[0] - (size * cards[0].getNumberOfCardsXY()[0]))/(cards[0].getNumberOfCardsXY()[0] + 1);
         spaceY = (windowSize[1] - gameheaderSize - (size * cards[0].getNumberOfCardsXY()[1]))/(cards[0].getNumberOfCardsXY()[1] + 10);
         gameHeaderOffset = spaceY;
-        //spaceY = (window_height - (size * cards[0].getNumberOfCardsXY()[1]))/(cards[0].getNumberOfCardsXY()[1] + 3);
 
         //create gameheader
         for (int i = 0; i < gamePlayer.size(); i++) {
@@ -164,14 +175,10 @@ public class Gameview { // implements EventHandler<MouseEvent>{
 
         VBox root = new VBox();
         root.getChildren().addAll(headerStackPane, cardArea);
-        //System.out.println("header Size: " + headerStackPane.getBoundsInParent().getHeight());
-        //System.out.println("cardArea Size: " + cardArea.getBoundsInParent().getHeight());
         //Background
         ImageController.setBackground(root);
 
         Scene gamescene = new Scene(root, windowSize[0], windowSize[1]);
         return new Object[] {gamescene, back};
-
     }
-
 }

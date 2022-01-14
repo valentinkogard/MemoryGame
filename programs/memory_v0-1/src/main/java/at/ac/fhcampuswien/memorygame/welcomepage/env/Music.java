@@ -7,8 +7,6 @@ import javafx.util.Duration;
 import java.io.File;
 
 public class Music {
-
-
     public MediaPlayer MusicPlayer() {
 
         String musicPath = "src\\main\\resources\\at\\ac\\fhcampuswien\\memorygame\\music\\gameMusic.mp3";

@@ -167,7 +167,8 @@ public class SinglePlayerIntermidiatePage {
     private void setPlayerOneName(TextField playerOneName) {
         settings.setPlayerOne(playerOneName.getText());
     }
-/*
+
+    /*
     public Background PageBack(String path) throws FileNotFoundException {
 
         File directory1 = new File(path);
@@ -181,6 +182,5 @@ public class SinglePlayerIntermidiatePage {
         javafx.scene.layout.Background bg = new javafx.scene.layout.Background(bi);
         return bg;
     }
-
- */
+     */
 }

@@ -1,5 +1,8 @@
 package at.ac.fhcampuswien.memorygame.game;
 
+/**
+ * all the important characteristics of a player are defined in this class.
+ */
 public class Player {
     private String playerName;
     private int playerId;
