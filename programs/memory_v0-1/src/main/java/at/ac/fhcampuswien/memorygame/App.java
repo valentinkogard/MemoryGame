@@ -229,7 +229,6 @@ public class App extends Application {
                 ex.printStackTrace();
             }
         });
-        Object [] desperation = sp.singlePlayerIntInit();
         exitMemory.setOnAction(event -> {
 
             Button exitSingle=(Button) sPScene[3];
