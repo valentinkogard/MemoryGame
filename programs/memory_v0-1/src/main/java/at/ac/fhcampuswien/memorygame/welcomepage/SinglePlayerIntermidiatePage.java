@@ -37,6 +37,13 @@ public class SinglePlayerIntermidiatePage {
         button.setFont(new Font(20));
         button.setMinWidth(200);
 
+        //Creating and styling of the return to menue button
+        Button exitButton = new Button();
+        exitButton.setText("Back");
+        exitButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        exitButton.setFont(new Font(15));
+        exitButton.setMinWidth(80);
+
         VBox vbox = new VBox();
 
         //Initialization of all graphical interactives
@@ -47,10 +54,16 @@ public class SinglePlayerIntermidiatePage {
         Label numOfCardsLabel = new Label("Difficulty");
         Label themeOfCardsLabel = new Label("Theme");
 
+        //Placing of the return to menue button
+        HBox hboxButtonBack = new HBox();
+        hboxButtonBack.setAlignment(Pos.TOP_RIGHT);
+        hboxButtonBack.setPadding(new Insets(10, 50, 0, 0));
+        hboxButtonBack.getChildren().addAll(exitButton);
+
         //Label placing and styling for player names
         HBox hboxPlayerNameLabels = new HBox();
         hboxPlayerNameLabels.setAlignment(Pos.TOP_CENTER);
-        hboxPlayerNameLabels.setPadding(new Insets(75, 0, 0, 0));
+        hboxPlayerNameLabels.setPadding(new Insets(40, 0, 0, 0));
         hboxPlayerNameLabels.getChildren().addAll(playerOneNameLabel);
         HBox.setMargin(playerOneNameLabel, new Insets(0, 0, 0, 110));
         playerOneNameLabel.setStyle("-fx-text-fill: darkslateblue;");
@@ -114,7 +127,7 @@ public class SinglePlayerIntermidiatePage {
         hboxButton.getChildren().addAll(button);
 
         //Creating scenen and handing over the neccesary (h)orizontal boxes to a (v)ertical box
-        vbox.getChildren().addAll(hboxPlayerNameLabels, hboxPlayerNames, hboxnumOfCardsLabel, hboxnumOfCards, hboxThemeOfCardsLabel, hboxThemeOfCards, hboxButton);
+        vbox.getChildren().addAll(hboxButtonBack, hboxPlayerNameLabels, hboxPlayerNames, hboxnumOfCardsLabel, hboxnumOfCards, hboxThemeOfCardsLabel, hboxThemeOfCards, hboxButton);
         Scene scene = new Scene(vbox, windowSize[0], windowSize[1]);
         String pathToBg = "src/main/resources/at/ac/fhcampuswien/memorygame/pics/background/background2.jpg";
         File directoryToBg = new File(pathToBg);
@@ -127,7 +140,7 @@ public class SinglePlayerIntermidiatePage {
         //stage.setScene(scene);
         //stage.show();
 
-        return new Object[]{scene, button, settings};
+        return new Object[]{scene, button, settings, exitButton};
     }
 
 

@@ -71,7 +71,7 @@ public class Gameview { // implements EventHandler<MouseEvent>{
 
         Gameview.settings = settings;
 
-        //is necessary to switch from multiplaer to single player
+        //is necessary to switch from multiplayer to single player
         gamePlayer.add(new Player("Default"));
         gamePlayer.get(0).resetPlayerCounter();
         gameHeaderLabel.add(new Label());

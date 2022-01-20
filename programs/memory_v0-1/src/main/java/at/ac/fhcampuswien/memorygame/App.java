@@ -185,6 +185,7 @@ public class App extends Application {
 
         //start Gameview in SinglePlayer Mode
         Button startMemory = (Button) sPScene[1];
+        Button exitMemory = (Button) sPScene[3];
         Object[] finalSPScene = sPScene;
 
         startMemory.setOnAction(e -> {
@@ -228,6 +229,14 @@ public class App extends Application {
                 ex.printStackTrace();
             }
         });
+        Object [] desperation = sp.singlePlayerIntInit();
+        exitMemory.setOnAction(event -> {
+
+            Button exitSingle=(Button) sPScene[3];
+            exitSingle.setOnAction(e -> primaryStage.setScene(mainpageScene));
+        });
+
+
 
         //-------------------------Multiplayer Button-------------------------
 
@@ -250,8 +259,9 @@ public class App extends Application {
         MultiPlayerIntermidiatePage mp = new MultiPlayerIntermidiatePage();
         Object[] mPScene = mp.multiPlayerIntInit();
         Button startMemorymulty = (Button) mPScene[1];
+        Button exitMemryMulty = (Button) mPScene [3];
 
-        multiPlayer.setOnAction(e -> {
+        multiPlayer.setOnAction(event -> {
             try {
                 primaryStage.setScene((Scene) mPScene[0]);
             } catch (Exception ex) {
@@ -301,6 +311,11 @@ public class App extends Application {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+        });
+
+        exitMemryMulty.setOnAction(e -> {
+            Button exit =(Button) mPScene[3];
+            exit.setOnAction(event -> primaryStage.setScene(mainpageScene));
         });
 
         //-------------------------Credit Button-------------------------
