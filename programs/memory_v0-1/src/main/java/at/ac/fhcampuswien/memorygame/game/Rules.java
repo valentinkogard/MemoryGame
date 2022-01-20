@@ -49,6 +49,7 @@ public class Rules {
      * @return true if player has won the game
      */
     public boolean playerWon(Player p){
+        if(p.getNumOfPlayers() == 1) return p.getPlayerPoints() >= (Gameview.cards.length / 2);
         return p.getPlayerPoints() > (Gameview.cards.length / 2) / p.getNumOfPlayers();
     }
 
