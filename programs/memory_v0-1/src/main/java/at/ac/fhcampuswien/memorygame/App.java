@@ -230,7 +230,6 @@ public class App extends Application {
             }
         });
         exitMemory.setOnAction(event -> {
-
             Button exitSingle=(Button) sPScene[3];
             exitSingle.setOnAction(e -> primaryStage.setScene(mainpageScene));
         });
