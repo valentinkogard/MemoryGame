@@ -20,7 +20,7 @@ import java.io.FileNotFoundException;
 
 public class CreditsPage {
 
-    public static int[] windowSize;
+    private static int[] windowSize;
 
     public Object [] CreditsPageInit() throws FileNotFoundException {
         WindowSize ws = new WindowSize();

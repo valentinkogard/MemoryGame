@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
 
 public class OptionsPage {
 
-    public static int[] windowSize;
+    private static int[] windowSize;
 
     public Object[] OptionsPageInit(Background bg4, MediaPlayer mediaPlayer, ToggleButton toggleButton2) {
         WindowSize ws = new WindowSize();

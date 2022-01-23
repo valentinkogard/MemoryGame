@@ -27,15 +27,15 @@ public class Gameview { // implements EventHandler<MouseEvent>{
     private final List<Player> gamePlayer = new ArrayList<>();
     private final List<Label> gameHeaderLabel = new ArrayList<>();
 
-    public static Card[] cards;
+    static Card[] cards;
 
-    public static int size, spaceX, spaceY;
+    static int size, spaceX, spaceY;
 
-    public static final int gameheaderSize = 35;
-    public static int gameHeaderOffset;
-    public static int[] windowSize;
+    static final int gameheaderSize = 35;
+    private static int gameHeaderOffset;
+    static int[] windowSize;
 
-    protected static GameSettings settings;
+    static GameSettings settings;
 
     public static TextField playerWonName = new TextField(" ");
 

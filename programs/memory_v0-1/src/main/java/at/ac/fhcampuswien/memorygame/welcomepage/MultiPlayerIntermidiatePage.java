@@ -18,7 +18,7 @@ import java.io.FileInputStream;
 
 public class MultiPlayerIntermidiatePage {
 
-    public static int[] windowSize;
+    private static int[] windowSize;
 
     private GameSettings settings;
 
