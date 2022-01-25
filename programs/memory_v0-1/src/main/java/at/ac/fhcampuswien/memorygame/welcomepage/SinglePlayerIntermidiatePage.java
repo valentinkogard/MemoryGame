@@ -4,6 +4,7 @@ import at.ac.fhcampuswien.memorygame.welcomepage.env.GameSettings;
 import at.ac.fhcampuswien.memorygame.welcomepage.env.WindowSize;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -36,6 +37,14 @@ public class SinglePlayerIntermidiatePage {
         button.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         button.setFont(new Font(20));
         button.setMinWidth(200);
+        button.setCursor(Cursor.HAND);
+        button.setOnMouseEntered(mouseEvent -> {
+            button.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+        });
+
+        button.setOnMouseExited(mouseEvent -> {
+            button.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        });
 
         //Creating and styling of the return to menue button
         Button exitButton = new Button();
@@ -43,6 +52,14 @@ public class SinglePlayerIntermidiatePage {
         exitButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         exitButton.setFont(new Font(15));
         exitButton.setMinWidth(80);
+        exitButton.setCursor(Cursor.HAND);
+        exitButton.setOnMouseEntered(mouseEvent -> {
+            exitButton.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+        });
+
+        exitButton.setOnMouseExited(mouseEvent -> {
+            exitButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        });
 
         VBox vbox = new VBox();
 

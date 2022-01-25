@@ -1,15 +1,18 @@
 package at.ac.fhcampuswien.memorygame.welcomepage;
 
 import at.ac.fhcampuswien.memorygame.welcomepage.env.GameSettings;
+import at.ac.fhcampuswien.memorygame.welcomepage.env.Music;
 import at.ac.fhcampuswien.memorygame.welcomepage.env.WindowSize;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.scene.control.Button;
 
@@ -36,6 +39,15 @@ public class MultiPlayerIntermidiatePage {
         button.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         button.setFont(new Font(20));
         button.setMinWidth(200);
+        button.setCursor(Cursor.HAND);
+        button.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+        button.setOnMouseEntered(mouseEvent -> {
+            button.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+        });
+
+        button.setOnMouseExited(mouseEvent -> {
+            button.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        });
 
         //Creating and styling of the return to menue button
         Button exitButton = new Button();
@@ -43,6 +55,14 @@ public class MultiPlayerIntermidiatePage {
         exitButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         exitButton.setFont(new Font(15));
         exitButton.setMinWidth(80);
+        exitButton.setCursor(Cursor.HAND);
+        exitButton.setOnMouseEntered(mouseEvent -> {
+            exitButton.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+        });
+
+        exitButton.setOnMouseExited(mouseEvent -> {
+            exitButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        });
 
         //Scene settings
         VBox vbox = new VBox();
