@@ -55,16 +55,13 @@ public class CreditsPage {
 
         ButtonStyle bs = new ButtonStyle();
 
-        BorderPane test = new BorderPane();
-        ToggleButton tg = new ToggleButton();
-
         //color of button  + cursor as hand
         Button back = new Button("Back");
         back.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         back.setFont(new Font(20));
         back.setMinWidth(200);
         back.setCursor(Cursor.HAND);
-        back = bs.ButtonStyleInit(back, test, null, null, tg);
+        back = bs.ButtonStyleInit(back, new BorderPane(), null, null, new ToggleButton());
 
         //position, spacing and allignement
         credVbox.setPrefWidth(200);
