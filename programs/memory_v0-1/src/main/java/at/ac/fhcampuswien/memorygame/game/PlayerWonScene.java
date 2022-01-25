@@ -68,6 +68,7 @@ public class PlayerWonScene {
 
         vBox.setAlignment(Pos.TOP_CENTER);
         stackPane.getChildren().add(vBox);
+        vBox.setSpacing(20);
 
         //Background
         String pathToBg = "src/main/resources/at/ac/fhcampuswien/memorygame/pics/background/background2.jpg";

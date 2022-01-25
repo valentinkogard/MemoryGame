@@ -15,7 +15,7 @@ public class Music {
 
         mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
 
-        mediaPlayer.setVolume(0.3);
+        mediaPlayer.setVolume(0.1);
 
         mediaPlayer.setStartTime(Duration.seconds(0));
         mediaPlayer.setStopTime(Duration.seconds(41));
@@ -31,7 +31,7 @@ public class Music {
         String musicPath = "src\\main\\resources\\at\\ac\\fhcampuswien\\memorygame\\music\\buttonHoverSound.mp3";
         Media media = new Media(new File(musicPath).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setVolume(0.5);
+        mediaPlayer.setVolume(0.1);
 
         mediaPlayer.play();
 
