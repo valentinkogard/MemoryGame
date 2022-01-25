@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
 
 public class OptionsPage {
 
-    public static int[] windowSize;
+    private static int[] windowSize;
 
     public Object[] OptionsPageInit(Background bg4, MediaPlayer mediaPlayer, ToggleButton toggleButton2) {
         WindowSize ws = new WindowSize();
@@ -33,13 +33,13 @@ public class OptionsPage {
         volSliderText.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
 
         Slider volSlider = new Slider(0,100,50);
-        volSlider.setMajorTickUnit(8.0);
-        volSlider.setMinorTickCount(3);
+        //volSlider.setMajorTickUnit(8.0);
+        //volSlider.setMinorTickCount(3);
         volSlider.setMaxWidth(500);
         volSlider.setMinHeight(50);
-        volSlider.setSnapToTicks(false);
-        volSlider.setShowTickMarks(false);
-        volSlider.setShowTickLabels(false);
+        //volSlider.setSnapToTicks(false);
+        //volSlider.setShowTickMarks(false);
+        //volSlider.setShowTickLabels(false);
         volSlider.setStyle("-fx-background-color: darkslateblue; ");
         volSlider.setValue(mediaPlayer.getVolume() * 100);
 

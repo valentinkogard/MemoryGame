@@ -4,6 +4,7 @@ import at.ac.fhcampuswien.memorygame.welcomepage.env.GameSettings;
 import at.ac.fhcampuswien.memorygame.welcomepage.env.WindowSize;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -18,7 +19,7 @@ import java.io.FileInputStream;
 
 public class SinglePlayerIntermidiatePage {
 
-    public static int[] windowSize;
+    private static int[] windowSize;
 
     private GameSettings settings;
 
@@ -36,6 +37,29 @@ public class SinglePlayerIntermidiatePage {
         button.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         button.setFont(new Font(20));
         button.setMinWidth(200);
+        button.setCursor(Cursor.HAND);
+        button.setOnMouseEntered(mouseEvent -> {
+            button.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+        });
+
+        button.setOnMouseExited(mouseEvent -> {
+            button.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        });
+
+        //Creating and styling of the return to menue button
+        Button exitButton = new Button();
+        exitButton.setText("Back");
+        exitButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        exitButton.setFont(new Font(15));
+        exitButton.setMinWidth(80);
+        exitButton.setCursor(Cursor.HAND);
+        exitButton.setOnMouseEntered(mouseEvent -> {
+            exitButton.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+        });
+
+        exitButton.setOnMouseExited(mouseEvent -> {
+            exitButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        });
 
         VBox vbox = new VBox();
 
@@ -47,10 +71,16 @@ public class SinglePlayerIntermidiatePage {
         Label numOfCardsLabel = new Label("Difficulty");
         Label themeOfCardsLabel = new Label("Theme");
 
+        //Placing of the return to menue button
+        HBox hboxButtonBack = new HBox();
+        hboxButtonBack.setAlignment(Pos.TOP_RIGHT);
+        hboxButtonBack.setPadding(new Insets(10, 50, 0, 0));
+        hboxButtonBack.getChildren().addAll(exitButton);
+
         //Label placing and styling for player names
         HBox hboxPlayerNameLabels = new HBox();
         hboxPlayerNameLabels.setAlignment(Pos.TOP_CENTER);
-        hboxPlayerNameLabels.setPadding(new Insets(75, 0, 0, 0));
+        hboxPlayerNameLabels.setPadding(new Insets(40, 0, 0, 0));
         hboxPlayerNameLabels.getChildren().addAll(playerOneNameLabel);
         HBox.setMargin(playerOneNameLabel, new Insets(0, 0, 0, 110));
         playerOneNameLabel.setStyle("-fx-text-fill: darkslateblue;");
@@ -114,7 +144,7 @@ public class SinglePlayerIntermidiatePage {
         hboxButton.getChildren().addAll(button);
 
         //Creating scenen and handing over the neccesary (h)orizontal boxes to a (v)ertical box
-        vbox.getChildren().addAll(hboxPlayerNameLabels, hboxPlayerNames, hboxnumOfCardsLabel, hboxnumOfCards, hboxThemeOfCardsLabel, hboxThemeOfCards, hboxButton);
+        vbox.getChildren().addAll(hboxButtonBack, hboxPlayerNameLabels, hboxPlayerNames, hboxnumOfCardsLabel, hboxnumOfCards, hboxThemeOfCardsLabel, hboxThemeOfCards, hboxButton);
         Scene scene = new Scene(vbox, windowSize[0], windowSize[1]);
         String pathToBg = "src/main/resources/at/ac/fhcampuswien/memorygame/pics/background/background2.jpg";
         File directoryToBg = new File(pathToBg);
@@ -127,7 +157,7 @@ public class SinglePlayerIntermidiatePage {
         //stage.setScene(scene);
         //stage.show();
 
-        return new Object[]{scene, button, settings};
+        return new Object[]{scene, button, settings, exitButton};
     }
 
 

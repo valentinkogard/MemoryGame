@@ -1,15 +1,18 @@
 package at.ac.fhcampuswien.memorygame.welcomepage;
 
 import at.ac.fhcampuswien.memorygame.welcomepage.env.GameSettings;
+import at.ac.fhcampuswien.memorygame.welcomepage.env.Music;
 import at.ac.fhcampuswien.memorygame.welcomepage.env.WindowSize;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.scene.control.Button;
 
@@ -18,7 +21,7 @@ import java.io.FileInputStream;
 
 public class MultiPlayerIntermidiatePage {
 
-    public static int[] windowSize;
+    private static int[] windowSize;
 
     private GameSettings settings;
 
@@ -36,6 +39,30 @@ public class MultiPlayerIntermidiatePage {
         button.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         button.setFont(new Font(20));
         button.setMinWidth(200);
+        button.setCursor(Cursor.HAND);
+        button.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+        button.setOnMouseEntered(mouseEvent -> {
+            button.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+        });
+
+        button.setOnMouseExited(mouseEvent -> {
+            button.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        });
+
+        //Creating and styling of the return to menue button
+        Button exitButton = new Button();
+        exitButton.setText("Back");
+        exitButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        exitButton.setFont(new Font(15));
+        exitButton.setMinWidth(80);
+        exitButton.setCursor(Cursor.HAND);
+        exitButton.setOnMouseEntered(mouseEvent -> {
+            exitButton.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+        });
+
+        exitButton.setOnMouseExited(mouseEvent -> {
+            exitButton.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        });
 
         //Scene settings
         VBox vbox = new VBox();
@@ -50,10 +77,16 @@ public class MultiPlayerIntermidiatePage {
         Label numOfCardsLabel = new Label("Difficulty");
         Label themeOfCardsLabel = new Label("Theme");
 
+        //Placing of the return to menue button
+        HBox hboxButtonBack = new HBox();
+        hboxButtonBack.setAlignment(Pos.TOP_RIGHT);
+        hboxButtonBack.setPadding(new Insets(10, 50, 0, 0));
+        hboxButtonBack.getChildren().addAll(exitButton);
+
         //Label placing and styling for player names
         HBox hboxPlayerNameLabels = new HBox();
         hboxPlayerNameLabels.setAlignment(Pos.TOP_CENTER);
-        hboxPlayerNameLabels.setPadding(new Insets(75, 0, 0, 0));
+        hboxPlayerNameLabels.setPadding(new Insets(40, 0, 0, 0));
         hboxPlayerNameLabels.getChildren().addAll(playerOneNameLabel, playerTwoNameLabel);
         HBox.setMargin(playerOneNameLabel, new Insets(0, 200, 0, 100));
         playerOneNameLabel.setStyle("-fx-text-fill: darkslateblue;");
@@ -123,7 +156,7 @@ public class MultiPlayerIntermidiatePage {
         hboxButton.getChildren().addAll(button);
 
         //Creating scenen and handing over the neccesary (h)orizontal boxes to a (v)ertical box
-        vbox.getChildren().addAll(hboxPlayerNameLabels, hboxPlayerNames, hboxnumOfCardsLabel, hboxnumOfCards, hboxThemeOfCardsLabel, hboxThemeOfCards, hboxButton);
+        vbox.getChildren().addAll(hboxButtonBack, hboxPlayerNameLabels, hboxPlayerNames, hboxnumOfCardsLabel, hboxnumOfCards, hboxThemeOfCardsLabel, hboxThemeOfCards, hboxButton);
         Scene scene = new Scene(vbox, windowSize[0], windowSize[1]);
 
         //setting the background
@@ -136,7 +169,7 @@ public class MultiPlayerIntermidiatePage {
         vbox.setBackground(new Background(myBI));
 
         // Returning the scene, button and player chosen settings to the app, so the scene transition can be implemented
-        return new Object[]{scene, button, settings};
+        return new Object[]{scene, button, settings, exitButton};
     }
 
     /**

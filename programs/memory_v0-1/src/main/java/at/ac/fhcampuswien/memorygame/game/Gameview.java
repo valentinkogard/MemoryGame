@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
@@ -26,15 +27,17 @@ public class Gameview { // implements EventHandler<MouseEvent>{
     private final List<Player> gamePlayer = new ArrayList<>();
     private final List<Label> gameHeaderLabel = new ArrayList<>();
 
-    public static Card[] cards;
+    static Card[] cards;
 
-    public static int size, spaceX, spaceY;
+    static int size, spaceX, spaceY;
 
-    public static final int gameheaderSize = 35;
-    public static int gameHeaderOffset;
-    public static int[] windowSize;
+    static final int gameheaderSize = 35;
+    private static int gameHeaderOffset;
+    static int[] windowSize;
 
-    protected static GameSettings settings;
+    static GameSettings settings;
+
+    public static TextField playerWonName = new TextField(" ");
 
     /**
      * checks if the mouse click was on a card
@@ -68,7 +71,7 @@ public class Gameview { // implements EventHandler<MouseEvent>{
 
         Gameview.settings = settings;
 
-        //is necessary to switch from multiplaer to single player
+        //is necessary to switch from multiplayer to single player
         gamePlayer.add(new Player("Default"));
         gamePlayer.get(0).resetPlayerCounter();
         gameHeaderLabel.add(new Label());
@@ -96,10 +99,10 @@ public class Gameview { // implements EventHandler<MouseEvent>{
                 if(Objects.equals(mouseEvent.getButton().toString(), "PRIMARY") && r.isMoveAllowed(cards)){
                     findImageToChange(feedback[0], feedback[1]);
                 } else if(Objects.equals(mouseEvent.getButton().toString(), "PRIMARY") && r.twoCardsUncovered(cards, arr)){
-                        //p1.incPlayerPoints();
-                        gamePlayer.get(r.getPlayerInTurn(gamePlayer)).incPlayerPoints();
-                        gameHeaderLabel.get(r.getPlayerInTurn(gamePlayer)).setText(gamePlayer.get(r.getPlayerInTurn(gamePlayer)).getHeader());
-                        //System.out.println("Bravo...");
+                    //p1.incPlayerPoints();
+                    gamePlayer.get(r.getPlayerInTurn(gamePlayer)).incPlayerPoints();
+                    gameHeaderLabel.get(r.getPlayerInTurn(gamePlayer)).setText(gamePlayer.get(r.getPlayerInTurn(gamePlayer)).getHeader());
+                    //System.out.println("Bravo...");
                 } else if(Objects.equals(mouseEvent.getButton().toString(), "PRIMARY")){
                     r.setPlayerInTurn(gamePlayer);
                 }
@@ -113,6 +116,16 @@ public class Gameview { // implements EventHandler<MouseEvent>{
                                                                             "-fx-background-color: linear-gradient(to bottom, darkslateblue, violet);" +
                                                                             "-fx-border-radius: 10 10 10 10;" +
                                                                             "-fx-background-radius: 10 10 10 10;");
+                if(r.playerWon(gamePlayer.get(r.getPlayerInTurn(gamePlayer)))){
+                    System.out.println(gamePlayer.get(r.getPlayerInTurn(gamePlayer)).getPlayerName() + " won! \n Congratulation!");
+                    playerWonName.setText(gamePlayer.get(r.getPlayerInTurn(gamePlayer)).getPlayerName());
+                    /*.addEventHandler();
+                    playerWonName.setOnAction(e -> {
+                        System.out.println("playerWonName accessed");
+                    });
+                    System.out.println(playerWonName.getText());*/
+                }
+
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -179,6 +192,6 @@ public class Gameview { // implements EventHandler<MouseEvent>{
         ImageController.setBackground(root);
 
         Scene gamescene = new Scene(root, windowSize[0], windowSize[1]);
-        return new Object[] {gamescene, back};
+        return new Object[] {gamescene, back, playerWonName};
     }
 }

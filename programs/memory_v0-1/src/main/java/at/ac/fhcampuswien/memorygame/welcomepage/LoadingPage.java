@@ -11,8 +11,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class LoadingPage {
-
-    public static int[] windowSize;
+/*
+    private static int[] windowSize;
 
     public Scene loadingPageInit() throws FileNotFoundException {
         WindowSize ws = new WindowSize();
@@ -39,4 +39,6 @@ public class LoadingPage {
 
         return new Scene(stackPane, windowSize[0], windowSize[1]);
     }
+
+ */
 }

@@ -13,9 +13,14 @@ public class CardInitialisation {
      * @param numberOfCards
      */
     private void fillList(int numberOfCards){
+        Random random = new Random();
+        int randomIndex = -1;
         for(int i = 0; i < numberOfCards/2; i++){
-            for(int j = 0; j < 2; j++) {
-                list.add(i);
+            do{
+                randomIndex = random.nextInt(20);
+            }while(list.contains(randomIndex));
+            for (int j = 0; j < 2; j++) {
+                list.add(randomIndex);
             }
         }
     }

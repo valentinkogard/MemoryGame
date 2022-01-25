@@ -1,14 +1,22 @@
 package at.ac.fhcampuswien.memorygame;
 
 import at.ac.fhcampuswien.memorygame.game.Gameview;
+import at.ac.fhcampuswien.memorygame.game.Player;
+import at.ac.fhcampuswien.memorygame.game.PlayerWonScene;
 import at.ac.fhcampuswien.memorygame.welcomepage.*;
 import at.ac.fhcampuswien.memorygame.welcomepage.env.*;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
@@ -19,6 +27,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import javax.swing.event.ChangeEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
@@ -46,6 +58,10 @@ public class App extends Application {
         windowSize = ws.getWindowSize();
 
         primaryStage.setTitle("MEMORY");
+        String pathToIcon = "src/main/resources/at/ac/fhcampuswien/memorygame/pics/Logo_Wasserball.png";
+        File directoryToGif = new File(pathToIcon);
+        Image icon = new Image(new FileInputStream(directoryToGif.getAbsoluteFile()));
+        primaryStage.getIcons().add(icon);
 
         //for general background settings - Mouse entered / Mouse exited
         ButtonStyle bs = new ButtonStyle();
@@ -169,6 +185,7 @@ public class App extends Application {
 
         //start Gameview in SinglePlayer Mode
         Button startMemory = (Button) sPScene[1];
+        Button exitMemory = (Button) sPScene[3];
         Object[] finalSPScene = sPScene;
 
         startMemory.setOnAction(e -> {
@@ -177,18 +194,47 @@ public class App extends Application {
                 GameSettings settings = (GameSettings) sPScene[2];
                 if (settings.getPlayerOne() != null) {
                     gvObjSing = gv.mainGame((GameSettings) finalSPScene[2]);
-                    primaryStage.setScene((Scene) gvObjSing[0]);
+                    Scene singlePlayerScene = (Scene) gvObjSing[0];
+                    Button singlePlayerBack = (Button) gvObjSing[1];
+                    TextField singlePlayerWon = (TextField) gvObjSing[2];
+                    primaryStage.setScene(singlePlayerScene);
 
-                    Button backSin = (Button) gvObjSing[1];
-                    backSin.setOnAction(e2 -> {
-                        //System.out.println("Back to mainScene");
+                    singlePlayerBack.setOnAction(e2 -> {
                         primaryStage.setScene(mainpageScene);
+                    });
+                    singlePlayerWon.textProperty().addListener(new ChangeListener<String>() {
+                        @Override
+                        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                            Object[] singlePlayerWonClass;
+                            try {
+                                PlayerWonScene singlePlayerSceneWon = new PlayerWonScene();
+                                singlePlayerWonClass = singlePlayerSceneWon.playerWonScene(singlePlayerWon);
+                                Scene playerWonScene = (Scene) singlePlayerWonClass[0];
+                                Button toMenuFromPlayerWon = (Button) singlePlayerWonClass[1];
+                                Button backToGame = (Button) singlePlayerWonClass[2];
+                                primaryStage.setScene(playerWonScene);
+                                toMenuFromPlayerWon.setOnAction(e3 -> {
+                                    primaryStage.setScene(mainpageScene);
+                                });
+                                backToGame.setOnAction(e3 -> {
+                                    primaryStage.setScene(singlePlayerScene);
+                                });
+                            } catch (FileNotFoundException ex) {
+                                ex.printStackTrace();
+                            }
+                        }
                     });
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
         });
+        exitMemory.setOnAction(event -> {
+            Button exitSingle=(Button) sPScene[3];
+            exitSingle.setOnAction(e -> primaryStage.setScene(mainpageScene));
+        });
+
+
 
         //-------------------------Multiplayer Button-------------------------
 
@@ -205,14 +251,15 @@ public class App extends Application {
         //Scene multiPlyScene = new Scene(multiPlyVbox, windowSize[0], windowSize[1]);
         //multiPlyVbox.setBackground(new Background(new BackgroundFill(Color.BLANCHEDALMOND, new CornerRadii(0), Insets.EMPTY)));
 
-        Text title3 = new Text("Multiplayer placeholder");
-        title3.setFont(new Font(40));
+        //Text title3 = new Text("Multiplayer placeholder");
+        //title3.setFont(new Font(40));
 
         MultiPlayerIntermidiatePage mp = new MultiPlayerIntermidiatePage();
         Object[] mPScene = mp.multiPlayerIntInit();
         Button startMemorymulty = (Button) mPScene[1];
+        Button exitMemryMulty = (Button) mPScene [3];
 
-        multiPlayer.setOnAction(e -> {
+        multiPlayer.setOnAction(event -> {
             try {
                 primaryStage.setScene((Scene) mPScene[0]);
             } catch (Exception ex) {
@@ -227,15 +274,46 @@ public class App extends Application {
 
                 if (settings.getPlayerOne() != null && settings.getPlayerTwo() != null) {
                     gvObjMulti = gv.mainGame((GameSettings) mPScene[2]);
-                    Button toMenu = (Button) gvObjMulti[1];
-                    primaryStage.setScene((Scene) gvObjMulti[0]);
-                    toMenu.setOnAction(e2 -> {
+                    Scene multiPlayerScene = (Scene) gvObjMulti[0];
+                    Button fromMultiPlayerToMenu = (Button) gvObjMulti[1];
+                    TextField multiPlayerWon = (TextField) gvObjMulti[2];
+                    primaryStage.setScene(multiPlayerScene);
+                    fromMultiPlayerToMenu.setOnAction(e2 -> {
                         primaryStage.setScene(mainpageScene);
+                    });
+                    System.out.println(multiPlayerWon.getOnAction());
+
+                    multiPlayerWon.textProperty().addListener(new ChangeListener<String>() {
+                        @Override
+                        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                            Object[] playerWonClass;
+                            try {
+                                PlayerWonScene pws = new PlayerWonScene();
+                                playerWonClass = pws.playerWonScene(multiPlayerWon);
+                                Scene playerWonScene = (Scene) playerWonClass[0];
+                                Button toMenuFromPlayerWon = (Button) playerWonClass[1];
+                                Button backToGame = (Button) playerWonClass[2];
+                                primaryStage.setScene(playerWonScene);
+                                toMenuFromPlayerWon.setOnAction(e3 -> {
+                                    primaryStage.setScene(mainpageScene);
+                                });
+                                backToGame.setOnAction(e3 -> {
+                                    primaryStage.setScene(multiPlayerScene);
+                                });
+                            } catch (FileNotFoundException ex) {
+                                ex.printStackTrace();
+                            }
+                        }
                     });
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+        });
+
+        exitMemryMulty.setOnAction(e -> {
+            Button exit =(Button) mPScene[3];
+            exit.setOnAction(event -> primaryStage.setScene(mainpageScene));
         });
 
         //-------------------------Credit Button-------------------------
