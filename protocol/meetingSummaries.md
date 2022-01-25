@@ -173,3 +173,9 @@ Present: Magdalena, Valentin, Niko
 Feedback round
 
 Absent: -
+
+## 25.01.2022 - 10:00
+
+presentation preparation
+
+Absent: -
