@@ -55,7 +55,7 @@ public class PlayerWonScene {
         backToGame.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         backToGame.setFont(new Font(20));
         backToGame.setMinWidth(200);
-        backToGame.setCursor(Cursor.styleAND);
+        backToGame.setCursor(Cursor.HAND);
         backToGame.setOnMouseEntered(mouseEvent -> {
             backToGame.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
         });
