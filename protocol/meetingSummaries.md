@@ -179,3 +179,18 @@ Absent: -
 presentation preparation
 
 Absent: -
+
+## 26.01.2022 - 11:00 
+
+presentation preparation
+
+Absent: -
+
+## 26.01.2022 - 14:00 
+
+Presentation
+
+Absent: -
+
+# FINISHED PROJECT
+
