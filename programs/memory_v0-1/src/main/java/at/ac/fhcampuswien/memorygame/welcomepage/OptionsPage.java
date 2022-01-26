@@ -30,7 +30,7 @@ public class OptionsPage {
 
         Text volSliderText = new Text(10,50, "Volume");
         volSliderText.setFont(Font.font("Calibri", 50));
-        volSliderText.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        //volSliderText.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
 
         Slider volSlider = new Slider(0,100,50);
         //volSlider.setMajorTickUnit(8.0);
@@ -47,7 +47,7 @@ public class OptionsPage {
 
         Text musicBtnText = new Text(10,50, "Music");
         musicBtnText.setFont(Font.font("Calibri", 50));
-        musicBtnText.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        //musicBtnText.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
 
         ToggleButton toggleButton = new ToggleButton();
         toggleButton.setMinSize(150,100);
@@ -60,7 +60,7 @@ public class OptionsPage {
 
         Text musicBtnText2 = new Text(10,50, "Soundeffect");
         musicBtnText2.setFont(Font.font("Calibri", 50));
-        musicBtnText2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        //musicBtnText2.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
 
         toggleButton2.setMinSize(150,100);
         toggleButton2.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
@@ -76,6 +76,7 @@ public class OptionsPage {
 
         back1.setCursor(Cursor.HAND);
         toggleButton.setCursor(Cursor.HAND);
+        toggleButton2.setCursor(Cursor.HAND);
         volSlider.setCursor(Cursor.HAND);
 
         toggleButton.setOnAction(event -> {
@@ -110,7 +111,7 @@ public class OptionsPage {
 
         optnVbox.getChildren().addAll(musicBtnText, toggleButton ,musicBtnText2,toggleButton2,volSliderText, volSlider, back1);
 
-        return new Object[] {optnScene, back1, toggleButton};
+        return new Object[] {optnScene, back1};
     }
 
 }

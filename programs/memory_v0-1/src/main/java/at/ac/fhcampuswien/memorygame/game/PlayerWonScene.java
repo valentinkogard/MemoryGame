@@ -56,6 +56,13 @@ public class PlayerWonScene {
         backToGame.setFont(new Font(20));
         backToGame.setMinWidth(200);
         backToGame.setCursor(Cursor.HAND);
+        backToGame.setOnMouseEntered(mouseEvent -> {
+            backToGame.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+        });
+
+        backToGame.setOnMouseExited(mouseEvent -> {
+            backToGame.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        });
         vBox.getChildren().add(backToGame);
 
         Button toMenu = new Button();
@@ -64,6 +71,13 @@ public class PlayerWonScene {
         toMenu.setFont(new Font(20));
         toMenu.setMinWidth(200);
         toMenu.setCursor(Cursor.HAND);
+        toMenu.setOnMouseEntered(mouseEvent -> {
+            toMenu.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+        });
+
+        toMenu.setOnMouseExited(mouseEvent -> {
+            toMenu.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
+        });
         vBox.getChildren().add(toMenu);
 
         vBox.setAlignment(Pos.TOP_CENTER);

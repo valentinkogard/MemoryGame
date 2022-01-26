@@ -155,7 +155,7 @@ public class App extends Application {
         Object[] optnSceneObj = op.OptionsPageInit(bg4, mediaPlayer, toggleButton2);
         Scene optnScene = (Scene) optnSceneObj[0];
         Button back1 = (Button) optnSceneObj[1];
-        ToggleButton toggleButton = (ToggleButton) optnSceneObj[2];
+        //ToggleButton toggleButton = (ToggleButton) optnSceneObj[2];
         back1 = bs.ButtonStyleInit(back1, border, bg, bg, toggleButton2);
 
         options.setOnAction(e -> primaryStage.setScene(optnScene));
