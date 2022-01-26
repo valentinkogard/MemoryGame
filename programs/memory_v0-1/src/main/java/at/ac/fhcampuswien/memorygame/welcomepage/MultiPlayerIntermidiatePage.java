@@ -40,7 +40,7 @@ public class MultiPlayerIntermidiatePage {
         button.setFont(new Font(20));
         button.setMinWidth(200);
         button.setCursor(Cursor.HAND);
-        button.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
+        button.setStyle("-fx-background-color: darkslateblue; -fx-text-fill: white;");
         button.setOnMouseEntered(mouseEvent -> {
             button.setStyle("-fx-background-color: linear-gradient(to bottom, darkslateblue, violet); -fx-text-fill: white;");
         });
